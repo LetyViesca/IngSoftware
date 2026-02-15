@@ -1,6 +1,6 @@
-# IngSoftware
+# ZIGNA
 
-una plataforma web educativa e inclusiva diseñada para facilitar el aprendizaje del lenguaje de señas a personas de 12 años en adelante.
+Zigna es una plataforma web educativa e inclusiva diseñada para facilitar el aprendizaje del lenguaje de señas a personas de 12 años en adelante.
 
 Objetivos principales:
 
