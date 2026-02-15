@@ -39,3 +39,11 @@ o	Backend: PHP
 o	Base de datos: MySQL
 
 o	Diseño adaptable (Responsive Design)
+
+Equipo y roles
+
+-Dannia Hernandez Coordinadora
+-Blanca Ruiz Analista
+-Renata Flores Diseñadora
+-valeria Garcia Tester
+-Leticia Viesca Desarrollador
