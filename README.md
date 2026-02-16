@@ -42,8 +42,12 @@ o	Diseño adaptable (Responsive Design)
 
 Equipo y roles
 
--Dannia Hernandez Coordinadora
--Blanca Ruiz Analista
--Renata Flores Diseñadora
--valeria Garcia Tester
--Leticia Viesca Desarrollador
+-Dannia Hernandez Coordinadora.
+
+-Blanca Ruiz Analista.
+
+-Renata Flores Diseñadora.
+
+-Valeria Garcia Tester.
+
+-Leticia Viesca Desarrollador.
