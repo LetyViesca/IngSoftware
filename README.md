@@ -17,6 +17,7 @@ Objetivos principales:
 Público objetivo:
 
 •	Estudiantes.
+
 •	Docentes.
 
 •	Personas interesadas en inclusión social.
@@ -31,7 +32,7 @@ Tipo de Software
 
 •	Modalidad: Online
 
-Tecnologías sugeridas
+Tecnologías
 o	Frontend: HTML, CSS, JavaScript
 
 o	Backend: PHP 
