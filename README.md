@@ -1,54 +1,72 @@
 # ZIGNA
 
-Zigna es una plataforma web educativa e inclusiva diseñada para facilitar el aprendizaje del lenguaje de señas a personas de 12 años en adelante.
+ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje del Lenguaje de Señas Mexicano (LSM) de manera interactiva, accesible e inclusiva, dirigida a personas de 12 años en adelante.
 
-Objetivos principales:
+El sistema permite a los usuarios aprender el abecedario, palabras básicas y frases comunes, así como realizar ejercicios prácticos mediante recursos visuales como imágenes, animaciones y videos.
 
-•	Enseñar el alfabeto en lenguaje de señas.
+ZIGNA busca promover la inclusión social y mejorar la comunicación entre personas oyentes y personas con discapacidad auditiva.
+
+
+Usuarios.
+La plataforma está dirigida a:
+
+-Estudiantes interesados en aprender lenguaje de señas.
+
+-Docentes que deseen utilizar una herramienta digital de apoyo.
+
+-Personas que tengan familiares o amigos con discapacidad auditiva.
+
+-Personas interesadas en inclusión social.
+
+
+Alcance.
+ZIGNA contempla:
+
+•	Enseñar el alfabeto en Lenguaje de Señas Mexicano.
 
 •	Incluir palabras básicas y frases comunes.
 
 •	Mostrar contenido visual (imágenes, animaciones o videos).
 
-•	Evaluaciones interactivas.
+•	Evaluaciones interactivas(cuestionarios).
 
 •	Interfaz accesible e inclusiva.
 
-Público objetivo:
+•Seguimiento del progreso del usuario.
 
-•	Estudiantes.
 
-•	Docentes.
 
-•	Personas interesadas en inclusión social.
+Tipo de Sistema.
 
-•	Familiares de personas con discapacidad auditiva.
+-Sistema Web
 
-Tipo de Software
+-Plataforma educativa
 
-•	Tipo: Pagina web
+-Enfocada en accesibilidad e inclusión social
 
-•	Categoría: Plataforma social e inclusiva
-
-•	Modalidad: Online
 
 Tecnologías
+
 o	Frontend: HTML, CSS, JavaScript
 
-o	Backend: PHP 
+o	Backend: PHP, Python
 
 o	Base de datos: MySQL
 
 o	Diseño adaptable (Responsive Design)
 
-Equipo y roles
 
--Dannia Hernandez Coordinadora.
+Equipo y roles.
 
--Blanca Ruiz Analista.
+Renata Flores-Diseñador.
 
--Renata Flores Diseñadora.
+Valeria Garcia-Tester.
 
--Valeria Garcia Tester.
+Dannia Hernandez-Coordinador.
 
--Leticia Viesca Desarrollador.
+Blanca Ruiz-Analista.
+
+Leticia Viesca-Desarrollador.
+
+
+Estado del Proyecto: En desarrollo (Análisis de requisitos).
