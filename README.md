@@ -2,12 +2,11 @@
 
 ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje del Lenguaje de Señas Mexicano (LSM) de manera interactiva, accesible e inclusiva, dirigida a personas de 12 años en adelante.
 
-El sistema permite a los usuarios aprender el abecedario, palabras básicas y frases comunes, así como realizar ejercicios prácticos mediante recursos visuales como imágenes, animaciones y videos.
-
 ZIGNA busca promover la inclusión social y mejorar la comunicación entre personas oyentes y personas con discapacidad auditiva.
 
 
 Usuarios.
+
 La plataforma está dirigida a:
 
 -Estudiantes interesados en aprender lenguaje de señas.
