@@ -5,8 +5,7 @@ ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje de
 ZIGNA busca promover la inclusión social y mejorar la comunicación entre personas oyentes y personas con discapacidad auditiva.
 
 
-
-Usuarios.
+##Usuarios.
 
 La plataforma está dirigida a:
 
@@ -19,8 +18,7 @@ La plataforma está dirigida a:
 -Personas interesadas en inclusión social.
 
 
-
-Alcance.
+##Alcance.
 
 ZIGNA contempla:
 
@@ -37,9 +35,7 @@ ZIGNA contempla:
 •Seguimiento del progreso del usuario.
 
 
-
-
-Tipo de Sistema.
+##Tipo de Sistema.
 
 -Sistema Web
 
@@ -48,8 +44,7 @@ Tipo de Sistema.
 -Enfocada en accesibilidad e inclusión social
 
 
-
-Tecnologías
+###Tecnologías
 
 o	Frontend: HTML, CSS, JavaScript
 
@@ -60,19 +55,19 @@ o	Base de datos: MySQL
 o	Diseño adaptable (Responsive Design)
 
 
+##Equipo y roles.
 
-Equipo y roles.
+Renata Flores->Diseñador.
 
-Renata Flores-Diseñador.
+Valeria Garcia->Tester.
 
-Valeria Garcia-Tester.
+Dannia Hernandez->Coordinador.
 
-Dannia Hernandez-Coordinador.
+Blanca Ruiz->Analista.
 
-Blanca Ruiz-Analista.
-
-Leticia Viesca-Desarrollador.
-
+Leticia Viesca->Desarrollador.
 
 
-Estado del Proyecto: En desarrollo (Análisis de requisitos).
+##Estado del Proyecto: 
+
+En desarrollo (Análisis de requisitos).
