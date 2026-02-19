@@ -1,41 +1,73 @@
-# IngSoftware
+# ZIGNA (signal)
 
-una plataforma web educativa e inclusiva diseñada para facilitar el aprendizaje del lenguaje de señas a personas de 12 años en adelante.
+ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje de Lengua de Señas Mexicana (LSM) de manera interactiva, accesible e inclusiva, dirigida a personas de 12 años en adelante.
 
-Objetivos principales:
+ZIGNA busca promover la inclusión social y mejorar la comunicación entre personas oyentes y personas con discapacidad auditiva.
 
-•	Enseñar el alfabeto en lenguaje de señas.
+
+## Usuarios.
+
+La plataforma está dirigida a:
+
+-Estudiantes interesados en aprender Lengua de Señas Mexicana.
+
+-Docentes que deseen utilizar una herramienta digital de apoyo.
+
+-Personas que tengan familiares o amigos con discapacidad auditiva.
+
+-Personas interesadas en inclusión social.
+
+
+## Alcance.
+
+ZIGNA contempla:
+
+•	Enseñar el alfabeto en Lengua de Señas Mexicana.
 
 •	Incluir palabras básicas y frases comunes.
 
-•	Mostrar contenido visual (imágenes, animaciones o videos).
+•	Mostrar contenido visual (imágenes).
 
-•	Evaluaciones interactivas.
+•	Evaluaciones interactivas (cuestionarios).
 
 •	Interfaz accesible e inclusiva.
 
-Público objetivo:
+• Seguimiento del progreso del usuario.
 
-•	Estudiantes.
-•	Docentes.
 
-•	Personas interesadas en inclusión social.
+## Tipo de Sistema.
 
-•	Familiares de personas con discapacidad auditiva.
+-Sistema Web
 
-Tipo de Software
+-Plataforma educativa
 
-•	Tipo: Pagina web
+-Enfocada en accesibilidad e inclusión social
 
-•	Categoría: Plataforma social e inclusiva
 
-•	Modalidad: Online
+### Tecnologías
 
-Tecnologías sugeridas
-o	Frontend: HTML, CSS, JavaScript
+-Frontend: HTML, CSS, JavaScript
 
-o	Backend: PHP 
+-Backend: PHP
 
-o	Base de datos: MySQL
+-Base de datos: MySQL
 
-o	Diseño adaptable (Responsive Design)
+-Diseño adaptable (Responsive Design)
+
+
+## Equipo y roles.
+
+Renata Flores->Diseñador.
+
+Valeria García->Tester.
+
+Dannia Hernández->Coordinador.
+
+Blanca Ruiz->Analista.
+
+Leticia Viesca->Desarrollador.
+
+
+## Estado del Proyecto: 
+
+En desarrollo (Análisis de requisitos).
