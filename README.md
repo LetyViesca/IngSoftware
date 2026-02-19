@@ -5,7 +5,7 @@ ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje de
 ZIGNA busca promover la inclusión social y mejorar la comunicación entre personas oyentes y personas con discapacidad auditiva.
 
 
-Usuarios.
+*Usuarios.*
 
 La plataforma está dirigida a:
 
