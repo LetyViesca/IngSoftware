@@ -57,17 +57,17 @@ ZIGNA contempla:
 
 ## Equipo y roles.
 
-Renata Flores->Diseñador.
+Renata Flores->Coordinador.
 
-Valeria García->Tester.
+Valeria García->Desarrollador.
 
-Dannia Hernández->Coordinador.
+Dannia Hernández->Diseñador.
 
-Blanca Ruiz->Analista.
+Blanca Ruiz->Tester.
 
-Leticia Viesca->Desarrollador.
+Leticia Viesca->Analista.
 
 
 ## Estado del Proyecto: 
 
-En desarrollo (Análisis de requisitos).
+En desarrollo (Diseño del sistema).
