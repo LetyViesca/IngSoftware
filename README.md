@@ -53,21 +53,39 @@ ZIGNA contempla:
 -Base de datos: MySQL
 
 -Diseño adaptable (Responsive Design)
+### Ejecución del sistema ZIGNA
+El sistema funciona a través de un navegador web, donde el usuario inicia sesión, accede a módulos de aprendizaje, realiza evaluaciones y recibe retroalimentación, mientras su progreso es almacenado automáticamente.
 
+### Flujo principal del sistema
+
+El sistema inicia cuando el usuario accede a la plataforma y finaliza al cerrar sesión después de completar una evaluación.
+
+• El usuario ingresa sus credenciales en la interfaz
+• El sistema valida la información en la base de datos
+• Si los datos son correctos, se muestra el menú principal
+• El usuario selecciona un módulo de aprendizaje
+• El sistema muestra el contenido correspondiente
+• El usuario inicia una evaluación
+• El sistema muestra las preguntas
+• El usuario responde y envía sus respuestas
+• El sistema valida, califica y guarda los resultados
+• Se muestra retroalimentación (respuestas correctas/incorrectas)
+• Se actualiza el progreso del usuario
+• El usuario puede cerrar sesión
 
 ## Equipo y roles.
 
-Renata Flores->Coordinador.
+Renata Flores->Desarrollador.
 
-Valeria García->Desarrollador.
+Valeria García->Diseñador.
 
-Dannia Hernández->Diseñador.
+Dannia Hernández->Analista.
 
-Blanca Ruiz->Tester.
+Blanca Ruiz->Coordinador.
 
-Leticia Viesca->Analista.
+Leticia Viesca->Tester.
 
 
 ## Estado del Proyecto: 
 
-En desarrollo (Diseño del sistema).
+En desarrollo (Desarrollo del sistema).
