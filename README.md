@@ -1,73 +1,112 @@
-# ZIGNA (signal)
+# ZIGNA
 
-ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje de Lengua de Señas Mexicana (LSM) de manera interactiva, accesible e inclusiva, dirigida a personas de 12 años en adelante.
+ZIGNA es una plataforma web diseñada para apoyar el aprendizaje de la Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, acceder a contenidos educativos (alfabeto, palabras y frases), realizar evaluaciones y dar seguimiento a su progreso.
 
-ZIGNA busca promover la inclusión social y mejorar la comunicación entre personas oyentes y personas con discapacidad auditiva.
+---
 
+## Tecnologías Utilizadas
 
-## Usuarios.
+* Frontend: HTML, CSS, JavaScript
+* Backend: PHP
+* Base de Datos: MySQL
+* Servidor Local: XAMPP
 
-La plataforma está dirigida a:
+---
 
--Estudiantes interesados en aprender Lengua de Señas Mexicana.
+##  Instrucciones de Ejecución
 
--Docentes que deseen utilizar una herramienta digital de apoyo.
+Para ejecutar el sistema de manera local, seguir los siguientes pasos:
 
--Personas que tengan familiares o amigos con discapacidad auditiva.
+1. Instalar XAMPP.
 
--Personas interesadas en inclusión social.
+2. Iniciar los servicios de:
 
+   * Apache
+   * MySQL
 
-## Alcance.
+3. Colocar la carpeta del proyecto en:
 
-ZIGNA contempla:
+   ```
+   C:\xampp\htdocs\
+   ```
 
-•	Enseñar el alfabeto en Lengua de Señas Mexicana.
+4. Importar la base de datos:
 
-•	Incluir palabras básicas y frases comunes.
+   * Abrir phpMyAdmin (http://localhost/phpmyadmin)
+   * Crear una base de datos llamada: `zigna`
+   * Importar el archivo `.sql` del proyecto
 
-•	Mostrar contenido visual (imágenes).
+5. Configurar la conexión a la base de datos en el archivo PHP correspondiente:
 
-•	Evaluaciones interactivas (cuestionarios).
+   ```php
+   $conexion = new mysqli("localhost", "root", "", "zigna");
+   ```
 
-•	Interfaz accesible e inclusiva.
+6. Ejecutar el sistema en el navegador:
 
-• Seguimiento del progreso del usuario.
+   ```
+   http://localhost/zigna
+   ```
 
+---
 
-## Tipo de Sistema.
+##  Arquitectura del Sistema
 
--Sistema Web
+El sistema ZIGNA sigue una arquitectura de tres capas:
 
--Plataforma educativa
+### 1. Frontend
 
--Enfocada en accesibilidad e inclusión social
+Es la interfaz con la que interactúa el usuario. Está desarrollada con HTML, CSS y JavaScript. Aquí se muestran los formularios, módulos y evaluaciones.
 
+### 2. Backend (PHP)
 
-### Tecnologías
+Se encarga de procesar la lógica del sistema, validar datos, gestionar sesiones y comunicarse con la base de datos.
 
--Frontend: HTML, CSS, JavaScript
+### 3. Base de Datos (MySQL)
 
--Backend: PHP
+Almacena la información del sistema:
 
--Base de datos: MySQL
+* Usuarios registrados
+* Progreso del usuario
+* Resultados de evaluaciones
 
--Diseño adaptable (Responsive Design)
+### Flujo de comunicación
 
+1. El usuario interactúa con el Frontend.
+2. El Frontend envía solicitudes al Backend.
+3. El Backend procesa la información.
+4. Se consulta o actualiza la Base de Datos.
+5. El Backend responde al Frontend.
+6. El usuario visualiza el resultado.
 
-## Equipo y roles.
+---
 
-Renata Flores->Coordinador.
+##  Funcionalidades Principales
 
-Valeria García->Desarrollador.
+* Registro de usuario
+* Inicio de sesión
+* Acceso a módulos de aprendizaje
+* Evaluaciones interactivas
+* Retroalimentación de resultados
+* Seguimiento de progreso
 
-Dannia Hernández->Diseñador.
+---
 
-Blanca Ruiz->Tester.
+##  Reglas del Sistema
 
-Leticia Viesca->Analista.
+* Contraseña mínima de 8 caracteres
+* Correo único por usuario
+* Calificación mínima aprobatoria: 70%
+* Intentos ilimitados en evaluaciones
+* Solo se guarda el último intento
 
+---
 
-## Estado del Proyecto: 
+##  Equipo de Desarrollo
 
-En desarrollo (Diseño del sistema).
+* Integrantes del equipo ZIGNA
+Blanca → Coordinador
+Dannia → Analista
+Renata → Desarrollador
+Valeria → Diseñador
+Leticia → Tester
