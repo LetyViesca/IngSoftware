@@ -100,12 +100,11 @@ Almacena la información del sistema:
 
 ##  Equipo de Desarrollo
 
-* Integrantes del equipo ZIGNA
-Blanca → Coordinador
-Dannia → Analista
-Renata → Desarrollador
-Valeria → Diseñador
-Leticia → Tester
-
+- Blanca → Coordinador  
+- Dannia → Analista  
+- Renata → Desarrollador  
+- Valeria → Diseñador  
+- Leticia → Tester
+ 
 ## Estado del Sistema
 El sistema se encuentra en fase de desarrollo, con funcionalidades principales implementadas y en proceso de mejora continua.
