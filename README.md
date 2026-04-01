@@ -2,7 +2,6 @@
 
 ZIGNA es una plataforma web diseñada para apoyar el aprendizaje de la Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, acceder a contenidos educativos (alfabeto, palabras y frases), realizar evaluaciones y dar seguimiento a su progreso.
 
----
 
 ## Tecnologías Utilizadas
 
@@ -11,7 +10,6 @@ ZIGNA es una plataforma web diseñada para apoyar el aprendizaje de la Lengua de
 * Base de Datos: MySQL
 * Servidor Local: XAMPP
 
----
 
 ##  Instrucciones de Ejecución
 
@@ -26,10 +24,8 @@ Para ejecutar el sistema de manera local, seguir los siguientes pasos:
 
 3. Colocar la carpeta del proyecto en:
 
-   ```
    C:\xampp\htdocs\
-   ```
-
+ 
 4. Importar la base de datos:
 
    * Abrir phpMyAdmin (http://localhost/phpmyadmin)
@@ -37,18 +33,10 @@ Para ejecutar el sistema de manera local, seguir los siguientes pasos:
    * Importar el archivo `.sql` del proyecto
 
 5. Configurar la conexión a la base de datos en el archivo PHP correspondiente:
-
-   ```php
+  php
    $conexion = new mysqli("localhost", "root", "", "zigna");
-   ```
-
 6. Ejecutar el sistema en el navegador:
-
-   ```
    http://localhost/zigna
-   ```
-
----
 
 ##  Arquitectura del Sistema
 
@@ -79,8 +67,6 @@ Almacena la información del sistema:
 5. El Backend responde al Frontend.
 6. El usuario visualiza el resultado.
 
----
-
 ##  Funcionalidades Principales
 
 * Registro de usuario
@@ -90,7 +76,6 @@ Almacena la información del sistema:
 * Retroalimentación de resultados
 * Seguimiento de progreso
 
----
 
 ##  Reglas del Sistema
 
@@ -100,7 +85,18 @@ Almacena la información del sistema:
 * Intentos ilimitados en evaluaciones
 * Solo se guarda el último intento
 
----
+##  Flujo Principal del Sistema
+
+1. El usuario se registra o inicia sesión.
+2. El sistema valida los datos ingresados.
+3. El usuario accede al menú principal.
+4. Selecciona un módulo (alfabeto, palabras o frases).
+5. Visualiza el contenido educativo.
+6. Realiza una evaluación.
+7. El sistema valida que todas las preguntas estén respondidas.
+8. Se muestran los resultados con retroalimentación.
+9. El sistema guarda el progreso del usuario.
+10. El usuario puede continuar o cerrar sesión.
 
 ##  Equipo de Desarrollo
 
@@ -110,3 +106,6 @@ Dannia → Analista
 Renata → Desarrollador
 Valeria → Diseñador
 Leticia → Tester
+
+## Estado del Sistema
+El sistema se encuentra en fase de desarrollo, con funcionalidades principales implementadas y en proceso de mejora continua.
