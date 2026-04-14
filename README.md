@@ -79,32 +79,19 @@ Almacena la información del sistema:
 
 ##  Reglas del Sistema
 
-* Contraseña mínima de 8 caracteres
-* Correo único por usuario
-* Calificación mínima aprobatoria: 70%
-* Intentos ilimitados en evaluaciones
-* Solo se guarda el último intento
+## Equipo y roles.
 
-##  Flujo Principal del Sistema
+Renata Flores->Desarrollador.
 
-1. El usuario se registra o inicia sesión.
-2. El sistema valida los datos ingresados.
-3. El usuario accede al menú principal.
-4. Selecciona un módulo (alfabeto, palabras o frases).
-5. Visualiza el contenido educativo.
-6. Realiza una evaluación.
-7. El sistema valida que todas las preguntas estén respondidas.
-8. Se muestran los resultados con retroalimentación.
-9. El sistema guarda el progreso del usuario.
-10. El usuario puede continuar o cerrar sesión.
+Valeria García->Diseñador.
 
-##  Equipo de Desarrollo
+Dannia Hernández->Analista.
 
-- Blanca → Coordinador  
-- Dannia → Analista  
-- Renata → Desarrollador  
-- Valeria → Diseñador  
-- Leticia → Tester
- 
-## Estado del Sistema
-El sistema se encuentra en fase de desarrollo, con funcionalidades principales implementadas y en proceso de mejora continua.
+Blanca Ruiz->Coordinador.
+
+Leticia Viesca->Tester.
+
+
+## Estado del Proyecto: 
+
+En desarrollo (Desarrollo del sistema).
