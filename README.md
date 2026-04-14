@@ -69,15 +69,33 @@ Almacena la información del sistema:
 
 ##  Funcionalidades Principales
 
-* Registro de usuario
-* Inicio de sesión
-* Acceso a módulos de aprendizaje
-* Evaluaciones interactivas
-* Retroalimentación de resultados
-* Seguimiento de progreso
+El sistema permite:
 
-
-##  Reglas del Sistema
+1. Registro de usuario con validaciones:
+- Campos obligatorios
+- Formato de correo
+- Contraseña mínima de 8 caracteres
+- Almacenamiento cifrado con bcrypt
+2. Inicio de sesión:
+- Validación de campos y formato
+- Consulta a base de datos solo si los datos son correctos
+- Manejo de errores
+- Sesión activa durante la navegación
+3. Acceso a módulos:
+- Visualización de alfabeto, palabras y frases
+- Uso de imágenes adaptables
+4. Evaluaciones:
+- 5 a 10 preguntas
+- 4 opciones por pregunta
+- Validación de respuestas completas
+5. Resultados:
+- Respuestas correctas (verde)
+- Incorrectas (rojo)
+- Puntaje final
+6. Progreso:
+- Guarda último puntaje
+- Módulo completado con ≥ 70%
+- Actualización automática
 
 ## Equipo y roles.
 
