@@ -67,7 +67,7 @@ Almacena la información del sistema:
 5. El Backend responde al Frontend.
 6. El usuario visualiza el resultado.
 
-##  Funcionalidades Principales
+##  Flujo principal del sistema
 
 El sistema permite:
 
