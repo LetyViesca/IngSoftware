@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIGNA - Módulo de Palabras</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f5f7fa; padding: 20px; }
+        
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { color: #333; margin: 20px 0; text-align: center; }
+        
+        /* Contenedor que pone las tarjetas en fila */
+        .palabras-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        /* La tarjeta individual */
+        .card-palabra {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 280px; /* Tamaño fijo para que quepan varias en fila */
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card-palabra:hover { transform: translateY(-5px); }
+
+        .img-container {
+            width: 100%;
+            height: 180px;
+            background-color: #eee;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+        }
+
+        .badge {
+            position: absolute; top: 10px; left: 10px; 
+            background: rgba(255,255,255,0.9); padding: 2px 10px; 
+            border-radius: 10px; font-size: 10px; 
+            font-weight: bold; color: #666; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .info-palabra { padding: 20px; }
+        .info-palabra h3 { color: #8a4fff; margin-bottom: 10px; }
+        .info-palabra p { font-size: 14px; color: #666; line-height: 1.4; }
+
+        .btn-ready {
+            display: block; width: 90%; max-width: 300px; 
+            margin: 40px auto; background: linear-gradient(90deg, #8a4fff 0%, #ff007a 100%);
+            color: white; text-decoration: none; text-align: center;
+            padding: 15px; border-radius: 30px; font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" style="text-decoration: none; color: #8a4fff;">← Volver a la Ruta</a>
+        <h1>Módulo: Saludos</h1>
+
+        <div class="palabras-grid">
+            
+            <div class="card-palabra">
+                <div class="img-container">
+                    <span class="badge">Saludos</span>
+                    [Imagen: Hola]
+                </div>
+                <div class="info-palabra">
+                    <h3>Hola</h3>
+                    <p>Mano en forma de "H" cerca de la sien moviéndose hacia afuera.</p>
+                </div>
+            </div>
+
+            <div class="card-palabra">
+                <div class="img-container">
+                    <span class="badge">Saludos</span>
+                    [Imagen: Gracias]
+                </div>
+                <div class="info-palabra">
+                    <h3>Gracias</h3>
+                    <p>Toca la barbilla con los dedos y mueve la mano hacia adelante.</p>
+                </div>
+            </div>
+
+            <div class="card-palabra">
+                <div class="img-container">
+                    <span class="badge">Familia</span>
+                    [Imagen: Mamá]
+                </div>
+                <div class="info-palabra">
+                    <h3>Mamá</h3>
+                    <p>Mano en forma de "M" tocando la mejilla dos veces.</p>
+                </div>
+            </div>
+
+            <div class="card-palabra">
+                <div class="img-container">
+                    <span class="badge">Familia</span>
+                    [Imagen: Papá]
+                </div>
+                <div class="info-palabra">
+                    <h3>Papá</h3>
+                    <p>Mano en forma de "P" tocando la mejilla dos veces.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <a href="evaluacion.html" class="btn-ready">Realizar Evaluación ✨</a>
+    </div>
+
+</body>
+</html>

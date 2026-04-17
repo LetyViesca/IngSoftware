@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ZIGNA - Inicio</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; overflow-x: hidden; }
+        
+        /* HEADER RESPONSIVE */
+        header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; width: 100%; }
+        nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+        .main-logo { height: 35px; }
+        .nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
+        .user-info { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+
+        /* HERO SECTION */
+        .hero-section { padding: 20px 5%; }
+        .hero-card { background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; }
+        .zigna-text { color: #8a4fff; font-weight: bold; }
+
+        /* GRID QUE SE ADAPTA */
+        .learning-guide { padding: 0 5% 40px; }
+        .card-grid { display: grid; grid-template-columns: repeat(3, 1fr);}
+        .module-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #eee; }
+        .img-container { position: relative; width: 100%; height: 180px; background: #eee; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .badge { position: absolute; top: 10px; left: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; z-index: 2; }
+
+        .card-info { padding: 15px; }
+        .btn { width: 100%; border: none; padding: 12px; border-radius: 10px; color: white; font-weight: bold; cursor: pointer; }
+/* --- ESTO ES LO QUE TE FALTA PARA EL CELULAR --- */
+@media (max-width: 768px) {
+    /* El menú se acomoda mejor */
+    nav { 
+        justify-content: center; 
+        gap: 15px; 
+    }
+    
+    .nav-menu { 
+        order: 2; 
+        width: 100%; 
+        justify-content: center; 
+    }
+
+    /* ¡ESTA ES LA MAGIA! Las tarjetas se ponen una debajo de otra */
+    .card-grid { 
+        grid-template-columns: 1fr; 
+        gap: 20px;
+    }
+
+    .module-card {
+        max-width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+ <img src="img/logo_zigna.jpeg" alt="ZIGNA" class="main-logo">
+            <ul class="nav-menu">
+                <li style="font-weight:bold; border-bottom: 2px solid black;">Inicio</li>
+                <li>Módulos</li>
+                <li>Resultados</li>
+            </ul>
+            
+                
+               <div style="display: flex; align-items: center; gap: 15px;">
+    
+    <a href="login.html" style="text-decoration: none; color: #666; font-size: 14px; font-weight: 500;">
+        Cerrar sesión
+    </a>
+
+    <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size: 18px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        👤
+    </div>
+</div>
+        </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+    <div class="hero-card">
+        <h1 style="font-size: 32px; margin-bottom: 10px;">
+            Sigue el aprendizaje en <span class="zigna-text">ZIGNA</span>
+        </h1>
+        <p style="color: #666; font-size: 16px; line-height: 1.5; max-width: 800px;">
+            Aprender lenguaje de señas es el puente para conectar con más personas en el mundo. 
+            Explora tus módulos, avanza a tu ritmo y descubre una nueva forma de comunicarte.
+        </p>
+    </div>
+</section>
+        <section class="learning-guide">
+    <div class="card-grid">
+        <div class="module-card">
+            <div class="img-container">
+                <span class="badge" style="color:#8a4fff">T</span>
+                <img src="img/alfabeto.jpeg" class="card-img" alt="Alfabeto">
+            </div>
+            <div class="card-info">
+                <h3>El Alfabeto</h3>
+                <p style="font-size: 13px; color: #666; margin: 10px 0;">Aprende cada letra para deletrear nombres y palabras. El primer paso de tu viaje.</p>
+                <button class="btn" style="background:#8a4fff">▶ Seguir aprendiendo</button>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="img-container">
+                <span class="badge" style="color:#00c2a8">☰</span>
+                <img src="img/palabras.jpeg" class="card-img" alt="Palabras Clave">
+            </div>
+          <div class="card-info">
+    <h3>Palabras Clave</h3>
+    <p style="font-size: 13px; color: #666; margin: 10px 0;">Construye tu vocabulario con las palabras más usadas del día a día.</p>
+    
+    <a href="palabras.html" style="text-decoration: none;">
+        <button class="btn" style="background:#00c2a8; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+            ▶ Seguir aprendiendo
+
+        </button>
+    </a>
+</div>        </div>
+
+        <div class="module-card">
+            <div class="img-container">
+                <span class="badge" style="color:#ff007a">💬</span>
+                <img src="img/frases.jpeg" class="card-img" alt="Frases Cotidianas">
+            </div>
+            <div class="card-info">
+                <h3>Frases Cotidianas</h3>
+                <p style="font-size: 13px; color: #666; margin: 10px 0;">Saluda, agradece y despídete con facilidad. ¡Comienza a conectar con los demás!</p>
+                <button class="btn" style="background:#ff007a">▶ Seguir aprendiendo</button>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+</body>
+</html>
