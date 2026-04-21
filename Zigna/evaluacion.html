@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIGNA - Evaluación Abecedario</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #f5f7fa; }
+
+/* ===== HEADER IGUAL AL MÓDULO ===== */
+header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
+nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.main-logo { height: 35px; }
+.nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* ===== CONTENIDO ===== */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.question-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+/* 🔴 ERROR VISUAL */
+.error {
+    border: 2px solid #ff4757;
+}
+
+.question-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.question-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background: #eee;
+    border-radius: 10px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.option {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-main {
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER CORRECTO ===== -->
+<header>
+    <nav>
+        <img src="imag/Logo_Zigna.png" class="main-logo">
+
+        <ul class="nav-menu">
+            <li><a href="index.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
+            <li><a href="resultados.html" style="text-decoration:none; color:#333;">Resultados</a></li>
+        </ul>
+
+        <div class="user-box">
+            <a href="login.html" style="text-decoration:none; color:#666; font-size:14px;">
+                Cerrar sesión
+            </a>
+
+            <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white;">
+                👤
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+<h2>Evaluación: Abecedario LSM</h2>
+
+<div id="preguntas"></div>
+
+<div class="btn-container">
+    <button class="btn-main" onclick="calificar()">Finalizar Evaluación</button>
+</div>
+
+</div>
+
+<script>
+
+/* 🔥 DATOS (10 PREGUNTAS CON IMAGEN) */
+const datos = [
+{ id:'p1', correcta:'A', img:'imag/abecedario/a.png' },
+{ id:'p2', correcta:'B', img:'imag/abecedario/b.png' },
+{ id:'p3', correcta:'C', img:'imag/abecedario/c.png' },
+{ id:'p4', correcta:'D', img:'imag/abecedario/d.png' },
+{ id:'p5', correcta:'E', img:'imag/abecedario/e.png' },
+{ id:'p6', correcta:'F', img:'imag/abecedario/f.png' },
+{ id:'p7', correcta:'G', img:'imag/abecedario/g.png' },
+{ id:'p8', correcta:'H', img:'imag/abecedario/h.png' },
+{ id:'p9', correcta:'I', img:'imag/abecedario/i.png' },
+{ id:'p10', correcta:'J', img:'imag/abecedario/j.png' }
+];
+
+const contenedor = document.getElementById("preguntas");
+
+/* 🔥 GENERAR PREGUNTAS */
+datos.forEach((p, i) => {
+    contenedor.innerHTML += `
+    <div class="question-card" id="card-${p.id}">
+        <div class="question-header">
+            <img src="${p.img}" class="question-img">
+            <div style="flex:1;">
+                <p><strong>Pregunta ${i+1}</strong></p>
+                <p>¿Qué letra es esta?</p>
+
+                <div class="options-grid">
+                    <label class="option"><input type="radio" name="${p.id}" value="A"> A</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="B"> B</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="C"> C</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="D"> D</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+});
+
+/* 🔥 VALIDACIÓN VISUAL */
+function calificar() {
+
+    let faltantes = false;
+
+    datos.forEach(p => {
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
+
+        let respondida = false;
+
+        opciones.forEach(op => {
+            if (op.checked) respondida = true;
+        });
+
+        if (!respondida) {
+            card.classList.add("error");
+            faltantes = true;
+        } else {
+            card.classList.remove("error");
+        }
+    });
+
+    if (faltantes) {
+        window.scrollTo(0, 0);
+        return;
+    }
+
+    let aciertos = 0;
+
+    datos.forEach(p => {
+        const opciones = document.getElementsByName(p.id);
+        opciones.forEach(op => {
+            if (op.checked && op.value === p.correcta) {
+                aciertos++;
+            }
+        });
+    });
+
+    alert("Resultado: " + aciertos + " / 10");
+}
+
+</script>
+
+</body>
+</html>
