@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -6,27 +6,47 @@
     <title>ZIGNA - Módulo de Palabras</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f5f7fa; padding: 20px; }
+        body { background-color: #f5f7fa; }
+
+        /* HEADER: Aquí es donde vive el logo */
+        header { 
+            background: white; 
+            padding: 10px 5%; 
+            border-bottom: 1px solid #eee; 
+            display: flex; 
+            justify-content: flex-start; 
+            align-items: center; 
+        }
+        .logo-img { height: 50px; width: auto; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         
-        .container { max-width: 1000px; margin: 0 auto; }
-        h1 { color: #333; margin: 20px 0; text-align: center; }
-        
-        /* Contenedor que pone las tarjetas en fila */
+        .back-link { 
+            text-decoration: none; 
+            color: #8a4fff; 
+            font-weight: bold; 
+            display: inline-block; 
+            margin-bottom: 20px; 
+        }
+
+        h1 { color: #333; margin-bottom: 30px; text-align: center; }
+
+        /* Contenedor de tarjetas */
         .palabras-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            padding: 20px 0;
+            padding-bottom: 40px;
         }
 
-        /* La tarjeta individual */
+        /* Tarjeta individual */
         .card-palabra {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            width: 280px; /* Tamaño fijo para que quepan varias en fila */
+            width: 280px;
             text-align: center;
             transition: 0.3s;
         }
@@ -38,10 +58,6 @@
             height: 180px;
             background-color: #eee;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
         }
 
         .badge {
@@ -49,6 +65,7 @@
             background: rgba(255,255,255,0.9); padding: 2px 10px; 
             border-radius: 10px; font-size: 10px; 
             font-weight: bold; color: #666; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 2;
         }
 
         .info-palabra { padding: 20px; }
@@ -60,21 +77,27 @@
             margin: 40px auto; background: linear-gradient(90deg, #8a4fff 0%, #ff007a 100%);
             color: white; text-decoration: none; text-align: center;
             padding: 15px; border-radius: 30px; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(138, 79, 255, 0.3);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <a href="index.html" style="text-decoration: none; color: #8a4fff;">← Volver a la Ruta</a>
-        <h1>Módulo: Saludos</h1>
+    <header>
+        <img src="img/logo_zigna.jpeg" alt="ZIGNA" class="logo-img">
+    </header>
 
-       <div class="palabras-grid">
+    <div class="container">
+        <a href="index.html" class="back-link">← Volver a la Ruta</a>
+        
+        <h1>Módulo: Saludos y Familia</h1>
+
+        <div class="palabras-grid">
             
             <div class="card-palabra">
                 <div class="img-container">
                     <span class="badge">Saludos</span>
-                    <img src="img/saludo.jpg" alt="Seña de Hola" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="img/saludo.jpg" alt="Hola" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info-palabra">
                     <h3>Hola</h3>
@@ -85,7 +108,7 @@
             <div class="card-palabra">
                 <div class="img-container">
                     <span class="badge">Saludos</span>
-                    <img src="img/gracias1.jpg" alt="Seña de Gracias" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="img/gracias1.jpg" alt="Gracias" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info-palabra">
                     <h3>Gracias</h3>
@@ -96,7 +119,7 @@
             <div class="card-palabra">
                 <div class="img-container">
                     <span class="badge">Familia</span>
-                    <img src="img/mama1.jpg" alt="Seña de Mamá" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="img/mama1.jpg" alt="Mamá" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info-palabra">
                     <h3>Mamá</h3>
@@ -107,7 +130,7 @@
             <div class="card-palabra">
                 <div class="img-container">
                     <span class="badge">Familia</span>
-                    <img src="img/papa.jpg" alt="Seña de Papá" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="img/papa.jpg" alt="Papá" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info-palabra">
                     <h3>Papá</h3>
@@ -116,7 +139,8 @@
             </div>
 
         </div> 
-        <a href="evaluacion.html" class="btn-ready">Realizar Evaluación ✨</a>
+
+        <a href="evaluacion.html" class="btn-ready">¡Estoy listo para la evaluación! ✨</a>
     </div>
 
 </body>
