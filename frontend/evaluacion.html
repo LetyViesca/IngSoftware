@@ -101,7 +101,7 @@
 
         <div class="question-card">
             <div class="question-header">
-                <img src="img/rojo.jpg" class="question-img">
+                <img src="img/rojo.jpeg" class="question-img">
                 <div style="flex: 1;">
                     <small style="color: #aaa;">PREGUNTA 5 • COLORES</small>
                     <p><strong>¿Qué color representa esta seña?</strong></p>
@@ -117,7 +117,7 @@
 
         <div class="question-card">
             <div class="question-header">
-                <img src="img/cinco.jpg" class="question-img">
+                <img src="img/cinco.jpeg" class="question-img">
                 <div style="flex: 1;">
                     <small style="color: #aaa;">PREGUNTA 6 • NÚMEROS</small>
                     <p><strong>¿Qué número representa esta seña?</strong></p>
@@ -160,11 +160,11 @@ function calificar() {
         { id: 'p2', correcta: "Gracias", img: "img/gracias.jpg", retroOK: "¡Muy bien! Es 'Gracias'.", retroError: "La mano desde la barbilla hacia adelante es 'Gracias'." },
         { id: 'p3', correcta: "Mamá", img: "img/mama.jpg", retroOK: "¡Perfecto! Identificaste a 'Mamá'.", retroError: "Esta seña cerca de la mejilla representa a 'Mamá'." },
         { id: 'p4', correcta: "Lunes", img: "img/lunes.jpg", retroOK: "¡Correcto! Es el día 'Lunes'.", retroError: "La seña circular con la 'L' es 'Lunes'." },
-        { id: 'p5', correcta: "Rojo", img: "img/rojo.jpg", retroOK: "¡Muy bien! Reconociste el color Rojo.", retroError: "El índice sobre los labios rozando hacia abajo es 'Rojo'." },
-        { id: 'p6', correcta: "Cinco", img: "img/cinco.jpg", retroOK: "¡Correcto! Es el número cinco.", retroError: "La mano abierta mostrando todos los dedos es el 'Cinco'." }
+        { id: 'p5', correcta: "Rojo", img: "img/rojo.jpeg", retroOK: "¡Muy bien! Reconociste el color Rojo.", retroError: "El índice sobre los labios rozando hacia abajo es 'Rojo'." },
+        { id: 'p6', correcta: "Cinco", img: "img/cinco.jpeg", retroOK: "¡Correcto! Es el número cinco.", retroError: "La mano abierta mostrando todos los dedos es el 'Cinco'." }
     ];
 
-    // --- VALIDACIÓN: ¿Contestó todas? ---
+    // Validación
     for (const d of datos) {
         const opciones = document.getElementsByName(d.id);
         let contestada = false;
@@ -173,7 +173,7 @@ function calificar() {
         }
         if (!contestada) {
             alert("¡Atención! Por favor responde todas las preguntas antes de finalizar.");
-            return; // Detiene la función aquí mismo
+            return;
         }
     }
 
@@ -183,7 +183,6 @@ function calificar() {
     datos.forEach((pregunta, index) => {
         const opciones = document.getElementsByName(pregunta.id);
         let respuestaUsuario = "";
-        
         for (const r of opciones) {
             if (r.checked) { respuestaUsuario = r.value; break; }
         }
