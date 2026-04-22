@@ -96,13 +96,17 @@ h2 {
     cursor: pointer;
 }
 
-.btn-secondary {
+/* 🔥 BOTÓN CORREGIDO (MISMO ESTILO QUE OTROS) */
+.btn-volver {
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 20px;
     background: #ccc;
     color: #333;
-    border: none;
-    padding: 10px 20px;
     border-radius: 20px;
-    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .btn-container {
@@ -145,7 +149,7 @@ h2 {
 
 <div class="container">
 
-<button class="btn-secondary" onclick="window.location.href='M_palabras.html'">⬅ Volver al módulo</button>
+<a href="M_palabras.html" class="btn-volver">⬅ Volver al módulo</a>
 
 <h2>Evaluación: Palabras LSM</h2>
 
