@@ -9,7 +9,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
-/* ===== HEADER IGUAL ===== */
+/* ===== HEADER ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
 nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
@@ -33,11 +33,26 @@ h2 {
     margin-bottom: 25px;
 }
 
+/* RESULTADO */
 .resultado {
     text-align: center;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+}
+
+/* TARJETAS */
+.question-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+/* ESTADOS */
+.error {
+    border: 2px solid #ff4757;
 }
 
 .correcto {
@@ -46,18 +61,6 @@ h2 {
 
 .incorrecto {
     border: 2px solid #ff4757 !important;
-}
-
-.error {
-    border: 2px solid #ff4757;
-}
-
-.question-card {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #eee;
 }
 
 .question-header {
@@ -88,6 +91,7 @@ h2 {
     cursor: pointer;
 }
 
+/* BOTONES EXACTOS */
 .btn-main {
     background: linear-gradient(90deg, #8a4fff, #ff007a);
     color: white;
@@ -106,19 +110,19 @@ h2 {
 .btn-volver {
     display: inline-block;
     margin-bottom: 20px;
-    text-decoration: none;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
     color: white;
-    background: #8a4fff;
-    padding: 8px 15px;
-    border-radius: 15px;
+    border-radius: 20px;
+    text-decoration: none;
     font-size: 14px;
+    font-weight: 600;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
     <nav>
         <img src="imag/Logo_Zigna.png" class="main-logo">
@@ -212,8 +216,9 @@ function calificar() {
         }
     });
 
+    // 🔴 EXACTO IGUAL QUE ABECEDARIO
     if (faltantes) {
-        alert("Debes responder todas las preguntas");
+        alert("Contesta todas las preguntas antes de finalizar");
         window.scrollTo(0, 0);
         return;
     }
@@ -236,17 +241,14 @@ function calificar() {
         });
     });
 
-    let porcentaje = (aciertos / 10) * 100;
+    let porcentaje = Math.round((aciertos / 10) * 100);
 
     const res = document.getElementById("resultado");
     res.innerText = "Resultado: " + aciertos + " / 10 (" + porcentaje + "%)";
 
-    if (porcentaje >= 70) {
-        res.style.color = "#00c853";
-    } else {
-        res.style.color = "#ff4757";
-    }
+    res.style.color = porcentaje >= 70 ? "#00c853" : "#ff4757";
 
+    // 🔥 OCULTAR BOTÓN
     document.getElementById("btnFinalizar").style.display = "none";
 }
 
