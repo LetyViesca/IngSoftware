@@ -33,17 +33,17 @@ h2 {
     margin-bottom: 25px;
 }
 
-/* 🔴 ERROR VISUAL */
+
 .error {
     border: 2px solid #ff4757 !important;
 }
 
-/* 🟢 CORRECTO */
+
 .correct {
     border: 2px solid #2ecc71 !important;
 }
 
-/* 🔴 INCORRECTO */
+
 .incorrect {
     border: 2px solid #ff4757 !important;
 }
@@ -116,7 +116,7 @@ h2 {
 
 <body>
 
-<!-- ===== HEADER CORRECTO ===== -->
+<!-- ===== HEADER ===== -->
 <header>
     <nav>
         <img src="imag/Logo_Zigna.png" class="main-logo">
@@ -141,7 +141,7 @@ h2 {
 
 <div class="container">
 
-<!-- 🔙 BOTÓN ARRIBA -->
+<!-- BOTÓN REGRESAR -->
 <div class="btn-back">
     <a href="M_abecedario.html" style="text-decoration:none;">
         <button class="btn-main">⬅ Volver al módulo</button>
@@ -150,8 +150,10 @@ h2 {
 
 <h2>Evaluación: Abecedario LSM</h2>
 
+<!-- RESULTADO -->
 <div id="resultado" class="resultado"></div>
 
+<!-- PREGUNTAS -->
 <div id="preguntas"></div>
 
 <div class="btn-container">
@@ -205,6 +207,11 @@ function calificar() {
     let faltantes = false;
     let aciertos = 0;
 
+    const resultado = document.getElementById("resultado");
+
+    // limpiar resultado previo
+    resultado.innerText = "";
+
     datos.forEach(p => {
         const opciones = document.getElementsByName(p.id);
         const card = document.getElementById("card-" + p.id);
@@ -212,39 +219,54 @@ function calificar() {
         let respondida = false;
         let correcta = false;
 
+        // limpiar estilos previos
+        card.classList.remove("error", "correct", "incorrect");
+
         opciones.forEach(op => {
             if (op.checked) {
                 respondida = true;
                 if (op.value === p.correcta) {
                     correcta = true;
-                    aciertos++;
                 }
             }
         });
 
-        /* VALIDACIÓN */
         if (!respondida) {
             card.classList.add("error");
             faltantes = true;
         } else {
-            card.classList.remove("error");
-
-            /* RETRO VISUAL */
-            card.classList.add(correcta ? "correct" : "incorrect");
+            if (correcta) aciertos++;
         }
     });
 
+    
     if (faltantes) {
+        resultado.innerText = "⚠️ Contesta todas las preguntas antes de finalizar.";
+        resultado.style.color = "#ff4757";
         window.scrollTo(0, 0);
         return;
     }
 
-    /* RESULTADO */
+    // pintar correctas/incorrectas
+    datos.forEach(p => {
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
+
+        opciones.forEach(op => {
+            if (op.checked) {
+                if (op.value === p.correcta) {
+                    card.classList.add("correct");
+                } else {
+                    card.classList.add("incorrect");
+                }
+            }
+        });
+    });
+
+    // resultado final
     let porcentaje = Math.round((aciertos / datos.length) * 100);
-    const resultado = document.getElementById("resultado");
 
     resultado.innerText = "Resultado: " + porcentaje + "% (" + aciertos + "/10)";
-
     resultado.style.color = porcentaje >= 70 ? "#2ecc71" : "#ff4757";
 
     window.scrollTo(0, 0);
