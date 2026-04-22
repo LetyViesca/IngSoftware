@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZIGNA - Frases Comunes LSM</title>
+<title>ZIGNA - Evaluación Frases</title>
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
@@ -22,98 +22,68 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
 
 .container {
     max-width: 900px;
-    margin: 20px auto;
+    margin: 30px auto;
     padding: 0 15px;
 }
 
-h1 {
+h2 {
     text-align: center;
-    margin: 20px 0 30px;
-    color: #333;
+    margin-bottom: 25px;
 }
 
-.palabras-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.card-palabra {
+.question-card {
     background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    transition: 0.25s;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
 }
 
-.card-palabra:hover {
-    transform: translateY(-4px);
+.error {
+    border: 2px solid #ff4757;
 }
 
-.img-container {
-    height: 130px;
+.question-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.question-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
     background: #eee;
-    position: relative;
-}
-
-.img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: rgba(255,255,255,0.9);
-    font-size: 10px;
-    padding: 3px 8px;
     border-radius: 10px;
 }
 
-.info-palabra {
-    padding: 12px;
-    text-align: center;
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.info-palabra h3 {
-    color: #8a4fff;
-    margin-bottom: 6px;
-    font-size: 18px;
+.option {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.info-palabra p {
-    font-size: 12px;
-    color: #555;
-}
-
-.btn-ready {
-    display: inline-block;
-    margin: 30px auto 0;
-    padding: 10px 20px;
+.btn-main {
     background: linear-gradient(90deg, #8a4fff, #ff007a);
     color: white;
+    border: none;
+    padding: 12px 25px;
     border-radius: 20px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .btn-container {
     text-align: center;
-}
-
-@media (max-width: 768px) {
-    .palabras-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .palabras-grid {
-        grid-template-columns: 1fr;
-    }
+    margin-top: 30px;
 }
 </style>
 </head>
@@ -122,7 +92,7 @@ h1 {
 
 <header>
     <nav>
-        <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="main-logo">
+        <img src="imag/Logo_Zigna.png" class="main-logo">
 
         <ul class="nav-menu">
             <li><a href="index.html" style="text-decoration:none; color:#333;">Inicio</a></li>
@@ -131,67 +101,103 @@ h1 {
         </ul>
 
         <div class="user-box">
-            <a href="login.html" style="text-decoration:none; color:#666; font-size:14px;">
-                Cerrar sesión
-            </a>
-
-            <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white;">
-                👤
-            </div>
+            <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
+            <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white;">👤</div>
         </div>
     </nav>
 </header>
 
 <div class="container">
-<h1>Módulo: Frases Comunes LSM</h1>
 
-<div class="palabras-grid" id="grid"></div>
+<h2>Evaluación: Frases Comunes LSM</h2>
+
+<div id="preguntas"></div>
 
 <div class="btn-container">
-    <a href="evaluacionFrases.html" class="btn-ready">Evaluación ✨</a>
+    <button class="btn-main" onclick="calificar()">Finalizar Evaluación</button>
 </div>
 
 </div>
 
 <script>
-const frases = [
-["¡Hola!","Se hace la letra 'H' con la mano dominante y se toca la sien con el dedo índice y medio. La flecha curva indica que la mano se mueve hacia afuera desde la cabeza, como 'lanzando' el saludo."],
 
-["Buen día","Seña compuesta. Primero se hace 'Bien' (mano derecha plana sobre el pecho) y luego se forma una 'D'. La flecha vertical muestra que la mano 'D' sube desde detrás del brazo opuesto."],
-
-["Buenas noches","Seña compuesta. Primero 'Bien' y luego se cruzan ambas manos extendidas frente al rostro. Las flechas curvas hacia abajo muestran cómo las manos bajan y se separan."],
-
-["¿Cuál es tu nombre?","Se hace la letra 'N' con ambas manos y se balancean ligeramente. Las flechas horizontales indican el vaivén mientras se hace la pregunta."],
-
-["Tengo sed","Se hace una forma de 'C' con la mano dominante y se desliza por la garganta. La flecha hacia abajo muestra el recorrido del dedo por el cuello."],
-
-["Gracias","La mano dominante plana toca la barbilla y se mueve hacia adelante. La flecha indica que la mano se dirige al interlocutor."],
-
-["De nada","Seña compuesta. Se forma una 'D', luego la mano se mueve frente al pecho de lado a lado. Las flechas indican el movimiento de negación."],
-
-["Por favor","La mano dominante plana se coloca sobre el pecho y realiza círculos. La flecha circular indica el movimiento continuo."],
-
-["Ayuda","Un puño de la mano dominante presiona sobre la palma de la otra. Las flechas indican presión hacia abajo."],
-
-["Lo siento","La mano dominante forma un puño y se coloca en el pecho. La flecha circular indica movimiento continuo acompañado de expresión facial."]
+const datos = [
+{ id:'p1', correcta:'Hola', img:'imag/frases/hola.png' },
+{ id:'p2', correcta:'Buen día', img:'imag/frases/buen_dia.png' },
+{ id:'p3', correcta:'Buenas noches', img:'imag/frases/buenas_noches.png' },
+{ id:'p4', correcta:'Cuál es tu nombre', img:'imag/frases/cual_es_tu_nombre.png' },
+{ id:'p5', correcta:'Tengo sed', img:'imag/frases/tengo_sed.png' },
+{ id:'p6', correcta:'Gracias', img:'imag/frases/gracias.png' },
+{ id:'p7', correcta:'De nada', img:'imag/frases/de_nada.png' },
+{ id:'p8', correcta:'Por favor', img:'imag/frases/por_favor.png' },
+{ id:'p9', correcta:'Ayuda', img:'imag/frases/ayuda.png' },
+{ id:'p10', correcta:'Lo siento', img:'imag/frases/lo_siento.png' }
 ];
 
-const grid = document.getElementById("grid");
+const contenedor = document.getElementById("preguntas");
 
-frases.forEach(f => {
-grid.innerHTML += `
-<div class="card-palabra">
-    <div class="img-container">
-        <span class="badge">Frases</span>
-         <img src="imag/frases/${l[0].toLowerCase()}.png">
+datos.forEach((p, i) => {
+    contenedor.innerHTML += `
+    <div class="question-card" id="card-${p.id}">
+        <div class="question-header">
+            <img src="${p.img}" class="question-img">
+            <div style="flex:1;">
+                <p><strong>Pregunta ${i+1}</strong></p>
+                <p>¿Qué frase representa esta seña?</p>
+
+                <div class="options-grid">
+                    <label class="option"><input type="radio" name="${p.id}" value="Hola"> Hola</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="Buen día"> Buen día</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="Gracias"> Gracias</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="Por favor"> Por favor</label>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="info-palabra">
-        <h3>${f[0]}</h3>
-        <p>${f[1]}</p>
-    </div>
-</div>
-`;
+    `;
 });
+
+function calificar() {
+
+    let faltantes = false;
+
+    datos.forEach(p => {
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
+
+        let respondida = false;
+
+        opciones.forEach(op => {
+            if (op.checked) respondida = true;
+        });
+
+        if (!respondida) {
+            card.classList.add("error");
+            faltantes = true;
+        } else {
+            card.classList.remove("error");
+        }
+    });
+
+    if (faltantes) {
+        window.scrollTo(0, 0);
+        return;
+    }
+
+    let aciertos = 0;
+
+    datos.forEach(p => {
+        const opciones = document.getElementsByName(p.id);
+        opciones.forEach(op => {
+            if (op.checked && op.value === p.correcta) {
+                aciertos++;
+            }
+        });
+    });
+
+    alert("Resultado: " + aciertos + " / 10");
+}
+
 </script>
 
 </body>
