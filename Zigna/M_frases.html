@@ -152,27 +152,38 @@ h1 {
 
 <script>
 
+/* ✅ DATOS CORREGIDOS CON NOMBRE REAL DE IMAGEN */
 const frases = [
-["¡Hola!","Se hace la letra 'H' con la mano dominante y se toca la sien con el dedo índice y medio. La mano se mueve hacia afuera desde la cabeza, como lanzando el saludo."],
-["Buen día","Seña compuesta: primero 'Bien' (mano en el pecho) y luego 'D'. La mano sube desde el brazo opuesto representando el sol."],
-["Buenas noches","Seña compuesta: 'Bien' y luego ambas manos bajan como cerrando cortinas."],
-["¿Cuál es tu nombre?","Se hace la letra 'N' con ambas manos y se balancean de lado a lado."],
-["Tengo sed","La mano en forma de 'C' se desliza por la garganta hacia abajo."],
-["Gracias","La mano toca la barbilla y se mueve hacia adelante."],
-["De nada","Primero 'D' en la barbilla y luego la mano se mueve de lado a lado frente al pecho."],
-["Por favor","La mano sobre el pecho hace movimientos circulares."],
-["Ayuda","Un puño presiona la palma de la otra mano hacia abajo."],
-["Lo siento","Un puño sobre el pecho realiza movimientos circulares."]
+["¡Hola!","Se hace la letra 'H' con la mano dominante y se toca la sien con el dedo índice y medio. La mano se mueve hacia afuera desde la cabeza, como lanzando el saludo.","hola.png"],
+
+["Buen día","Seña compuesta. Primero se hace 'Bien' (mano derecha plana sobre el pecho) y luego se forma una 'D'. La mano sube desde el brazo opuesto representando el sol.","buen_dia.png"],
+
+["Buenas noches","Seña compuesta. Primero 'Bien' y luego ambas manos bajan como cerrando cortinas.","buenas_noches.png"],
+
+["¿Cuál es tu nombre?","Se hace la letra 'N' con ambas manos y se balancean ligeramente de lado a lado.","cual_es_tu_nombre.png"],
+
+["Tengo sed","Se hace una forma de 'C' con la mano y se desliza por la garganta hacia abajo.","tengo_sed.png"],
+
+["Gracias","La mano dominante toca la barbilla y se mueve hacia adelante.","gracias.png"],
+
+["De nada","Primero se forma una 'D' y luego la mano se mueve de lado a lado frente al pecho.","de_nada.png"],
+
+["Por favor","La mano dominante sobre el pecho realiza movimientos circulares.","por_favor.png"],
+
+["Ayuda","Un puño presiona la palma de la otra mano hacia abajo.","ayuda.png"],
+
+["Lo siento","Un puño cerrado sobre el pecho realiza movimientos circulares.","lo_siento.png"]
 ];
 
 const grid = document.getElementById("grid");
 
+/* 🔥 GENERAR TARJETAS */
 frases.forEach(f => {
 grid.innerHTML += `
 <div class="card-palabra">
     <div class="img-container">
         <span class="badge">Frases</span>
-        <img src="imag/frases/${f[0].toLowerCase().replace(/[^a-z]/g,'')}.png">
+        <img src="imag/frases/${f[2]}" alt="${f[0]}">
     </div>
     <div class="info-palabra">
         <h3>${f[0]}</h3>
