@@ -9,11 +9,16 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
-/* ===== HEADER IGUAL AL MÓDULO ===== */
+/* ===== HEADER ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
-nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+nav { display: flex; justify-content: space-between; align-items: center; }
 .main-logo { height: 35px; }
-.nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
 
 .user-box {
     display: flex;
@@ -21,16 +26,21 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
     gap: 15px;
 }
 
+.user-icon {
+    background:#ff007a;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
 /* ===== CONTENIDO ===== */
 .container {
     max-width: 900px;
     margin: 30px auto;
-    padding: 0 15px;
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 25px;
 }
 
 .question-card {
@@ -38,11 +48,14 @@ h2 {
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
-    border: 1px solid #eee;
+    border: 2px solid #eee;
 }
 
-/* 🔴 ERROR VISUAL */
-.error {
+.correct {
+    border: 2px solid #2ecc71;
+}
+
+.incorrect {
     border: 2px solid #ff4757;
 }
 
@@ -64,73 +77,84 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
-    margin-top: 10px;
 }
 
 .option {
     border: 1px solid #eee;
     padding: 10px;
     border-radius: 8px;
-    cursor: pointer;
 }
 
-.btn-main {
-    background: linear-gradient(90deg, #8a4fff, #ff007a);
-    color: white;
-    border: none;
+.btn {
     padding: 12px 25px;
+    border: none;
     border-radius: 20px;
+    color: white;
     font-weight: bold;
     cursor: pointer;
 }
 
+.btn-primary { background: linear-gradient(90deg,#8a4fff,#ff007a); }
+.btn-secondary { background: #555; }
+
 .btn-container {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 20px;
+}
+
+.resultado {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 20px;
+    font-weight: bold;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== HEADER CORRECTO ===== -->
+<!-- HEADER -->
 <header>
     <nav>
-        <img src="imag/Logo_Zigna.png" class="main-logo">
+        <a href="inicio.html">
+            <img src="imag/Logo_Zigna.png" class="main-logo">
+        </a>
 
         <ul class="nav-menu">
-            <li><a href="index.html" style="text-decoration:none; color:#333;">Inicio</a></li>
-            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
-            <li><a href="resultados.html" style="text-decoration:none; color:#333;">Resultados</a></li>
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="modulos.html">Módulos</a></li>
+            <li><a href="progreso.html">Progreso</a></li>
         </ul>
 
         <div class="user-box">
-            <a href="login.html" style="text-decoration:none; color:#666; font-size:14px;">
-                Cerrar sesión
-            </a>
-
-            <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white;">
-                👤
-            </div>
+            <a href="login.html">Cerrar sesión</a>
+            <div class="user-icon">👤</div>
         </div>
     </nav>
 </header>
 
 <div class="container">
 
-<h2>Evaluación: Abecedario LSM</h2>
+<h2 style="text-align:center; margin-bottom:20px;">Evaluación: Abecedario</h2>
 
 <div id="preguntas"></div>
 
 <div class="btn-container">
-    <button class="btn-main" onclick="calificar()">Finalizar Evaluación</button>
+    <button class="btn btn-primary" onclick="calificar()">Finalizar Evaluación</button>
+</div>
+
+<div id="resultado" class="resultado"></div>
+
+<div class="btn-container">
+    <a href="M_abecedario.html">
+        <button class="btn btn-secondary">⬅ Volver al módulo</button>
+    </a>
 </div>
 
 </div>
 
 <script>
 
-/* 🔥 DATOS (10 PREGUNTAS CON IMAGEN) */
 const datos = [
 { id:'p1', correcta:'A', img:'imag/abecedario/a.png' },
 { id:'p2', correcta:'B', img:'imag/abecedario/b.png' },
@@ -146,68 +170,59 @@ const datos = [
 
 const contenedor = document.getElementById("preguntas");
 
-/* 🔥 GENERAR PREGUNTAS */
-datos.forEach((p, i) => {
-    contenedor.innerHTML += `
-    <div class="question-card" id="card-${p.id}">
-        <div class="question-header">
-            <img src="${p.img}" class="question-img">
-            <div style="flex:1;">
-                <p><strong>Pregunta ${i+1}</strong></p>
-                <p>¿Qué letra es esta?</p>
+datos.forEach((p,i)=>{
+contenedor.innerHTML += `
+<div class="question-card" id="card-${p.id}">
+    <div class="question-header">
+        <img src="${p.img}" class="question-img">
+        <div>
+            <p><strong>Pregunta ${i+1}</strong></p>
+            <p>¿Qué letra es esta?</p>
 
-                <div class="options-grid">
-                    <label class="option"><input type="radio" name="${p.id}" value="A"> A</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="B"> B</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="C"> C</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="D"> D</label>
-                </div>
+            <div class="options-grid">
+                <label class="option"><input type="radio" name="${p.id}" value="A"> A</label>
+                <label class="option"><input type="radio" name="${p.id}" value="B"> B</label>
+                <label class="option"><input type="radio" name="${p.id}" value="C"> C</label>
+                <label class="option"><input type="radio" name="${p.id}" value="D"> D</label>
             </div>
         </div>
     </div>
-    `;
+</div>
+`;
 });
 
-/* 🔥 VALIDACIÓN VISUAL */
-function calificar() {
+function calificar(){
 
-    let faltantes = false;
+let aciertos = 0;
 
-    datos.forEach(p => {
-        const opciones = document.getElementsByName(p.id);
-        const card = document.getElementById("card-" + p.id);
+datos.forEach(p=>{
+    const opciones = document.getElementsByName(p.id);
+    const card = document.getElementById("card-"+p.id);
 
-        let respondida = false;
+    let respondida = false;
+    let correcta = false;
 
-        opciones.forEach(op => {
-            if (op.checked) respondida = true;
-        });
-
-        if (!respondida) {
-            card.classList.add("error");
-            faltantes = true;
-        } else {
-            card.classList.remove("error");
+    opciones.forEach(op=>{
+        if(op.checked){
+            respondida = true;
+            if(op.value === p.correcta){
+                correcta = true;
+                aciertos++;
+            }
         }
     });
 
-    if (faltantes) {
-        window.scrollTo(0, 0);
-        return;
+    if(respondida){
+        card.classList.remove("correct","incorrect");
+        card.classList.add(correcta ? "correct" : "incorrect");
     }
+});
 
-    let aciertos = 0;
+document.getElementById("resultado").innerText = 
+"Resultado: " + aciertos + " / 10";
 
-    datos.forEach(p => {
-        const opciones = document.getElementsByName(p.id);
-        opciones.forEach(op => {
-            if (op.checked && op.value === p.correcta) {
-                aciertos++;
-            }
-        });
-    });
+window.scrollTo(0,0);
 
-    alert("Resultado: " + aciertos + " / 10");
 }
 
 </script>
