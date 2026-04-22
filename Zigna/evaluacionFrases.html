@@ -9,6 +9,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
+/* ===== HEADER IGUAL ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
 nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
@@ -20,6 +21,7 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
     gap: 15px;
 }
 
+/* ===== CONTENIDO ===== */
 .container {
     max-width: 900px;
     margin: 30px auto;
@@ -31,16 +33,31 @@ h2 {
     margin-bottom: 25px;
 }
 
+.resultado {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.correcto {
+    border: 2px solid #00c853 !important;
+}
+
+.incorrecto {
+    border: 2px solid #ff4757 !important;
+}
+
+.error {
+    border: 2px solid #ff4757;
+}
+
 .question-card {
     background: white;
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
     border: 1px solid #eee;
-}
-
-.error {
-    border: 2px solid #ff4757;
 }
 
 .question-header {
@@ -85,19 +102,31 @@ h2 {
     text-align: center;
     margin-top: 30px;
 }
+
+.btn-volver {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: white;
+    background: #8a4fff;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
     <nav>
         <img src="imag/Logo_Zigna.png" class="main-logo">
 
         <ul class="nav-menu">
-            <li><a href="index.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="inicio.html" style="text-decoration:none; color:#333;">Inicio</a></li>
             <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
-            <li><a href="resultados.html" style="text-decoration:none; color:#333;">Resultados</a></li>
+            <li><a href="progreso.html" style="text-decoration:none; color:#333;">Progreso</a></li>
         </ul>
 
         <div class="user-box">
@@ -109,11 +138,15 @@ h2 {
 
 <div class="container">
 
+<a href="M_frases.html" class="btn-volver">← Volver al módulo</a>
+
 <h2>Evaluación: Frases Comunes LSM</h2>
+
+<div id="resultado" class="resultado"></div>
 
 <div id="preguntas"></div>
 
-<div class="btn-container">
+<div class="btn-container" id="btnFinalizar">
     <button class="btn-main" onclick="calificar()">Finalizar Evaluación</button>
 </div>
 
@@ -180,6 +213,7 @@ function calificar() {
     });
 
     if (faltantes) {
+        alert("Debes responder todas las preguntas");
         window.scrollTo(0, 0);
         return;
     }
@@ -188,14 +222,32 @@ function calificar() {
 
     datos.forEach(p => {
         const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
+
         opciones.forEach(op => {
-            if (op.checked && op.value === p.correcta) {
-                aciertos++;
+            if (op.checked) {
+                if (op.value === p.correcta) {
+                    aciertos++;
+                    card.classList.add("correcto");
+                } else {
+                    card.classList.add("incorrecto");
+                }
             }
         });
     });
 
-    alert("Resultado: " + aciertos + " / 10");
+    let porcentaje = (aciertos / 10) * 100;
+
+    const res = document.getElementById("resultado");
+    res.innerText = "Resultado: " + aciertos + " / 10 (" + porcentaje + "%)";
+
+    if (porcentaje >= 70) {
+        res.style.color = "#00c853";
+    } else {
+        res.style.color = "#ff4757";
+    }
+
+    document.getElementById("btnFinalizar").style.display = "none";
 }
 
 </script>
