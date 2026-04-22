@@ -50,19 +50,26 @@
 
 <body>
 
+<!-- HEADER -->
 <header>
     <nav>
-        <img src="imag/Logo_Zigna.png" class="main-logo">
+        <a href="inicio.html">
+            <img src="imag/Logo_Zigna.png" class="main-logo">
+        </a>
 
         <ul class="nav-menu">
-            <li><b>Inicio</b></li>
-            <li>Módulos</li>
-            <li>Resultados</li>
+            <li><a href="inicio.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
+            <li><a href="progreso.html" style="text-decoration:none; color:#333;">Progreso</a></li>
         </ul>
 
-        <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
+        <div class="user-box">
+            <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
+            <div style="background:#ff007a;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">👤</div>
+        </div>
     </nav>
 </header>
+
 
 <main>
 
@@ -105,7 +112,7 @@
         <div class="module-card">
             <div class="img-container">
                 <span class="badge">P</span>
-                <img src="imag/palabras.jpg" class="card-img">
+                <img src="imag/palabras/1.png" class="card-img">
             </div>
 
             <div class="card-info">
@@ -126,7 +133,7 @@
         <div class="module-card">
             <div class="img-container">
                 <span class="badge">F</span>
-                <img src="imag/frases.jpg" class="card-img">
+                <img src="imag/frases/buen_dia.png" class="card-img">
             </div>
 
             <div class="card-info">
