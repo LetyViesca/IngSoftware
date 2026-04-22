@@ -9,25 +9,79 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; overflow-x: hidden; }
         
-        /* HEADER */
+        /* ===== HEADER (CORREGIDO) ===== */
         header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; width: 100%; }
-        nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+        nav { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
         .main-logo { height: 35px; }
-        .nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
 
-        /* HERO */
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        
+        .user-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-icon {
+            background: #ff007a;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* ===== HERO ===== */
         .hero-section { padding: 20px 5%; }
         .hero-card { background: white; padding: 25px; border-radius: 20px; border: 1px solid #eee; }
         .zigna-text { color: #8a4fff; font-weight: bold; }
 
-        /* GRID */
+        /* ===== GRID ===== */
         .learning-guide { padding: 0 5% 40px; }
         .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .module-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #eee; }
-        .img-container { position: relative; width: 100%; height: 180px; background: #eee; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .badge { position: absolute; top: 10px; left: 10px; background: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .module-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .img-container {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: #eee;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
 
         .card-info { padding: 15px; }
 
@@ -41,7 +95,7 @@
             cursor: pointer;
         }
 
-        /* RESPONSIVE */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .card-grid { grid-template-columns: 1fr; }
         }
@@ -50,7 +104,7 @@
 
 <body>
 
-<!-- HEADER -->
+<!-- ===== HEADER CORREGIDO ===== -->
 <header>
     <nav>
         <a href="inicio.html">
@@ -64,15 +118,18 @@
         </ul>
 
         <div class="user-box">
-            <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
-            <div style="background:#ff007a;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">👤</div>
+            <a href="login.html" style="text-decoration:none; color:#666; font-size:14px;">
+                Cerrar sesión
+            </a>
+
+            <div class="user-icon">👤</div>
         </div>
     </nav>
 </header>
 
-
 <main>
 
+<!-- ===== HERO ===== -->
 <section class="hero-section">
     <div class="hero-card">
         <h1>
@@ -84,6 +141,7 @@
     </div>
 </section>
 
+<!-- ===== MÓDULOS ===== -->
 <section class="learning-guide">
     <div class="card-grid">
 
@@ -100,7 +158,7 @@
                     Aprende cada letra para deletrear palabras.
                 </p>
 
-                <a href="M_abecedario.html" style="text-decoration:none;">
+                <a href="M_abecedario.html">
                     <button class="btn" style="background:#8a4fff">
                         ▶ Seguir aprendiendo
                     </button>
@@ -121,7 +179,7 @@
                     Aprende palabras básicas del día a día.
                 </p>
 
-                <a href="M_palabras.html" style="text-decoration:none;">
+                <a href="M_palabras.html">
                     <button class="btn" style="background:#00c2a8">
                         ▶ Seguir aprendiendo
                     </button>
@@ -142,7 +200,7 @@
                     Aprende a comunicarte con frases completas.
                 </p>
 
-                <a href="M_frases.html" style="text-decoration:none;">
+                <a href="M_frases.html">
                     <button class="btn" style="background:#ff007a">
                         ▶ Seguir aprendiendo
                     </button>
