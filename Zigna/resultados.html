@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIGNA - Resultados</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #f5f7fa; }
+
+header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
+nav { display: flex; justify-content: space-between; align-items: center; }
+.main-logo { height: 35px; }
+
+.nav-menu { display: flex; gap: 15px; list-style: none; }
+.user-box { display: flex; gap: 15px; align-items: center; }
+
+.user-icon {
+    background: #ff007a;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+h2 { text-align: center; margin-bottom: 30px; }
+
+.result-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+}
+
+.aprobado { border: 2px solid #2cc19c; background: #f0fff9; }
+.reprobado { border: 2px solid orange; background: #fff7f0; }
+.sin-intento { border: 2px solid #ddd; }
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 20px;
+}
+
+.verde { background: #2cc19c; }
+.naranja { background: orange; }
+.gris { background: #ccc; }
+
+.modulo-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.porcentaje { font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="inicio.html">
+            <img src="imag/Logo_Zigna.png" class="main-logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="modulos.html">Módulos</a></li>
+            <li><a href="progreso.html">Progreso</a></li>
+        </ul>
+
+        <div class="user-box">
+            <a href="login.html">Cerrar sesión</a>
+            <div class="user-icon">👤</div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+<h2>Progreso del Usuario</h2>
+
+<div class="result-card" id="card-abecedario">
+    <div class="modulo-header">
+        <h3>Abecedario</h3>
+        <span id="txt-abecedario">0%</span>
+    </div>
+    <div class="progress-bar">
+        <div id="bar-abecedario" class="progress-fill"></div>
+    </div>
+</div>
+
+<div class="result-card" id="card-palabras">
+    <div class="modulo-header">
+        <h3>Palabras</h3>
+        <span id="txt-palabras">0%</span>
+    </div>
+    <div class="progress-bar">
+        <div id="bar-palabras" class="progress-fill"></div>
+    </div>
+</div>
+
+<div class="result-card" id="card-frases">
+    <div class="modulo-header">
+        <h3>Frases</h3>
+        <span id="txt-frases">0%</span>
+    </div>
+    <div class="progress-bar">
+        <div id="bar-frases" class="progress-fill"></div>
+    </div>
+</div>
+
+</div>
+
+<script>
+
+// 🔥 OBTENER RESULTADOS (SIMULA BD)
+const resultados = JSON.parse(localStorage.getItem("resultadosLSM")) || {};
+
+function pintar(nombre) {
+
+    const valor = resultados[nombre] || 0;
+
+    const barra = document.getElementById("bar-" + nombre);
+    const texto = document.getElementById("txt-" + nombre);
+    const card = document.getElementById("card-" + nombre);
+
+    texto.innerText = valor + "%";
+    barra.style.width = valor + "%";
+
+    if (valor === 0) {
+        barra.classList.add("gris");
+        card.classList.add("sin-intento");
+    } 
+    else if (valor >= 70) {
+        barra.classList.add("verde");
+        card.classList.add("aprobado");
+    } 
+    else {
+        barra.classList.add("naranja");
+        card.classList.add("reprobado");
+    }
+}
+
+
+pintar("abecedario");
+pintar("palabras");
+pintar("frases");
+
+</script>
+
+</body>
+</html>
