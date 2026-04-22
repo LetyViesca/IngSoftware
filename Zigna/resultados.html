@@ -9,49 +9,51 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
+/* ===== HEADER (IGUAL A LOS DEMÁS) ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
-nav { display: flex; justify-content: space-between; align-items: center; }
+nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
+.nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
 
-.nav-menu { display: flex; gap: 15px; list-style: none; }
-.user-box { display: flex; gap: 15px; align-items: center; }
-
-.user-icon {
-    background: #ff007a;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
+.user-box {
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: white;
+    gap: 15px;
 }
 
+/* ===== CONTENIDO ===== */
 .container {
     max-width: 900px;
-    margin: 40px auto;
+    margin: 30px auto;
     padding: 0 15px;
 }
 
-h2 { text-align: center; margin-bottom: 30px; }
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-.result-card {
+/* ===== TARJETAS ===== */
+.modulo-card {
     background: white;
-    border-radius: 20px;
+    border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
     border: 1px solid #eee;
+    transition: 0.3s;
 }
 
-.aprobado { border: 2px solid #2cc19c; background: #f0fff9; }
-.reprobado { border: 2px solid orange; background: #fff7f0; }
-.sin-intento { border: 2px solid #ddd; }
+/* COLORES DINÁMICOS */
+.verde { border-left: 8px solid #00c853; }
+.naranja { border-left: 8px solid #ff9800; }
+.sin-intento { border-left: 8px solid #ccc; }
 
+/* ===== BARRA ===== */
 .progress-bar {
     width: 100%;
     height: 12px;
     background: #eee;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
     margin-top: 10px;
 }
@@ -59,113 +61,112 @@ h2 { text-align: center; margin-bottom: 30px; }
 .progress-fill {
     height: 100%;
     width: 0%;
-    border-radius: 20px;
+    background: #ccc;
+    transition: width 0.5s;
 }
 
-.verde { background: #2cc19c; }
-.naranja { background: orange; }
-.gris { background: #ccc; }
+.verde .progress-fill { background: #00c853; }
+.naranja .progress-fill { background: #ff9800; }
 
-.modulo-header {
-    display: flex;
-    justify-content: space-between;
+.estado {
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
-.porcentaje { font-weight: bold; }
 </style>
 </head>
 
 <body>
 
+<!-- ===== HEADER CORRECTO ===== -->
 <header>
     <nav>
-        <a href="inicio.html">
-            <img src="imag/Logo_Zigna.png" class="main-logo">
-        </a>
+        <img src="imag/Logo_Zigna.png" class="main-logo">
 
         <ul class="nav-menu">
-            <li><a href="inicio.html">Inicio</a></li>
-            <li><a href="modulos.html">Módulos</a></li>
-            <li><a href="progreso.html">Progreso</a></li>
+            <li><a href="inicio.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
+            <li><a href="progreso.html" style="text-decoration:none; color:#333;">Progreso</a></li>
         </ul>
 
         <div class="user-box">
-            <a href="login.html">Cerrar sesión</a>
-            <div class="user-icon">👤</div>
+            <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
+            <div style="background:#ff007a;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">👤</div>
         </div>
     </nav>
 </header>
 
 <div class="container">
 
-<h2>Progreso del Usuario</h2>
+<h2>Resultados de Aprendizaje</h2>
 
-<div class="result-card" id="card-abecedario">
-    <div class="modulo-header">
-        <h3>Abecedario</h3>
-        <span id="txt-abecedario">0%</span>
-    </div>
+<!-- ABECEDARIO -->
+<div id="abecedario" class="modulo-card">
+    <h3>Abecedario</h3>
     <div class="progress-bar">
-        <div id="bar-abecedario" class="progress-fill"></div>
+        <div class="progress-fill" id="bar-abecedario"></div>
     </div>
+    <div class="estado" id="estado-abecedario"></div>
 </div>
 
-<div class="result-card" id="card-palabras">
-    <div class="modulo-header">
-        <h3>Palabras</h3>
-        <span id="txt-palabras">0%</span>
-    </div>
+<!-- PALABRAS -->
+<div id="palabras" class="modulo-card">
+    <h3>Palabras</h3>
     <div class="progress-bar">
-        <div id="bar-palabras" class="progress-fill"></div>
+        <div class="progress-fill" id="bar-palabras"></div>
     </div>
+    <div class="estado" id="estado-palabras"></div>
 </div>
 
-<div class="result-card" id="card-frases">
-    <div class="modulo-header">
-        <h3>Frases</h3>
-        <span id="txt-frases">0%</span>
-    </div>
+<!-- FRASES -->
+<div id="frases" class="modulo-card">
+    <h3>Frases</h3>
     <div class="progress-bar">
-        <div id="bar-frases" class="progress-fill"></div>
+        <div class="progress-fill" id="bar-frases"></div>
     </div>
+    <div class="estado" id="estado-frases"></div>
 </div>
 
 </div>
 
 <script>
 
-// 🔥 OBTENER RESULTADOS (SIMULA BD)
-const resultados = JSON.parse(localStorage.getItem("resultadosLSM")) || {};
+/* 🔥 SIMULACIÓN DE BD LOCAL */
+function obtenerResultado(modulo) {
+    return localStorage.getItem("resultado_" + modulo);
+}
 
-function pintar(nombre) {
+function pintarModulo(modulo) {
+    const valor = obtenerResultado(modulo);
 
-    const valor = resultados[nombre] || 0;
+    const card = document.getElementById(modulo);
+    const barra = document.getElementById("bar-" + modulo);
+    const estado = document.getElementById("estado-" + modulo);
 
-    const barra = document.getElementById("bar-" + nombre);
-    const texto = document.getElementById("txt-" + nombre);
-    const card = document.getElementById("card-" + nombre);
-
-    texto.innerText = valor + "%";
-    barra.style.width = valor + "%";
-
-    if (valor === 0) {
-        barra.classList.add("gris");
+    if (!valor) {
         card.classList.add("sin-intento");
-    } 
-    else if (valor >= 70) {
-        barra.classList.add("verde");
-        card.classList.add("aprobado");
-    } 
-    else {
-        barra.classList.add("naranja");
-        card.classList.add("reprobado");
+        estado.innerText = "No has realizado la evaluación";
+        barra.style.width = "0%";
+        return;
+    }
+
+    const porcentaje = parseInt(valor);
+    barra.style.width = porcentaje + "%";
+
+    if (porcentaje >= 70) {
+        card.classList.add("verde");
+        estado.innerText = "✔ Aprobado (" + porcentaje + "%)";
+    } else {
+        card.classList.add("naranja");
+        estado.innerText = "⚠ En progreso (" + porcentaje + "%)";
     }
 }
 
 
-pintar("abecedario");
-pintar("palabras");
-pintar("frases");
+pintarModulo("abecedario");
+pintarModulo("palabras");
+pintarModulo("frases");
 
 </script>
 
