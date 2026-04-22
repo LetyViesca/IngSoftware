@@ -9,7 +9,6 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
-/* ===== HEADER ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
 nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
@@ -21,7 +20,6 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
     gap: 15px;
 }
 
-/* ===== CONTENIDO ===== */
 .container {
     max-width: 900px;
     margin: 30px auto;
@@ -31,6 +29,18 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
 h2 {
     text-align: center;
     margin-bottom: 25px;
+}
+
+/* MENSAJE ERROR */
+.mensaje-error {
+    display: none;
+    background: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
 }
 
 /* RESULTADO */
@@ -50,7 +60,6 @@ h2 {
     border: 1px solid #eee;
 }
 
-/* ESTADOS */
 .error {
     border: 2px solid #ff4757;
 }
@@ -91,7 +100,6 @@ h2 {
     cursor: pointer;
 }
 
-/* BOTONES EXACTOS */
 .btn-main {
     background: linear-gradient(90deg, #8a4fff, #ff007a);
     color: white;
@@ -146,6 +154,11 @@ h2 {
 
 <h2>Evaluación: Frases Comunes LSM</h2>
 
+<!-- 🔴 MENSAJE EXACTO -->
+<div id="mensajeError" class="mensaje-error">
+⚠️ Contesta todas las preguntas antes de finalizar.
+</div>
+
 <div id="resultado" class="resultado"></div>
 
 <div id="preguntas"></div>
@@ -198,6 +211,8 @@ function calificar() {
 
     let faltantes = false;
 
+    document.getElementById("mensajeError").style.display = "none";
+
     datos.forEach(p => {
         const opciones = document.getElementsByName(p.id);
         const card = document.getElementById("card-" + p.id);
@@ -216,9 +231,8 @@ function calificar() {
         }
     });
 
-    // 🔴 EXACTO IGUAL QUE ABECEDARIO
     if (faltantes) {
-        alert("Contesta todas las preguntas antes de finalizar");
+        document.getElementById("mensajeError").style.display = "block";
         window.scrollTo(0, 0);
         return;
     }
@@ -245,10 +259,8 @@ function calificar() {
 
     const res = document.getElementById("resultado");
     res.innerText = "Resultado: " + aciertos + " / 10 (" + porcentaje + "%)";
-
     res.style.color = porcentaje >= 70 ? "#00c853" : "#ff4757";
 
-    // 🔥 OCULTAR BOTÓN
     document.getElementById("btnFinalizar").style.display = "none";
 }
 
