@@ -9,16 +9,11 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
-/* ===== HEADER ===== */
+/* ===== HEADER IGUAL AL MÓDULO ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
-nav { display: flex; justify-content: space-between; align-items: center; }
+nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
-
-.nav-menu {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-}
+.nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
 
 .user-box {
     display: flex;
@@ -26,21 +21,31 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     gap: 15px;
 }
 
-.user-icon {
-    background:#ff007a;
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-}
-
 /* ===== CONTENIDO ===== */
 .container {
     max-width: 900px;
     margin: 30px auto;
+    padding: 0 15px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* 🔴 ERROR VISUAL */
+.error {
+    border: 2px solid #ff4757 !important;
+}
+
+/* 🟢 CORRECTO */
+.correct {
+    border: 2px solid #2ecc71 !important;
+}
+
+/* 🔴 INCORRECTO */
+.incorrect {
+    border: 2px solid #ff4757 !important;
 }
 
 .question-card {
@@ -48,15 +53,7 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     border-radius: 15px;
     padding: 20px;
     margin-bottom: 20px;
-    border: 2px solid #eee;
-}
-
-.correct {
-    border: 2px solid #2ecc71;
-}
-
-.incorrect {
-    border: 2px solid #ff4757;
+    border: 1px solid #eee;
 }
 
 .question-header {
@@ -77,78 +74,88 @@ nav { display: flex; justify-content: space-between; align-items: center; }
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .option {
     border: 1px solid #eee;
     padding: 10px;
     border-radius: 8px;
+    cursor: pointer;
 }
 
-.btn {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 20px;
+/* RESULTADO */
+.resultado {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* BOTONES */
+.btn-main {
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
     color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
     font-weight: bold;
     cursor: pointer;
 }
 
-.btn-primary { background: linear-gradient(90deg,#8a4fff,#ff007a); }
-.btn-secondary { background: #555; }
-
 .btn-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.resultado {
-    text-align: center;
-    font-size: 22px;
-    margin-top: 20px;
-    font-weight: bold;
+.btn-back {
+    margin-bottom: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- ===== HEADER CORRECTO ===== -->
 <header>
     <nav>
-        <a href="inicio.html">
-            <img src="imag/Logo_Zigna.png" class="main-logo">
-        </a>
+        <img src="imag/Logo_Zigna.png" class="main-logo">
 
         <ul class="nav-menu">
-            <li><a href="inicio.html">Inicio</a></li>
-            <li><a href="modulos.html">Módulos</a></li>
-            <li><a href="progreso.html">Progreso</a></li>
+            <li><a href="inicio.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
+            <li><a href="progreso.html" style="text-decoration:none; color:#333;">Progreso</a></li>
         </ul>
 
         <div class="user-box">
-            <a href="login.html">Cerrar sesión</a>
-            <div class="user-icon">👤</div>
+            <a href="login.html" style="text-decoration:none; color:#666; font-size:14px;">
+                Cerrar sesión
+            </a>
+
+            <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white;">
+                👤
+            </div>
         </div>
     </nav>
 </header>
 
 <div class="container">
 
-<h2 style="text-align:center; margin-bottom:20px;">Evaluación: Abecedario</h2>
+<!-- 🔙 BOTÓN ARRIBA -->
+<div class="btn-back">
+    <a href="M_abecedario.html" style="text-decoration:none;">
+        <button class="btn-main">⬅ Volver al módulo</button>
+    </a>
+</div>
+
+<h2>Evaluación: Abecedario LSM</h2>
+
+<div id="resultado" class="resultado"></div>
 
 <div id="preguntas"></div>
 
 <div class="btn-container">
-    <button class="btn btn-primary" onclick="calificar()">Finalizar Evaluación</button>
-</div>
-
-<div id="resultado" class="resultado"></div>
-
-<div class="btn-container">
-    <a href="M_abecedario.html">
-        <button class="btn btn-secondary">⬅ Volver al módulo</button>
-    </a>
+    <button class="btn-main" onclick="calificar()">Finalizar Evaluación</button>
 </div>
 
 </div>
@@ -170,59 +177,77 @@ const datos = [
 
 const contenedor = document.getElementById("preguntas");
 
-datos.forEach((p,i)=>{
-contenedor.innerHTML += `
-<div class="question-card" id="card-${p.id}">
-    <div class="question-header">
-        <img src="${p.img}" class="question-img">
-        <div>
-            <p><strong>Pregunta ${i+1}</strong></p>
-            <p>¿Qué letra es esta?</p>
+/* GENERAR PREGUNTAS */
+datos.forEach((p, i) => {
+    contenedor.innerHTML += `
+    <div class="question-card" id="card-${p.id}">
+        <div class="question-header">
+            <img src="${p.img}" class="question-img">
+            <div style="flex:1;">
+                <p><strong>Pregunta ${i+1}</strong></p>
+                <p>¿Qué letra es esta?</p>
 
-            <div class="options-grid">
-                <label class="option"><input type="radio" name="${p.id}" value="A"> A</label>
-                <label class="option"><input type="radio" name="${p.id}" value="B"> B</label>
-                <label class="option"><input type="radio" name="${p.id}" value="C"> C</label>
-                <label class="option"><input type="radio" name="${p.id}" value="D"> D</label>
+                <div class="options-grid">
+                    <label class="option"><input type="radio" name="${p.id}" value="A"> A</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="B"> B</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="C"> C</label>
+                    <label class="option"><input type="radio" name="${p.id}" value="D"> D</label>
+                </div>
             </div>
         </div>
     </div>
-</div>
-`;
+    `;
 });
 
-function calificar(){
+/* CALIFICAR */
+function calificar() {
 
-let aciertos = 0;
+    let faltantes = false;
+    let aciertos = 0;
 
-datos.forEach(p=>{
-    const opciones = document.getElementsByName(p.id);
-    const card = document.getElementById("card-"+p.id);
+    datos.forEach(p => {
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
 
-    let respondida = false;
-    let correcta = false;
+        let respondida = false;
+        let correcta = false;
 
-    opciones.forEach(op=>{
-        if(op.checked){
-            respondida = true;
-            if(op.value === p.correcta){
-                correcta = true;
-                aciertos++;
+        opciones.forEach(op => {
+            if (op.checked) {
+                respondida = true;
+                if (op.value === p.correcta) {
+                    correcta = true;
+                    aciertos++;
+                }
             }
+        });
+
+        /* VALIDACIÓN */
+        if (!respondida) {
+            card.classList.add("error");
+            faltantes = true;
+        } else {
+            card.classList.remove("error");
+
+            /* RETRO VISUAL */
+            card.classList.add(correcta ? "correct" : "incorrect");
         }
     });
 
-    if(respondida){
-        card.classList.remove("correct","incorrect");
-        card.classList.add(correcta ? "correct" : "incorrect");
+    if (faltantes) {
+        window.scrollTo(0, 0);
+        return;
     }
-});
 
-document.getElementById("resultado").innerText = 
-"Resultado: " + aciertos + " / 10";
+    /* RESULTADO */
+    let porcentaje = Math.round((aciertos / datos.length) * 100);
+    const resultado = document.getElementById("resultado");
 
-window.scrollTo(0,0);
+    resultado.innerText = "Resultado: " + porcentaje + "% (" + aciertos + "/10)";
 
+    resultado.style.color = porcentaje >= 70 ? "#2ecc71" : "#ff4757";
+
+    window.scrollTo(0, 0);
 }
 
 </script>
