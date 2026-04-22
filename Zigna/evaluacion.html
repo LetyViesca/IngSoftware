@@ -9,7 +9,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
-/* ===== HEADER IGUAL AL MÓDULO ===== */
+/* HEADER */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
 nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
@@ -21,7 +21,7 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
     gap: 15px;
 }
 
-/* ===== CONTENIDO ===== */
+/* CONTENIDO */
 .container {
     max-width: 900px;
     margin: 30px auto;
@@ -31,21 +31,6 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
 h2 {
     text-align: center;
     margin-bottom: 25px;
-}
-
-
-.error {
-    border: 2px solid #ff4757 !important;
-}
-
-
-.correct {
-    border: 2px solid #2ecc71 !important;
-}
-
-
-.incorrect {
-    border: 2px solid #ff4757 !important;
 }
 
 .question-card {
@@ -84,6 +69,11 @@ h2 {
     cursor: pointer;
 }
 
+/* ESTADOS */
+.error { border: 2px solid #ff4757 !important; }
+.correct { border: 2px solid #2ecc71 !important; }
+.incorrect { border: 2px solid #ff4757 !important; }
+
 /* RESULTADO */
 .resultado {
     text-align: center;
@@ -116,7 +106,6 @@ h2 {
 
 <body>
 
-<!-- ===== HEADER ===== -->
 <header>
     <nav>
         <img src="imag/Logo_Zigna.png" class="main-logo">
@@ -128,36 +117,28 @@ h2 {
         </ul>
 
         <div class="user-box">
-            <a href="login.html" style="text-decoration:none; color:#666; font-size:14px;">
-                Cerrar sesión
-            </a>
-
-            <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white;">
-                👤
-            </div>
+            <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
+            <div style="background:#ff007a;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">👤</div>
         </div>
     </nav>
 </header>
 
 <div class="container">
 
-<!-- BOTÓN REGRESAR -->
 <div class="btn-back">
-    <a href="M_abecedario.html" style="text-decoration:none;">
+    <a href="M_abecedario.html">
         <button class="btn-main">⬅ Volver al módulo</button>
     </a>
 </div>
 
 <h2>Evaluación: Abecedario LSM</h2>
 
-<!-- RESULTADO -->
 <div id="resultado" class="resultado"></div>
 
-<!-- PREGUNTAS -->
 <div id="preguntas"></div>
 
 <div class="btn-container">
-    <button class="btn-main" onclick="calificar()">Finalizar Evaluación</button>
+    <button id="btnFinalizar" class="btn-main" onclick="calificar()">Finalizar Evaluación</button>
 </div>
 
 </div>
@@ -179,7 +160,6 @@ const datos = [
 
 const contenedor = document.getElementById("preguntas");
 
-/* GENERAR PREGUNTAS */
 datos.forEach((p, i) => {
     contenedor.innerHTML += `
     <div class="question-card" id="card-${p.id}">
@@ -201,15 +181,12 @@ datos.forEach((p, i) => {
     `;
 });
 
-/* CALIFICAR */
 function calificar() {
 
     let faltantes = false;
     let aciertos = 0;
-
     const resultado = document.getElementById("resultado");
 
-    // limpiar resultado previo
     resultado.innerText = "";
 
     datos.forEach(p => {
@@ -219,15 +196,12 @@ function calificar() {
         let respondida = false;
         let correcta = false;
 
-        // limpiar estilos previos
         card.classList.remove("error", "correct", "incorrect");
 
         opciones.forEach(op => {
             if (op.checked) {
                 respondida = true;
-                if (op.value === p.correcta) {
-                    correcta = true;
-                }
+                if (op.value === p.correcta) correcta = true;
             }
         });
 
@@ -239,7 +213,6 @@ function calificar() {
         }
     });
 
-    
     if (faltantes) {
         resultado.innerText = "⚠️ Contesta todas las preguntas antes de finalizar.";
         resultado.style.color = "#ff4757";
@@ -247,7 +220,6 @@ function calificar() {
         return;
     }
 
-    // pintar correctas/incorrectas
     datos.forEach(p => {
         const opciones = document.getElementsByName(p.id);
         const card = document.getElementById("card-" + p.id);
@@ -263,11 +235,13 @@ function calificar() {
         });
     });
 
-    // resultado final
     let porcentaje = Math.round((aciertos / datos.length) * 100);
 
     resultado.innerText = "Resultado: " + porcentaje + "% (" + aciertos + "/10)";
     resultado.style.color = porcentaje >= 70 ? "#2ecc71" : "#ff4757";
+
+   
+    document.getElementById("btnFinalizar").style.display = "none";
 
     window.scrollTo(0, 0);
 }
