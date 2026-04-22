@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIGNA - Frases Comunes LSM</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #f5f7fa; }
+
+header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
+nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.main-logo { height: 35px; }
+.nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0 30px;
+    color: #333;
+}
+
+.palabras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card-palabra {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.25s;
+}
+
+.card-palabra:hover {
+    transform: translateY(-4px);
+}
+
+.img-container {
+    height: 130px;
+    background: #eee;
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(255,255,255,0.9);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.info-palabra {
+    padding: 12px;
+    text-align: center;
+}
+
+.info-palabra h3 {
+    color: #8a4fff;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+.info-palabra p {
+    font-size: 12px;
+    color: #555;
+}
+
+.btn-ready {
+    display: inline-block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .palabras-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .palabras-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="main-logo">
+
+        <ul class="nav-menu">
+            <li><a href="index.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
+            <li><a href="resultados.html" style="text-decoration:none; color:#333;">Resultados</a></li>
+        </ul>
+
+        <div class="user-box">
+            <a href="login.html" style="text-decoration:none; color:#666; font-size:14px;">
+                Cerrar sesión
+            </a>
+
+            <div style="background:#ff007a; width:35px; height:35px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white;">
+                👤
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+<h1>Módulo: Frases Comunes LSM</h1>
+
+<div class="palabras-grid" id="grid"></div>
+
+<div class="btn-container">
+    <a href="evaluacionFrases.html" class="btn-ready">Evaluación ✨</a>
+</div>
+
+</div>
+
+<script>
+const frases = [
+["¡Hola!","Se hace la letra 'H' con la mano dominante y se toca la sien con el dedo índice y medio. La flecha curva indica que la mano se mueve hacia afuera desde la cabeza, como 'lanzando' el saludo."],
+
+["Buen día","Seña compuesta. Primero se hace 'Bien' (mano derecha plana sobre el pecho) y luego se forma una 'D'. La flecha vertical muestra que la mano 'D' sube desde detrás del brazo opuesto."],
+
+["Buenas noches","Seña compuesta. Primero 'Bien' y luego se cruzan ambas manos extendidas frente al rostro. Las flechas curvas hacia abajo muestran cómo las manos bajan y se separan."],
+
+["¿Cuál es tu nombre?","Se hace la letra 'N' con ambas manos y se balancean ligeramente. Las flechas horizontales indican el vaivén mientras se hace la pregunta."],
+
+["Tengo sed","Se hace una forma de 'C' con la mano dominante y se desliza por la garganta. La flecha hacia abajo muestra el recorrido del dedo por el cuello."],
+
+["Gracias","La mano dominante plana toca la barbilla y se mueve hacia adelante. La flecha indica que la mano se dirige al interlocutor."],
+
+["De nada","Seña compuesta. Se forma una 'D', luego la mano se mueve frente al pecho de lado a lado. Las flechas indican el movimiento de negación."],
+
+["Por favor","La mano dominante plana se coloca sobre el pecho y realiza círculos. La flecha circular indica el movimiento continuo."],
+
+["Ayuda","Un puño de la mano dominante presiona sobre la palma de la otra. Las flechas indican presión hacia abajo."],
+
+["Lo siento","La mano dominante forma un puño y se coloca en el pecho. La flecha circular indica movimiento continuo acompañado de expresión facial."]
+];
+
+const grid = document.getElementById("grid");
+
+frases.forEach(f => {
+grid.innerHTML += `
+<div class="card-palabra">
+    <div class="img-container">
+        <span class="badge">Frases</span>
+        <imag src="imag/frases/${f[0].toLowerCase().replace(/[^a-z]/g, "_")}.png">
+    </div>
+    <div class="info-palabra">
+        <h3>${f[0]}</h3>
+        <p>${f[1]}</p>
+    </div>
+</div>
+`;
+});
+</script>
+
+</body>
+</html>
