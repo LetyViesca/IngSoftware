@@ -178,7 +178,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
         <div class="module-card">
             <div class="img-container">
-                <img src="imag/palabras/1.png" class="card-img" alt="Palabras Clave">
+                <img src="imag/palabras/uno.png" class="card-img" alt="Palabras Clave">
             </div>
 
             <div class="card-info">
@@ -195,7 +195,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
         <div class="module-card">
             <div class="img-container">
-                <img src="imag/frases/buen_dia.png" class="card-img" alt="Frases Comunes">
+                <img src="imag/frases/sed.png" class="card-img" alt="Frases Comunes">
             </div>
 
             <div class="card-info">
