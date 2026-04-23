@@ -9,7 +9,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
-/* ===== HEADER (IGUAL) ===== */
+/* ===== HEADER ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
 nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
@@ -59,15 +59,20 @@ h1 {
     transform: translateY(-4px);
 }
 
+/* CONTENEDOR IMAGEN (MEJORADO) */
 .img-container {
-    height: 140px;
-    background: #eee;
+    height: 160px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+/* IMAGEN CORREGIDA */
 .img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .info {
@@ -113,7 +118,6 @@ h1 {
 
 <body>
 
-<!-- HEADER -->
 <header>
     <nav>
         <img src="imag/Logo_Zigna.png" class="main-logo">
@@ -135,7 +139,6 @@ h1 {
 
 <h1>Módulo: Palabras LSM</h1>
 
-<!-- ================= SALUDOS ================= -->
 <h2 class="subtitulo">Saludos</h2>
 <div class="grid">
 
@@ -167,78 +170,6 @@ h1 {
 <div class="card">
     <div class="img-container"><img src="imag/palabras/por_favor.png"></div>
     <div class="info"><h3>Por favor</h3><p>Movimiento circular en el pecho.</p></div>
-</div>
-
-</div>
-
-<!-- ================= FAMILIA ================= -->
-<h2 class="subtitulo">Familia</h2>
-<div class="grid">
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/mama.png"></div>
-    <div class="info"><h3>Mamá</h3><p>Seña cerca de la mejilla.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/papa.png"></div>
-    <div class="info"><h3>Papá</h3><p>Se realiza cerca de la frente.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/hermano.png"></div>
-    <div class="info"><h3>Hermano</h3><p>Movimiento entre ambas manos.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/hermana.png"></div>
-    <div class="info"><h3>Hermana</h3><p>Similar a hermano pero con variación.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/abuelo.png"></div>
-    <div class="info"><h3>Abuelo</h3><p>Movimiento desde la frente hacia adelante.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/hijo.png"></div>
-    <div class="info"><h3>Hijo</h3><p>Movimiento desde el vientre hacia adelante.</p></div>
-</div>
-
-</div>
-
-<!-- ================= NÚMEROS ================= -->
-<h2 class="subtitulo">Números</h2>
-<div class="grid">
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/uno.png"></div>
-    <div class="info"><h3>Uno</h3><p>Dedo índice levantado.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/dos.png"></div>
-    <div class="info"><h3>Dos</h3><p>Índice y medio levantados.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/tres.png"></div>
-    <div class="info"><h3>Tres</h3><p>Tres dedos levantados.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/cuatro.png"></div>
-    <div class="info"><h3>Cuatro</h3><p>Cuatro dedos extendidos.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/cinco.png"></div>
-    <div class="info"><h3>Cinco</h3><p>Mano completamente abierta.</p></div>
-</div>
-
-<div class="card">
-    <div class="img-container"><img src="imag/palabras/diez.png"></div>
-    <div class="info"><h3>Diez</h3><p>Movimiento del puño cerrado.</p></div>
 </div>
 
 </div>
