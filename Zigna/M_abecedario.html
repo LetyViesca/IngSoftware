@@ -9,7 +9,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #f5f7fa; }
 
-/* ===== HEADER (AGREGADO) ===== */
+/* ===== HEADER ===== */
 header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
 nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
 .main-logo { height: 35px; }
@@ -21,7 +21,7 @@ nav { display: flex; justify-content: space-between; align-items: center; flex-w
     gap: 15px;
 }
 
-/* ===== CONTENIDO ORIGINAL ===== */
+/* ===== CONTENIDO ===== */
 .container {
     max-width: 900px;
     margin: 20px auto;
@@ -52,16 +52,20 @@ h1 {
     transform: translateY(-4px);
 }
 
+/* ===== IMÁGENES CORREGIDAS ===== */
 .img-container {
-    height: 130px;
-    background: #eee;
+    height: 150px;
+    background: #fff;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .badge {
@@ -123,7 +127,6 @@ h1 {
 
 <body>
 
-<!-- HEADER -->
 <header>
     <nav>
         <a href="inicio.html">
@@ -143,8 +146,6 @@ h1 {
     </nav>
 </header>
 
-
-<!-- ===== CONTENIDO ===== -->
 <div class="container">
 <h1>Módulo: Abecedario LSM</h1>
 
@@ -153,7 +154,6 @@ h1 {
 <div class="btn-container">
     <a href="evaluacion.html" class="btn-ready">Evaluación ✨</a>
 </div>
-
 </div>
 
 <script>
