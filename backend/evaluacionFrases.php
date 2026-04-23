@@ -3,7 +3,7 @@
 include("db.php"); 
 session_start();
 
-// Validamos que el usuario esté autenticado para poder guardar el progreso
+// Validamos que el usuario esté autenticado
 if (!isset($_SESSION['id_usuario'])) {
     header("Location: login.php");
     exit();
@@ -36,6 +36,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
         h2 { text-align: center; margin-bottom: 25px; }
 
+        /* MENSAJE ERROR */
         .mensaje-error {
             display: none;
             background: #fff3cd;
@@ -103,18 +104,22 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             cursor: pointer;
             transition: 0.3s;
         }
+        .btn-main:hover { transform: scale(1.05); }
 
+        /* ✅ BOTÓN VOLVER CORREGIDO */
         .btn-volver {
             display: inline-block;
             margin-bottom: 20px;
             padding: 10px 25px;
             background: linear-gradient(90deg, #8a4fff, #ff007a);
-            color: white;
+            color: white !important;
             border-radius: 25px;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 0, 122, 0.2);
         }
+        .btn-volver:hover { opacity: 0.9; transform: scale(1.02); }
 
         .btn-container { text-align: center; margin-top: 30px; margin-bottom: 50px; }
     </style>
@@ -137,7 +142,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 </header>
 
 <div class="container">
-    <a href="frases.php" class="btn-volver">← Volver al módulo</a>
+    <a href="M_frases.php" class="btn-volver">← Volver al módulo</a>
 
     <h2>Evaluación: Frases Comunes LSM</h2>
 
@@ -151,7 +156,6 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 </div>
 
 <script>
-// ✅ SINCRONIZADO CON LOS NOMBRES DE ARCHIVO DE frases.php
 const datos = [
     { id:'p1', correcta:'¿Cuál es tu nombre?', img:'imag/frases/nombre.png' },
     { id:'p2', correcta:'De nada', img:'imag/frases/de_nada.png' },
@@ -191,7 +195,6 @@ function calificar() {
     let aciertos = 0;
     document.getElementById("mensajeError").style.display = "none";
 
-    // 1. Validar que todas estén contestadas
     datos.forEach(p => {
         const opciones = document.getElementsByName(p.id);
         const card = document.getElementById("card-" + p.id);
@@ -212,7 +215,6 @@ function calificar() {
         return;
     }
 
-    // 2. Calcular aciertos y pintar tarjetas
     datos.forEach(p => {
         const opciones = document.getElementsByName(p.id);
         const card = document.getElementById("card-" + p.id);
@@ -230,9 +232,8 @@ function calificar() {
 
     let porcentaje = Math.round((aciertos / datos.length) * 100);
 
-    // 3. GUARDAR PROGRESO EN BD (RF-08)
     const parametros = new URLSearchParams();
-    parametros.append('modulo', 'Frases'); // El nombre que reconoce tu g_puntaje.php
+    parametros.append('modulo', 'Frases'); 
     parametros.append('puntaje', porcentaje);
 
     fetch('g_puntaje.php', {
