@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZIGNA - Frases Comunes LSM</title>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #f5f7fa; }
+
+/* HEADER */
+header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
+nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.main-logo { height: 35px; }
+.nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
+
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* CONTENIDO */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0 30px;
+    color: #333;
+}
+
+.palabras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card-palabra {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.25s;
+}
+
+.card-palabra:hover {
+    transform: translateY(-4px);
+}
+
+.img-container {
+    height: 130px;
+    background: #eee;
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(255,255,255,0.9);
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
+
+.info-palabra {
+    padding: 12px;
+    text-align: center;
+}
+
+.info-palabra h3 {
+    color: #8a4fff;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.info-palabra p {
+    font-size: 11px;
+    color: #555;
+    text-align: justify;
+}
+
+.btn-ready {
+    display: inline-block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-container {
+    text-align: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .palabras-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .palabras-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav>
+        <a href="inicio.html">
+            <img src="imag/Logo_Zigna.png" class="main-logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="inicio.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
+            <li><a href="progreso.html" style="text-decoration:none; color:#333;">Progreso</a></li>
+        </ul>
+
+        <div class="user-box">
+            <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
+            <div style="background:#ff007a;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">👤</div>
+        </div>
+    </nav>
+</header>
+
+<!-- CONTENIDO -->
+<div class="container">
+<h1>Módulo: Frases Comunes LSM</h1>
+
+<div class="palabras-grid" id="grid"></div>
+
+<div class="btn-container">
+    <a href="evaluacionFrases.html" class="btn-ready">Evaluación ✨</a>
+</div>
+</div>
+
+<script>
+
+/* ✅ DATOS CORREGIDOS CON NOMBRE REAL DE IMAGEN */
+const frases = [
+["¡Hola!","Se hace la letra 'H' con la mano dominante y se toca la sien con el dedo índice y medio. La mano se mueve hacia afuera desde la cabeza, como lanzando el saludo.","hola.png"],
+
+["Buen día","Seña compuesta. Primero se hace 'Bien' (mano derecha plana sobre el pecho) y luego se forma una 'D'. La mano sube desde el brazo opuesto representando el sol.","buen_dia.png"],
+
+["Buenas noches","Seña compuesta. Primero 'Bien' y luego ambas manos bajan como cerrando cortinas.","buenas_noches.png"],
+
+["¿Cuál es tu nombre?","Se hace la letra 'N' con ambas manos y se balancean ligeramente de lado a lado.","cual_es_tu_nombre.png"],
+
+["Tengo sed","Se hace una forma de 'C' con la mano y se desliza por la garganta hacia abajo.","tengo_sed.png"],
+
+["Gracias","La mano dominante toca la barbilla y se mueve hacia adelante.","gracias.png"],
+
+["De nada","Primero se forma una 'D' y luego la mano se mueve de lado a lado frente al pecho.","de_nada.png"],
+
+["Por favor","La mano dominante sobre el pecho realiza movimientos circulares.","por_favor.png"],
+
+["Ayuda","Un puño presiona la palma de la otra mano hacia abajo.","ayuda.png"],
+
+["Lo siento","Un puño cerrado sobre el pecho realiza movimientos circulares.","lo_siento.png"]
+];
+
+const grid = document.getElementById("grid");
+
+/* 🔥 GENERAR TARJETAS */
+frases.forEach(f => {
+grid.innerHTML += `
+<div class="card-palabra">
+    <div class="img-container">
+        <span class="badge">Frases</span>
+        <img src="imag/frases/${f[2]}" alt="${f[0]}">
+    </div>
+    <div class="info-palabra">
+        <h3>${f[0]}</h3>
+        <p>${f[1]}</p>
+    </div>
+</div>
+`;
+});
+
+</script>
+
+</body>
+</html>
