@@ -6,8 +6,8 @@ En este documento se definen los criterios de aceptación para cada requisito fu
 
 ## RF-01: Registro de usuario
 
-- El sistema permite registrar un usuario con nombre, correo electrónico y contraseña.
-- El sistema valida que no existan campos vacíos antes de cualquier otra validación.
+- El sistema permite registrar un usuario con nombre (completo), correo electrónico y contraseña.
+- El sistema valida que no existan campos vacíos antes de cualquier proceso de consulta.
 - El sistema valida que el correo tenga un formato correcto antes de procesar el registro.
 - El correo electrónico debe ser único.
 - La contraseña debe tener mínimo 8 caracteres.
