@@ -9,17 +9,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
 $id_usuario = $_SESSION['id_usuario'];
 $nombre_usuario = $_SESSION['nombre_usuario'];
-echo $id_usuario;
 
-$query = "
-SELECT Progreso.*, Modulo.nombre_modulo
-FROM Progreso
-INNER JOIN Modulo 
-ON Progreso.id_Modulo = Modulo.id_Modulo
-WHERE Progreso.id_Usuario = $id_usuario
-";
-
-$resultado = mysqli_query($conexion, $query);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -131,32 +121,60 @@ $resultado = mysqli_query($conexion, $query);
 
     <div class="grid-progreso">
 
- <?php while($fila = mysqli_fetch_assoc($resultado)) { ?>
+ <?php 
+ $modulos = [
+    1 => "Abecedario",
+    2 => "Palabras Clave",
+    3 => "Frases Comunes"
+];
 
-    <div class="modulo-card">
+foreach($modulos as $id => $nombre) {
 
-        <h2><?php echo $fila['nombre_modulo']; ?></h2>
+    $sql = "SELECT * FROM Progreso 
+            WHERE id_Usuario = '$id_usuario'
+            AND id_Modulo = '$id'
+            LIMIT 1";
 
-        <p>
-            Estado:
-            <?php echo $fila['estado']; ?>
-        </p>
+    $resultado = mysqli_query($conexion, $sql);
 
-        <p>
-            Lecciones completadas:
-            <?php echo $fila['lecciones_completadas']; ?>
-        </p>
+    if(mysqli_num_rows($resultado) > 0){
 
-        <p>
-            Último acceso:
-            <?php echo $fila['fecha_ultimo_acceso']; ?>
-        </p>
+        $fila = mysqli_fetch_assoc($resultado);
 
-    </div>
+        $estado = $fila['estado'];
+        $lecciones = $fila['lecciones_completadas'];
+        $fecha = $fila['fecha_ultimo_acceso'];
 
- <?php } ?>
+    } else {
+
+        $estado = "No iniciado";
+        $lecciones = 0;
+        $fecha = "Sin actividad";
+    }
+?>
+
+<div class="modulo-card">
+
+    <h2><?php echo $nombre; ?></h2>
+
+    <p>
+        Estado:
+        <?php echo $estado; ?>
+    </p>
+
+    <p>
+        Lecciones completadas:
+        <?php echo $lecciones; ?>
+    </p>
+
+    <p>
+        Último acceso:
+        <?php echo $fecha; ?>
+    </p>
 
 </div>
+
+<?php } ?>
 
 </div>
 
