@@ -17,9 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Mapeo según tus IDs de la tabla Modulo
     // Asegúrate de que en tu BD el ID del Abecedario sea 1, Palabras 2, etc.
     $id_modulo = 2; 
-    if($nombre_modulo == 'Abecedario') $id_modulo = 1;
+    if($nombre_modulo == 'Abecedario' || $nombre_modulo == 'Abecedario LSM') {
+      $id_modulo = 1;
+    }
     if($nombre_modulo == 'Frases') $id_modulo = 3;
-
+    
     $estado = ($puntaje >= 70) ? 'Completado' : 'En curso';
     $lecciones = ($puntaje >= 70) ? 1 : 0; 
     $fecha = date("Y-m-d");

@@ -157,91 +157,32 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
 <div class="container">
 
-    <h1>Módulo: Palabras LSM</h1>
+  <?php
+  include("db.php");
 
-    <h2 class="subtitulo">Saludos</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/hola.png" alt="Hola"></div>
-            <div class="info"><h3>Hola</h3><p>Saludo básico usando movimiento desde la frente.</p></div>
+  $query = "SELECT * FROM Contenido WHERE id_Modulo = 2";
+  $resultado = mysqli_query($conexion, $query);
+ ?>
+
+ <div class="grid">
+
+  <?php while($fila = mysqli_fetch_assoc($resultado)) { ?>
+
+    <div class="card">
+        <div class="img-container">
+            <img src="<?php echo $fila['imagen']; ?>">
         </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/adios.png" alt="Adiós"></div>
-            <div class="info"><h3>Adiós</h3><p>Movimiento de despedida con la mano.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/buen_dia.png" alt="Buen día"></div>
-            <div class="info"><h3>Buen día</h3><p>Se combina “bien” con el gesto de día.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/buenas_noches.png" alt="Buenas noches"></div>
-            <div class="info"><h3>Buenas noches</h3><p>Movimiento descendente simulando oscuridad.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/gracias.png" alt="Gracias"></div>
-            <div class="info"><h3>Gracias</h3><p>Mano desde la barbilla hacia adelante.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/por_favor.png" alt="Por favor"></div>
-            <div class="info"><h3>Por favor</h3><p>Movimiento circular en el pecho.</p></div>
+
+        <div class="info">
+            <h3><?php echo $fila['titulo']; ?></h3>
+            <p><?php echo $fila['descripcion']; ?></p>
         </div>
     </div>
 
-    <h2 class="subtitulo">Familia</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/mama.png" alt="Mamá"></div>
-            <div class="info"><h3>Mamá</h3><p>Seña cerca de la mejilla.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/papa.png" alt="Papá"></div>
-            <div class="info"><h3>Papá</h3><p>Se realiza cerca de la frente.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/hermano.png" alt="Hermano"></div>
-            <div class="info"><h3>Hermano</h3><p>Movimiento entre ambas manos.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/hermana.png" alt="Hermana"></div>
-            <div class="info"><h3>Hermana</h3><p>Similar a hermano pero con variación.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/abuelo.png" alt="Abuelo"></div>
-            <div class="info"><h3>Abuelo</h3><p>Movimiento desde la frente hacia adelante.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/hijo.png" alt="Hijo"></div>
-            <div class="info"><h3>Hijo</h3><p>Movimiento desde el vientre hacia adelante.</p></div>
-        </div>
-    </div>
+ <?php } ?>
+</div>
 
-    <h2 class="subtitulo">Números</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/uno.png" alt="Uno"></div>
-            <div class="info"><h3>Uno</h3><p>Dedo índice levantado.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/dos.png" alt="Dos"></div>
-            <div class="info"><h3>Dos</h3><p>Índice y medio levantados.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/tres.png" alt="Tres"></div>
-            <div class="info"><h3>Tres</h3><p>Tres dedos levantados.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/cuatro.png" alt="Cuatro"></div>
-            <div class="info"><h3>Cuatro</h3><p>Cuatro dedos extendidos.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/cinco.png" alt="Cinco"></div>
-            <div class="info"><h3>Cinco</h3><p>Mano completamente abierta.</p></div>
-        </div>
-        <div class="card">
-            <div class="img-container"><img src="imag/palabras/diez.png" alt="Diez"></div>
-            <div class="info"><h3>Diez</h3><p>Movimiento del puño cerrado.</p></div>
-        </div>
-    </div>
+</div>
 
     <div class="btn-container">
         <a href="evaluacionPalabras.php" class="btn">Comenzar Evaluación ✨</a>

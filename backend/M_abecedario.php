@@ -154,9 +154,29 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 </header>
 
 <div class="container">
-    <h1>Módulo: Abecedario LSM</h1>
+    <?php
+  include("db.php");
 
-    <div class="palabras-grid" id="grid"></div>
+  $query = "SELECT * FROM Contenido WHERE id_Modulo = 1";
+  $resultado = mysqli_query($conexion, $query);
+ ?>
+
+ <div class="grid">
+
+  <?php while($fila = mysqli_fetch_assoc($resultado)) { ?>
+
+    <div class="card">
+        <div class="img-container">
+            <img src="<?php echo $fila['imagen']; ?>">
+        </div>
+
+        <div class="info">
+            <h3><?php echo $fila['titulo']; ?></h3>
+            <p><?php echo $fila['descripcion']; ?></p>
+        </div>
+    </div>
+
+ <?php } ?>
 
     <div class="btn-container">
         <a href="evaluacion.php" class="btn-ready">Comenzar Evaluación ✨</a>

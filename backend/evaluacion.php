@@ -130,10 +130,22 @@ datos.forEach((p, i) => {
                 <p><strong>Pregunta ${i+1}</strong></p>
                 <p>¿Qué letra es esta?</p>
                 <div class="options-grid">
-                    <label class="option"><input type="radio" name="${p.id}" value="A"> A</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="B"> B</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="C"> C</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="D"> D</label>
+                    <label class="option">
+                    <input type="radio" name="${p.id}" value="${p.correcta}">
+                    ${p.correcta}
+                    </label>
+                    <label class="option">
+                    <input type="radio" name="${p.id}" value="M">
+                    M
+                    </label>
+                    <label class="option">
+                    <input type="radio" name="${p.id}" value="R">
+                    R
+                    </label>
+                    <label class="option">
+                    <input type="radio" name="${p.id}" value="T">
+                    T
+                    </label>
                 </div>
             </div>
         </div>
@@ -172,7 +184,7 @@ function calificar() {
         resultado.innerText = "⚠️ Contesta todas las preguntas antes de finalizar.";
         resultado.style.color = "#ff4757";
         window.scrollTo(0, 0);
-        return; // Detiene la ejecución aquí
+        return;
     }
 
     // CALIFICACIÓN: Si todo está lleno, procesamos resultados
@@ -200,6 +212,21 @@ function calificar() {
     // Ocultar botón solo tras una evaluación completa
     document.getElementById("btnFinalizar").style.display = "none";
     window.scrollTo(0, 0);
+    fetch("g_puntaje.php", {
+    method: "POST",
+    headers: {
+         "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "puntaje=" + porcentaje + "&modulo=Abecedario"
+    })
+     .then(response => response.json())
+     .then(data => {
+         console.log(data);
+        })
+     .catch(error => {
+         console.log(error);
+
+    });
 }
 </script>
 

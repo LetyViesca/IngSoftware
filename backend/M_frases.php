@@ -156,59 +156,34 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
 <div class="container">
 
-    <h1>Módulo: Frases LSM</h1>
+    <?php
+  include("db.php");
 
-    <div class="grid">
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/nombre.png"></div>
-            <div class="info"><h3>¿Cuál es tu nombre?</h3><p>Pregunta usando configuración "L" y señalando a la persona.</p></div>
+  $query = "SELECT * FROM Contenido WHERE id_Modulo = 3";
+  $resultado = mysqli_query($conexion, $query);
+  ?>
+
+  <div class="grid">
+
+  <?php while($fila = mysqli_fetch_assoc($resultado)) { ?>
+
+    <div class="card">
+        <div class="img-container">
+            <img src="<?php echo $fila['imagen']; ?>">
         </div>
 
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/de_nada.png"></div>
-            <div class="info"><h3>De nada</h3><p>Mano abierta desde la barbilla se desliza hacia adelante.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/ayuda.png"></div>
-            <div class="info"><h3>Ayuda</h3><p>Puño cerrado sobre palma abierta, ambas manos suben juntas.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/lo_siento.png"></div>
-            <div class="info"><h3>Lo siento</h3><p>Mano en puño frotando en círculos sobre el pecho.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/sed.png"></div>
-            <div class="info"><h3>Tengo sed</h3><p>Dedos en "V" desde la garganta bajan por el cuello.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/con_permiso.png"></div>
-            <div class="info"><h3>Con permiso</h3><p>Mano en "5" pasa entre índice y medio de la otra mano.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/de_donde.png"></div>
-            <div class="info"><h3>¿De dónde eres?</h3><p>Dedos índice y pulgar juntos tocan la barbilla y luego apuntan al frente.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/cuanto_cuesta.png"></div>
-            <div class="info"><h3>¿Cuánto cuesta?</h3><p>Ambas manos en "O" chocan varias veces.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/enfermo.png"></div>
-            <div class="info"><h3>Estoy enfermo</h3><p>Mano en la frente y otra en el estómago.</p></div>
-        </div>
-
-        <div class="card">
-            <div class="img-container"><img src="imag/frases/me_gusta.png"></div>
-            <div class="info"><h3>Me gusta</h3><p>Mano desde el pecho hacia adelante con sonrisa.</p></div>
+        <div class="info">
+            <h3><?php echo $fila['titulo']; ?></h3>
+            <p><?php echo $fila['descripcion']; ?></p>
         </div>
     </div>
+
+ <?php } ?>
+
+     
+</div>
+
+</div>
 
     <div class="btn-container">
         <a href="evaluacionFrases.php" class="btn">Evaluación ✨</a>

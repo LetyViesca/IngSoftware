@@ -1,14 +1,25 @@
 <?php
-// 1. INICIO DE SESIÓN Y SEGURIDAD
 session_start();
+include("db.php");
 
-// Si el usuario no tiene una sesión activa, lo mandamos al login
-if (!isset($_SESSION['nombre_usuario'])) {
+if (!isset($_SESSION['id_usuario'])) {
     header("Location: login.php");
     exit();
 }
 
+$id_usuario = $_SESSION['id_usuario'];
 $nombre_usuario = $_SESSION['nombre_usuario'];
+echo $id_usuario;
+
+$query = "
+SELECT Progreso.*, Modulo.nombre_modulo
+FROM Progreso
+INNER JOIN Modulo 
+ON Progreso.id_Modulo = Modulo.id_Modulo
+WHERE Progreso.id_Usuario = $id_usuario
+";
+
+$resultado = mysqli_query($conexion, $query);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -118,29 +129,34 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
     <h2>Tu Progreso en ZIGNA</h2>
 
-    <div id="abecedario" class="modulo-card">
-        <h3>Abecedario</h3>
-        <div class="progress-bar">
-            <div class="progress-fill" id="bar-abecedario"></div>
-        </div>
-        <div class="estado" id="estado-abecedario">Cargando...</div>
+    <div class="grid-progreso">
+
+ <?php while($fila = mysqli_fetch_assoc($resultado)) { ?>
+
+    <div class="modulo-card">
+
+        <h2><?php echo $fila['nombre_modulo']; ?></h2>
+
+        <p>
+            Estado:
+            <?php echo $fila['estado']; ?>
+        </p>
+
+        <p>
+            Lecciones completadas:
+            <?php echo $fila['lecciones_completadas']; ?>
+        </p>
+
+        <p>
+            Último acceso:
+            <?php echo $fila['fecha_ultimo_acceso']; ?>
+        </p>
+
     </div>
 
-    <div id="palabras" class="modulo-card">
-        <h3>Palabras Clave</h3>
-        <div class="progress-bar">
-            <div class="progress-fill" id="bar-palabras"></div>
-        </div>
-        <div class="estado" id="estado-palabras">Cargando...</div>
-    </div>
+ <?php } ?>
 
-    <div id="frases" class="modulo-card">
-        <h3>Frases Cotidianas</h3>
-        <div class="progress-bar">
-            <div class="progress-fill" id="bar-frases"></div>
-        </div>
-        <div class="estado" id="estado-frases">Cargando...</div>
-    </div>
+</div>
 
 </div>
 
