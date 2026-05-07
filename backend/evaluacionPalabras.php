@@ -149,20 +149,46 @@ const datos = [
     { id:'p10', correcta:'Diez', img:'imag/palabras/diez.png' }
 ];
 
+// Todas las respuestas posibles
+const opcionesGenerales = datos.map(p => p.correcta);
+
+// Función para mezclar opciones
+function mezclar(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
 const contenedor = document.getElementById("preguntas");
 datos.forEach((p, i) => {
+
+    // Obtener 3 respuestas incorrectas
+    let incorrectas = opcionesGenerales.filter(op => op !== p.correcta);
+
+    incorrectas = mezclar(incorrectas).slice(0, 3);
+
+    // Combinar correcta + incorrectas
+    let opciones = [...incorrectas, p.correcta];
+
+    // Mezclar opciones finales
+    opciones = mezclar(opciones);
+
     contenedor.innerHTML += `
     <div class="question-card" id="card-${p.id}">
         <div class="question-header">
             <img src="${p.img}" class="question-img" alt="Seña">
+
             <div style="flex:1;">
                 <p><strong>Pregunta ${i+1}</strong></p>
                 <p>¿Qué palabra representa esta seña?</p>
+
                 <div class="options-grid">
-                    <label class="option"><input type="radio" name="${p.id}" value="${p.correcta}"> ${p.correcta}</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="Incorrecta A"> Opción B</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="Incorrecta B"> Opción C</label>
-                    <label class="option"><input type="radio" name="${p.id}" value="Incorrecta C"> Opción D</label>
+
+                    ${opciones.map(op => `
+                        <label class="option">
+                            <input type="radio" name="${p.id}" value="${op}">
+                            ${op}
+                        </label>
+                    `).join('')}
+
                 </div>
             </div>
         </div>

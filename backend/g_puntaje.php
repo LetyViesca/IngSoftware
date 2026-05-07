@@ -25,15 +25,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $estado = ($puntaje >= 70) ? 'Completado' : 'En curso';
     $lecciones = ($puntaje >= 70) ? 1 : 0; 
     $fecha = date("Y-m-d");
+    
+    $sql_verificar = "SELECT * FROM Progreso 
+                  WHERE id_Usuario = '$id_usuario'
+                  AND id_Modulo = '$id_modulo'";
 
-    // Query ajustada a tus columnas (RF-08)
-    $sql = "INSERT INTO Progreso (fecha_ultimo_acceso, lecciones_completadas, estado, id_Usuario, id_Modulo) 
-            VALUES ('$fecha', '$lecciones', '$estado', '$id_usuario', '$id_modulo')
-            ON DUPLICATE KEY UPDATE 
+    $resultado_verificar = mysqli_query($conexion, $sql_verificar);
+
+    if(mysqli_num_rows($resultado_verificar) > 0){
+
+    // ACTUALIZAR registro existente
+    $sql = "UPDATE Progreso 
+            SET 
             fecha_ultimo_acceso = '$fecha',
-            estado = '$estado',
-            lecciones_completadas = '$lecciones'";
+            lecciones_completadas = '$lecciones',
+            estado = '$estado'
+            WHERE id_Usuario = '$id_usuario'
+            AND id_Modulo = '$id_modulo'";
 
+} else {
+
+    // INSERTAR nuevo registro
+    $sql = "INSERT INTO Progreso 
+            (fecha_ultimo_acceso, lecciones_completadas, estado, id_Usuario, id_Modulo)
+            VALUES 
+            ('$fecha', '$lecciones', '$estado', '$id_usuario', '$id_modulo')";
+}
     if (mysqli_query($conexion, $sql)) {
         echo json_encode(["status" => "success", "estado" => $estado]);
     } else {
