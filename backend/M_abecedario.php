@@ -1,0 +1,214 @@
+<?php
+// 1. CONTROL DE SESIÓN Y SEGURIDAD
+session_start();
+
+// Validamos que el usuario esté autenticado para proteger el contenido del módulo
+if (!isset($_SESSION['nombre_usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$nombre_usuario = $_SESSION['nombre_usuario'];
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIGNA - Abecedario LSM</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f5f7fa; }
+
+        /* ===== HEADER REUTILIZABLE ===== */
+        header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
+        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .main-logo { height: 35px; }
+        .nav-menu { list-style: none; display: flex; gap: 15px; font-size: 14px; }
+        .nav-menu a { text-decoration: none; color: #333; transition: 0.3s; }
+        .nav-menu a:hover { color: #8a4fff; }
+
+        .user-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .user-name { font-size: 13px; font-weight: 600; color: #555; }
+
+        /* ===== CONTENIDO ===== */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0 30px;
+            color: #333;
+        }
+
+        .palabras-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card-palabra {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: 0.25s;
+        }
+
+        .card-palabra:hover { transform: translateY(-4px); }
+
+        .img-container {
+            height: 150px;
+            background: #fff;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(138, 79, 255, 0.1);
+            color: #8a4fff;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .info-palabra {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .info-palabra h3 {
+            color: #8a4fff;
+            margin-bottom: 6px;
+            font-size: 20px;
+        }
+
+        .info-palabra p {
+            font-size: 12px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .btn-ready {
+            display: inline-block;
+            margin: 30px auto 40px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #8a4fff, #ff007a);
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-ready:hover { opacity: 0.9; transform: scale(1.05); }
+        .btn-container { text-align: center; }
+
+        @media (max-width: 768px) { .palabras-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .palabras-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="inicio.php">
+            <img src="imag/Logo_Zigna.png" class="main-logo" alt="Logo Zigna">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="inicio.php">Inicio</a></li>
+            <li><a href="modulos.php">Módulos</a></li>
+            <li><a href="progreso.php">Progreso</a></li>
+        </ul>
+
+        <div class="user-box">
+            <span class="user-name">Hola, <?php echo htmlspecialchars($nombre_usuario); ?></span>
+            <a href="logout.php" style="text-decoration:none; color:#666; font-size: 13px;">Cerrar sesión</a>
+            <div style="background:#ff007a;width:35px;height:35px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;">👤</div>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="palabras-grid" id="grid"></div>
+
+    <div class="btn-container">
+        <a href="evaluacion.php" class="btn-ready">Comenzar Evaluación ✨</a>
+    </div>
+</div>
+
+<script>
+const letras = [
+    ["A","Se cierra la mano con los dedos juntos, se muestran las uñas y el pulgar se coloca a un lado."],
+    ["B","La mano se coloca abierta con los dedos juntos y estirados, el pulgar doblado hacia la palma."],
+    ["C","Los dedos y el pulgar se curvan formando la figura de la letra C."],
+    ["D","El dedo índice se mantiene estirado mientras los demás dedos se unen con el pulgar."],
+    ["E","Los dedos se doblan completamente hacia la palma mostrando las uñas."],
+    ["F","El dedo índice toca el pulgar formando un círculo, los demás dedos permanecen estirados."],
+    ["G","El pulgar y el índice se mantienen estirados en forma horizontal."],
+    ["H","El índice y el medio se mantienen estirados y juntos en posición horizontal."],
+    ["I","El dedo meñique se mantiene estirado mientras los demás permanecen cerrados."],
+    ["J","Con el dedo meñique estirado se traza en el aire la forma de la letra J."],
+    ["K","El pulgar, índice y medio se estiran formando una figura similar a la letra K."],
+    ["L","El pulgar y el índice forman un ángulo recto simulando la letra L."],
+    ["M","Tres dedos se colocan sobre el pulgar cerrado."],
+    ["N","Dos dedos se colocan sobre el pulgar cerrado."],
+    ["Ñ","Se realiza el mismo gesto que la N pero con un movimiento lateral."],
+    ["O","Todos los dedos se juntan formando un círculo."],
+    ["P","Se forma como la K pero inclinada hacia abajo."],
+    ["Q","La mano adopta una forma similar a una garra con movimiento hacia abajo."],
+    ["R","El índice y el medio se cruzan entre sí."],
+    ["S","Se cierra el puño con el pulgar por fuera."],
+    ["T","El pulgar se coloca entre el índice y el medio."],
+    ["U","El índice y el medio se mantienen juntos y estirados."],
+    ["V","El índice y el medio se separan formando una V."],
+    ["W","Tres dedos se mantienen estirados y separados."],
+    ["X","El índice se curva formando un gancho."],
+    ["Y","El pulgar y el meñique se estiran mientras los demás permanecen cerrados."],
+    ["Z","Con el dedo índice se dibuja la forma de la letra Z en el aire."]
+];
+
+const grid = document.getElementById("grid");
+
+letras.forEach(l => {
+    grid.innerHTML += `
+    <div class="card-palabra">
+        <div class="img-container">
+            <span class="badge">Dactilología</span>
+            <img src="imag/abecedario/${l[0].toLowerCase()}.png" alt="Letra ${l[0]}">
+        </div>
+        <div class="info-palabra">
+            <h3>${l[0]}</h3>
+            <p>${l[1]}</p>
+        </div>
+    </div>
+    `;
+});
+</script>
+
+</body>
+</html>
