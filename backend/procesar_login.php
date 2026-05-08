@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['nombre_usuario'] = $usuario['nombres'];
             
             // Redirigimos al inicio (asumiendo que inicio.php está en la raíz o backend)
-            header("Location: inicio.php"); 
+            header("Location: ../frontend/inicio.php"); 
             exit();
         } else {
             header("Location: ../frontend/login.php?error=La contraseña es incorrecta");
