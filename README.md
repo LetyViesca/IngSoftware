@@ -1,97 +1,148 @@
 # ZIGNA
 
-ZIGNA es una plataforma web diseñada para apoyar el aprendizaje de la Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, acceder a contenidos educativos (alfabeto, palabras y frases), realizar evaluaciones y dar seguimiento a su progreso.
+## Descripción del proyecto
+ZIGNA es una plataforma web educativa enfocada en el aprendizaje de Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, iniciar sesión, acceder a módulos educativos, realizar evaluaciones y visualizar su progreso.
 
+---
 
-## Tecnologías Utilizadas
+## Tecnologías utilizadas
 
-* Frontend: HTML, CSS, JavaScript
-* Backend: PHP
-* Base de Datos: MySQL
-* Servidor Local: XAMPP
+- Frontend: HTML, CSS, JavaScript
+- Backend: PHP
+- Base de datos: MySQL
+- Servidor local: XAMPP
 
+---
 
-##  Instrucciones de Ejecución
+## Estructura del proyecto
 
-Para ejecutar el sistema de manera local, seguir los siguientes pasos:
+```plaintext
+ZIGNA/
+│
+├── css/
+├── js/
+├── php/
+├── docs/
+├── index.html
+├── menu.html
+├── modulo.html
+├── evaluacion.html
+├── resultados.html
+└── README.md
+```
+
+---
+
+## 🚀 Instrucciones de instalación y ejecución
 
 1. Instalar XAMPP.
 
-2. Iniciar los servicios de:
-
-   * Apache
-   * MySQL
+2. Iniciar los servicios:
+   - Apache
+   - MySQL
 
 3. Colocar la carpeta del proyecto en:
 
-   C:\xampp\htdocs\
- 
-4. Importar la base de datos:
+```plaintext
+C:\xampp\htdocs\zigna
+```
 
-   * Abrir phpMyAdmin (http://localhost/phpmyadmin)
-   * Crear una base de datos llamada: `zigna`
-   * Importar el archivo `.sql` del proyecto
+4. Abrir phpMyAdmin desde:
 
-5. Configurar la conexión a la base de datos en el archivo PHP correspondiente:
-  php
-   $conexion = new mysqli("localhost", "root", "", "zigna");
-6. Ejecutar el sistema en el navegador:
-   http://localhost/zigna
+```plaintext
+http://localhost/phpmyadmin
+```
 
-##  Arquitectura del Sistema
+5. Crear una base de datos llamada:
 
-El sistema ZIGNA sigue una arquitectura de tres capas:
+```plaintext
+zigna
+```
 
-### 1. Frontend
+6. Importar el archivo `.sql` del proyecto.
 
-Es la interfaz con la que interactúa el usuario. Está desarrollada con HTML, CSS y JavaScript. Aquí se muestran los formularios, módulos y evaluaciones.
+7. Configurar la conexión en PHP:
 
-### 2. Backend (PHP)
+```php
+$conexion = new mysqli("localhost", "root", "", "zigna");
+```
 
-Se encarga de procesar la lógica del sistema, validar datos, gestionar sesiones y comunicarse con la base de datos.
+8. Ejecutar el sistema desde el navegador:
 
-### 3. Base de Datos (MySQL)
+```plaintext
+http://localhost/zigna
+```
 
-Almacena la información del sistema:
+---
 
-* Usuarios registrados
-* Progreso del usuario
-* Resultados de evaluaciones
+## Flujo principal del sistema
 
-### Flujo de comunicación
+1. Registro de usuario.
+2. Inicio de sesión.
+3. Acceso a módulos de aprendizaje.
+4. Visualización de contenido educativo.
+5. Realización de evaluaciones.
+6. Retroalimentación de resultados.
+7. Actualización de progreso.
 
-1. El usuario interactúa con el Frontend.
-2. El Frontend envía solicitudes al Backend.
-3. El Backend procesa la información.
-4. Se consulta o actualiza la Base de Datos.
-5. El Backend responde al Frontend.
-6. El usuario visualiza el resultado.
+---
 
-##  Funcionalidades Principales
+## Usuarios de prueba y configuración de base de datos
 
-* Registro de usuario
-* Inicio de sesión
-* Acceso a módulos de aprendizaje
-* Evaluaciones interactivas
-* Retroalimentación de resultados
-* Seguimiento de progreso
+### Usuario de prueba
+
+```plaintext
+Correo: prueba@zigna.com
+Contraseña: prueba123
+```
+
+### Configuración de base de datos
+
+- Base de datos: `zigna`
+- Usuario MySQL: `root`
+- Puerto por defecto: `3307`
+
+---
+
+## Limitaciones del sistema
+
+- Algunas validaciones avanzadas continúan en desarrollo.
+- No se cuenta con despliegue en servidor de producción.
+- No incluye recuperación de contraseña.
 
 
-##  Reglas del Sistema
+---
 
-## Equipo y roles.
+## Estado actual del proyecto
 
-Renata Flores->Desarrollador.
+### Sprint 4 – Calidad, Refactorización, Requisitos no funcionales y Buenas prácticas.
 
-Valeria García->Diseñador.
+Avance estimado: **70%**
 
-Dannia Hernández->Analista.
+### Funcionalidades implementadas
 
-Blanca Ruiz->Coordinador.
+- Interfaces principales
+- Navegación entre pantallas
+- Módulos educativos
+- Evaluaciones básicas
+- Validaciones iniciales
 
-Leticia Viesca->Tester.
+### Funcionalidades pendientes
+
+- Integración de Requisitos No Funcionales y Validaciones de Seguridad
+  
+
+---
+
+## Equipo y roles
+
+- Renata Flores → QA
+- Valeria García → Analista
+- Dannia Hernández → Desarrollador
+- Blanca Ruiz → Diseñador
+- Leticia Viesca → Cordinador
 
 
 ## Estado del Proyecto: 
 
-En desarrollo (Desarrollo del sistema).
+Evolucionar del "¿Funciona?" al "¿Funciona bien y puede defenderse técnicamente?".
