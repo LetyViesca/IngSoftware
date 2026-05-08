@@ -1,148 +1,135 @@
-# ZIGNA
-
-## Descripción del proyecto
-ZIGNA es una plataforma web educativa enfocada en el aprendizaje de Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, iniciar sesión, acceder a módulos educativos, realizar evaluaciones y visualizar su progreso.
-
----
-
-## Tecnologías utilizadas
-
-- Frontend: HTML, CSS, JavaScript
-- Backend: PHP
-- Base de datos: MySQL
-- Servidor local: XAMPP
-
----
-
-## Estructura del proyecto
-
-```plaintext
-ZIGNA/
-│
-├── css/
-├── js/
-├── php/
-├── docs/
-├── index.html
-├── menu.html
-├── modulo.html
-├── evaluacion.html
-├── resultados.html
-└── README.md
-```
-
----
-
-## 🚀 Instrucciones de instalación y ejecución
-
-1. Instalar XAMPP.
-
-2. Iniciar los servicios:
-   - Apache
-   - MySQL
-
-3. Colocar la carpeta del proyecto en:
-
-```plaintext
-C:\xampp\htdocs\zigna
-```
-
-4. Abrir phpMyAdmin desde:
-
-```plaintext
-http://localhost/phpmyadmin
-```
-
-5. Crear una base de datos llamada:
-
-```plaintext
-zigna
-```
-
-6. Importar el archivo `.sql` del proyecto.
-
-7. Configurar la conexión en PHP:
-
-```php
-$conexion = new mysqli("localhost", "root", "", "zigna");
-```
-
-8. Ejecutar el sistema desde el navegador:
-
-```plaintext
-http://localhost/zigna
-```
-
----
-
-## Flujo principal del sistema
-
-1. Registro de usuario.
-2. Inicio de sesión.
-3. Acceso a módulos de aprendizaje.
-4. Visualización de contenido educativo.
-5. Realización de evaluaciones.
-6. Retroalimentación de resultados.
-7. Actualización de progreso.
-
----
-
-## Usuarios de prueba y configuración de base de datos
-
-### Usuario de prueba
-
-```plaintext
-Correo: prueba@zigna.com
-Contraseña: prueba123
-```
-
-### Configuración de base de datos
-
-- Base de datos: `zigna`
-- Usuario MySQL: `root`
-- Puerto por defecto: `3307`
-
----
-
-## Limitaciones del sistema
-
-- Algunas validaciones avanzadas continúan en desarrollo.
-- No se cuenta con despliegue en servidor de producción.
-- No incluye recuperación de contraseña.
+ZIGNA
 
 
----
 
-## Estado actual del proyecto
+ZIGNA es una plataforma web diseñada para apoyar el aprendizaje de la Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, acceder a contenidos educativos (alfabeto, palabras y frases), realizar evaluaciones y dar seguimiento a su progreso.
 
-### Sprint 4 – Calidad, Refactorización, Requisitos no funcionales y Buenas prácticas.
-
-Avance estimado: **70%**
-
-### Funcionalidades implementadas
-
-- Interfaces principales
-- Navegación entre pantallas
-- Módulos educativos
-- Evaluaciones básicas
-- Validaciones iniciales
-
-### Funcionalidades pendientes
-
-- Integración de Requisitos No Funcionales y Validaciones de Seguridad
-  
-
----
-
-## Equipo y roles
-
-- Renata Flores → QA
-- Valeria García → Analista
-- Dannia Hernández → Desarrollador
-- Blanca Ruiz → Diseñador
-- Leticia Viesca → Cordinador
+Tecnologías Utilizadas
 
 
-## Estado del Proyecto: 
 
-Evolucionar del "¿Funciona?" al "¿Funciona bien y puede defenderse técnicamente?".
+Frontend: HTML, CSS, JavaScript
+
+Backend: PHP
+
+Base de Datos: MySQL
+
+Servidor Local: XAMPP
+
+Instrucciones de Ejecución
+
+
+
+Para ejecutar el sistema de manera local, seguir los siguientes pasos:
+
+Instalar XAMPP.
+
+
+
+Iniciar los servicios de:
+
+Apache
+
+MySQL
+
+Colocar la carpeta del proyecto en:
+
+C:\xampp\htdocs\
+
+Importar la base de datos:
+
+Abrir phpMyAdmin (http://localhost/phpmyadmin)
+
+Crear una base de datos llamada: zigna
+
+Importar el archivo .sql del proyecto
+
+Configurar la conexión a la base de datos en el archivo PHP correspondiente: php $conexion = new mysqli("localhost", "root", "", "zigna");
+
+Ejecutar el sistema en el navegador: http://localhost/zigna
+
+Arquitectura del Sistema
+
+
+
+El sistema ZIGNA sigue una arquitectura de tres capas:
+
+1. Frontend
+
+
+
+Es la interfaz con la que interactúa el usuario. Está desarrollada con HTML, CSS y JavaScript. Aquí se muestran los formularios, módulos y evaluaciones.
+
+2. Backend (PHP)
+
+
+
+Se encarga de procesar la lógica del sistema, validar datos, gestionar sesiones y comunicarse con la base de datos.
+
+3. Base de Datos (MySQL)
+
+
+
+Almacena la información del sistema:
+
+Usuarios registrados
+
+Progreso del usuario
+
+Resultados de evaluaciones
+
+Flujo de comunicación
+
+
+
+El usuario interactúa con el Frontend.
+
+El Frontend envía solicitudes al Backend.
+
+El Backend procesa la información.
+
+Se consulta o actualiza la Base de Datos.
+
+El Backend responde al Frontend.
+
+El usuario visualiza el resultado.
+
+Funcionalidades Principales
+
+
+
+Registro de usuario
+
+Inicio de sesión
+
+Acceso a módulos de aprendizaje
+
+Evaluaciones interactivas
+
+Retroalimentación de resultados
+
+Seguimiento de progreso
+
+Reglas del Sistema
+
+
+
+Equipo y roles.
+
+
+
+Renata Flores->Desarrollador.
+
+Valeria García->Diseñador.
+
+Dannia Hernández->Analista.
+
+Blanca Ruiz->Coordinador.
+
+Leticia Viesca->Tester.
+
+Estado del Proyecto:
+
+
+
+En desarrollo (Desarrollo del sistema).
