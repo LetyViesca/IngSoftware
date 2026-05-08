@@ -1,122 +1,85 @@
-ZIGNA
-
-
+# ZIGNA
 
 ZIGNA es una plataforma web diseñada para apoyar el aprendizaje de la Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, acceder a contenidos educativos (alfabeto, palabras y frases), realizar evaluaciones y dar seguimiento a su progreso.
 
-Tecnologías Utilizadas
+
+## Tecnologías Utilizadas
+
+* Frontend: HTML, CSS, JavaScript
+* Backend: PHP
+* Base de Datos: MySQL
+* Servidor Local: XAMPP
 
 
-
-Frontend: HTML, CSS, JavaScript
-
-Backend: PHP
-
-Base de Datos: MySQL
-
-Servidor Local: XAMPP
-
-Instrucciones de Ejecución
-
-
+##  Instrucciones de Ejecución
 
 Para ejecutar el sistema de manera local, seguir los siguientes pasos:
 
-Instalar XAMPP.
+1. Instalar XAMPP.
 
+2. Iniciar los servicios de:
 
+   * Apache
+   * MySQL
 
-Iniciar los servicios de:
+3. Colocar la carpeta del proyecto en:
 
-Apache
+   C:\xampp\htdocs\
+ 
+4. Importar la base de datos:
 
-MySQL
+   * Abrir phpMyAdmin (http://localhost/phpmyadmin)
+   * Crear una base de datos llamada: `zigna`
+   * Importar el archivo `.sql` del proyecto
 
-Colocar la carpeta del proyecto en:
+5. Configurar la conexión a la base de datos en el archivo PHP correspondiente:
+  php
+   $conexion = new mysqli("localhost", "root", "", "zigna");
+6. Ejecutar el sistema en el navegador:
+   http://localhost/zigna
 
-C:\xampp\htdocs\
-
-Importar la base de datos:
-
-Abrir phpMyAdmin (http://localhost/phpmyadmin)
-
-Crear una base de datos llamada: zigna
-
-Importar el archivo .sql del proyecto
-
-Configurar la conexión a la base de datos en el archivo PHP correspondiente: php $conexion = new mysqli("localhost", "root", "", "zigna");
-
-Ejecutar el sistema en el navegador: http://localhost/zigna
-
-Arquitectura del Sistema
-
-
+##  Arquitectura del Sistema
 
 El sistema ZIGNA sigue una arquitectura de tres capas:
 
-1. Frontend
-
-
+### 1. Frontend
 
 Es la interfaz con la que interactúa el usuario. Está desarrollada con HTML, CSS y JavaScript. Aquí se muestran los formularios, módulos y evaluaciones.
 
-2. Backend (PHP)
-
-
+### 2. Backend (PHP)
 
 Se encarga de procesar la lógica del sistema, validar datos, gestionar sesiones y comunicarse con la base de datos.
 
-3. Base de Datos (MySQL)
-
-
+### 3. Base de Datos (MySQL)
 
 Almacena la información del sistema:
 
-Usuarios registrados
+* Usuarios registrados
+* Progreso del usuario
+* Resultados de evaluaciones
 
-Progreso del usuario
+### Flujo de comunicación
 
-Resultados de evaluaciones
+1. El usuario interactúa con el Frontend.
+2. El Frontend envía solicitudes al Backend.
+3. El Backend procesa la información.
+4. Se consulta o actualiza la Base de Datos.
+5. El Backend responde al Frontend.
+6. El usuario visualiza el resultado.
 
-Flujo de comunicación
+##  Funcionalidades Principales
 
-
-
-El usuario interactúa con el Frontend.
-
-El Frontend envía solicitudes al Backend.
-
-El Backend procesa la información.
-
-Se consulta o actualiza la Base de Datos.
-
-El Backend responde al Frontend.
-
-El usuario visualiza el resultado.
-
-Funcionalidades Principales
+* Registro de usuario
+* Inicio de sesión
+* Acceso a módulos de aprendizaje
+* Evaluaciones interactivas
+* Retroalimentación de resultados
+* Seguimiento de progreso
 
 
+##  Reglas del Sistema
 
-Registro de usuario
-
-Inicio de sesión
-
-Acceso a módulos de aprendizaje
-
-Evaluaciones interactivas
-
-Retroalimentación de resultados
-
-Seguimiento de progreso
-
-Reglas del Sistema
-
-
-
-Equipo y roles.
-
-
+## Equipo y roles.
 
 Renata Flores->Desarrollador.
 
@@ -128,8 +91,7 @@ Blanca Ruiz->Coordinador.
 
 Leticia Viesca->Tester.
 
-Estado del Proyecto:
 
-
+## Estado del Proyecto: 
 
 En desarrollo (Desarrollo del sistema).
