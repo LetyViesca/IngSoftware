@@ -3,27 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ZIGNA - Registro</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Segoe UI', sans-serif; 
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
-            height: 100vh; display: flex; align-items: center; justify-content: center; 
-        }
-        .login-card {
-            background: white; padding: 30px 40px; border-radius: 30px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center;
-        }
-        .logo-login { height: 45px; margin-bottom: 15px; }
-        .input-group { text-align: left; margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; color: #555; }
-        input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; outline: none; }
-        .btn-login {
-            width: 100%; background: #8a4fff; color: white; border: none;
-            padding: 14px; border-radius: 12px; font-weight: bold; cursor: pointer;
-        }
-        .error-msg { background-color: #fff5f5; color: #ff007a; padding: 10px; border-radius: 8px; border: 1px solid #ff007a; margin-bottom: 15px; font-size: 13px; }
-    </style>
+    <link rel="stylesheet" href="estilos_registro.css">
 </head>
 <body>
 
@@ -65,4 +45,3 @@
     </div>
 </body>
 </html>
-// cambio para git
