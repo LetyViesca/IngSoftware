@@ -15,8 +15,12 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Evaluación</title>
-
     <link rel="stylesheet" href="styles.css">
+    <script src="script_abc.js"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/script_abc.js"></script>
+    
 </head>
 
 <body>
