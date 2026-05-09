@@ -1,4 +1,4 @@
-/* --- CONFIGURACIÓN GLOBAL ZIGNA (VUELVE TU DISEÑO ORIGINAL) --- */
+/* --- CONFIGURACIÓN GLOBAL ZIGNA --- */
 * { 
     box-sizing: border-box; 
     margin: 0; 
@@ -7,11 +7,12 @@
 
 body { 
     font-family: 'Segoe UI', sans-serif; 
-    background: linear-gradient(135deg, #fcfcfc 0%, #fcfcfc 100%);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh; 
     width: 100%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
 /* --- TARJETAS (LOGIN Y REGISTRO) --- */
@@ -23,16 +24,39 @@ body {
     max-width: 380px; 
     box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
     text-align: center;
-    margin: auto; 
+    margin: auto; /* Centrado automático para pantallas de acceso */
 }
 
 .logo-login { height: 45px; margin-bottom: 15px; }
 h2 { color: #333; margin-bottom: 5px; }
 
-/* --- FORMULARIOS --- */
-.form-group, .input-group { margin-bottom: 15px; text-align: left; position: relative; }
+/* --- FORMULARIOS Y EL OJO --- */
+.form-group, .input-group { 
+    margin-bottom: 15px; 
+    text-align: left; 
+    position: relative; /* Clave para que el ojo se posicione bien */
+}
+
 label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; color: #555; }
-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; outline: none; }
+
+input { 
+    width: 100%; 
+    padding: 12px; 
+    padding-right: 40px; /* Espacio para que el texto no choque con el ojo */
+    border: 1px solid #ddd; 
+    border-radius: 12px; 
+    outline: none; 
+}
+
+.show-pass { 
+    position: absolute; 
+    right: 12px; 
+    bottom: 12px; /* Alineado con el centro del input */
+    cursor: pointer; 
+    color: #8a4fff; 
+    font-size: 14px;
+    z-index: 10;
+}
 
 .btn-login { 
     width: 100%; background: #8a4fff; color: white; border: none; 
@@ -52,6 +76,7 @@ header {
     background: white; 
     padding: 10px 5%; 
     border-bottom: 1px solid #f0f0f0; 
+    width: 100%; 
 }
 
 nav { 
@@ -69,7 +94,8 @@ nav {
     font-size: 14px; 
 }
 
-.nav-menu a { text-decoration: none; color: #333; }
+.nav-menu a { text-decoration: none; color: #333; transition: 0.3s; }
+.nav-menu a:hover { color: #8a4fff; }
 
 .user-box { display: flex; align-items: center; gap: 15px; }
 .user-name { font-size: 13px; font-weight: 600; color: #555; }
@@ -85,15 +111,17 @@ nav {
     padding: 20px 25px; 
     border-radius: 20px; 
     border: 1px solid #eee; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02); 
 }
 .zigna-text { color: #8a4fff; font-weight: bold; }
 
-/* --- GRID DE MÓDULOS (ESTILO IMAGEN 1) --- */
+/* --- GRID DE MÓDULOS --- */
 .learning-guide { padding: 10px 5% 30px; }
 .card-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     gap: 20px; 
+    align-items: stretch; /* Mismo alto para todas */
 }
 
 .module-card {
@@ -101,9 +129,12 @@ nav {
     border-radius: 20px; 
     overflow: hidden;
     border: 1px solid #eee; 
+    transition: 0.3s;
     display: flex;
     flex-direction: column;
 }
+
+.module-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.05); }
 
 /* --- IMÁGENES --- */
 .img-container { 
@@ -111,6 +142,7 @@ nav {
     width: 100%; 
     height: 160px; 
     background: #f9f9f9; 
+    overflow: hidden; 
 }
 
 .card-img { 
@@ -128,7 +160,7 @@ nav {
     font-weight: bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* --- ALINEACIÓN DE BOTONES --- */
+/* --- INFO Y BOTONES ALINEADOS --- */
 .card-info { 
     padding: 20px; 
     display: flex;
@@ -141,8 +173,8 @@ nav {
 .card-info p { 
     font-size: 13px; 
     color: #666; 
-    margin-bottom: 15px; 
-    flex-grow: 1; /* Esto empuja el botón al fondo */
+    margin-bottom: 20px; 
+    flex-grow: 1; /* Empuja el botón al final */
 }
 
 .btn-card {
@@ -153,6 +185,7 @@ nav {
     color: white; 
     font-weight: bold; 
     cursor: pointer;
+    transition: 0.3s;
     text-align: center;
     text-decoration: none;
 }
@@ -160,4 +193,224 @@ nav {
 /* --- RESPONSIVE --- */
 @media (max-width: 900px) { 
     .card-grid { grid-template-columns: 1fr; } 
+    nav { flex-direction: column; gap: 10px; }
+}
+
+/* ===== MÓDULO ABECEDARIO ===== */
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.titulo-modulo {
+    text-align: center;
+    margin: 20px 0 30px;
+    color: #333;
+}
+
+.palabras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card-palabra {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.25s;
+}
+
+.card-palabra:hover {
+    transform: translateY(-4px);
+}
+
+.img-palabra-container {
+    height: 150px;
+    background: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.img-palabra-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.badge-palabra {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(138, 79, 255, 0.1);
+    color: #8a4fff;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.info-palabra {
+    padding: 12px;
+    text-align: center;
+}
+
+.info-palabra h3 {
+    color: #8a4fff;
+    margin-bottom: 6px;
+    font-size: 20px;
+}
+
+.info-palabra p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.4;
+}
+
+.btn-ready {
+    display: inline-block;
+    margin: 30px auto 40px;
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-ready:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.btn-container {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .palabras-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .palabras-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== EVALUACIÓN ===== */
+
+.evaluacion-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 40px;
+}
+
+.evaluacion-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.question-card {
+    width: 100%;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.question-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.question-header > div {
+    flex: 1;
+}
+
+.question-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background: #eee;
+    border-radius: 10px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.option {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block;
+}
+
+.error {
+    border: 2px solid #ff4757 !important;
+    background-color: #fff5f5;
+}
+
+.correct {
+    border: 2px solid #2ecc71 !important;
+}
+
+.incorrect {
+    border: 2px solid #ff4757 !important;
+}
+
+.resultado {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.btn-main {
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.evaluacion-btn-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-back {
+    margin-bottom: 20px;
+}
+.option-content{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.option-content input[type="radio"]{
+    width:auto;
+    margin:0;
 }

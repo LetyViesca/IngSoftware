@@ -30,8 +30,8 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
-            <li><a href="modulos.php">Módulos</a></li>
-            <li><a href="progreso.php">Progreso</a></li>
+            <li><a href="../backend/modulos.php">Módulos</a></li>
+            <li><a href="../backend/progreso.php">Progreso</a></li>
         </ul>
 
         <div class="user-box">
@@ -89,7 +89,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                     <p style="font-size:13px; color:#666; margin:10px 0;">
                         Aprende palabras básicas y vocabulario esencial del día a día.
                     </p>
-                    <a href="M_palabras.php" style="text-decoration: none;">
+                    <a href="../backend/M_palabras.php" style="text-decoration: none;">
                         <button class="btn-card" style="background:#00c2a8">
                             ▶ Seguir aprendiendo
                         </button>
@@ -107,7 +107,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                     <p style="font-size:13px; color:#666; margin:10px 0;">
                         Comienza a comunicarte usando frases completas y expresiones.
                     </p>
-                    <a href="M_frases.php" style="text-decoration: none;">
+                    <a href="../backend/M_frases.php" style="text-decoration: none;">
                         <button class="btn-card" style="background:#ff007a">
                             ▶ Seguir aprendiendo
                         </button>
