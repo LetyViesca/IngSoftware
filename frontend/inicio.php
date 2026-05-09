@@ -1,24 +1,11 @@
-<?php
-// 1. CONTROL DE SESIÓN Y SEGURIDAD
-session_start();
-
-// Si el usuario no tiene una sesión activa, lo redirigimos al login
-// Nota: login.php ahora debe estar en la misma carpeta (frontend)
-if (!isset($_SESSION['nombre_usuario'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// Guardamos el nombre para usarlo en el saludo
-$nombre_usuario = $_SESSION['nombre_usuario'];
-?>
+<?php include("../backend/auth.php"); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Inicio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -49,12 +36,8 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <main>
     <section class="hero-section">
         <div class="hero-card">
-            <h1>
-                Sigue el aprendizaje en <span class="zigna-text">ZIGNA</span>
-            </h1>
-            <p style="color:#666;">
-                Aprende Lengua de Señas Mexicana y mejora tu comunicación de manera interactiva.
-            </p>
+            <h1>Sigue el aprendizaje en <span class="zigna-text">ZIGNA</span></h1>
+            <p style="color:#666;">Aprende Lengua de Señas Mexicana de manera interactiva.</p>
         </div>
     </section>
 
@@ -68,13 +51,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                 </div>
                 <div class="card-info">
                     <h3>El Abecedario</h3>
-                    <p style="font-size:13px; color:#666; margin:10px 0;">
-                        Aprende cada letra para deletrear nombres y palabras comunes.
-                    </p>
-                    <a href="M_abecedario.php" style="text-decoration: none;">
-                        <button class="btn-card" style="background:#8a4fff">
-                            ▶ Seguir aprendiendo
-                        </button>
+                    <p>Aprende cada letra para deletrear nombres y palabras comunes.</p>
+                    <a href="m_abecedario.php">
+                        <button class="btn-card" style="background:#8a4fff">▶ Seguir aprendiendo</button>
                     </a>
                 </div>
             </div>
@@ -86,13 +65,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                 </div>
                 <div class="card-info">
                     <h3>Palabras Clave</h3>
-                    <p style="font-size:13px; color:#666; margin:10px 0;">
-                        Aprende palabras básicas y vocabulario esencial del día a día.
-                    </p>
-                    <a href="M_palabras.php" style="text-decoration: none;">
-                        <button class="btn-card" style="background:#00c2a8">
-                            ▶ Seguir aprendiendo
-                        </button>
+                    <p>Aprende vocabulario esencial del día a día.</p>
+                    <a href="m_palabras.php">
+                        <button class="btn-card" style="background:#00c2a8">▶ Seguir aprendiendo</button>
                     </a>
                 </div>
             </div>
@@ -104,13 +79,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                 </div>
                 <div class="card-info">
                     <h3>Frases Cotidianas</h3>
-                    <p style="font-size:13px; color:#666; margin:10px 0;">
-                        Comienza a comunicarte usando frases completas y expresiones.
-                    </p>
-                    <a href="M_frases.php" style="text-decoration: none;">
-                        <button class="btn-card" style="background:#ff007a">
-                            ▶ Seguir aprendiendo
-                        </button>
+                    <p>Comienza a comunicarte usando frases completas.</p>
+                    <a href="m_frases.php">
+                        <button class="btn-card" style="background:#ff007a">▶ Seguir aprendiendo</button>
                     </a>
                 </div>
             </div>

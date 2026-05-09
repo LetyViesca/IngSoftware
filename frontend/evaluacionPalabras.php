@@ -1,11 +1,6 @@
-<?php
-include("../backend/db.php");
-session_start();
-
-if (!isset($_SESSION['id_usuario'])) {
-    header("Location: login.php");
-    exit();
-}
+<?php 
+include("../backend/auth.php"); 
+include("../backend/db.php"); 
 
 $id_usuario = $_SESSION['id_usuario'];
 $nombre_usuario = $_SESSION['nombre_usuario'];
@@ -18,18 +13,15 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Evaluación Palabras</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
 <header>
     <nav>
-
         <a href="inicio.php">
-            <img src="imag/Logo_Zigna.png"
-                 class="main-logo"
-                 alt="Logo Zigna">
+            <img src="imag/Logo_Zigna.png" class="main-logo" alt="Logo Zigna">
         </a>
 
         <ul class="nav-menu">
@@ -39,14 +31,10 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         </ul>
 
         <div class="user-box">
-
             <span class="user-name">
-                Hola,
-                <?php echo htmlspecialchars($nombre_usuario); ?>
+                Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
             </span>
-
             <div class="user-icon">👤</div>
-
         </div>
     </nav>
 </header>
@@ -54,7 +42,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <div class="evaluacion-container">
 
     <div class="btn-back">
-        <a href="M_palabras.php" class="btn-main">
+        <a href="m_palabras.php" class="btn-main">
             ⬅ Volver al módulo
         </a>
     </div>
@@ -67,20 +55,15 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
     <div id="preguntas"></div>
 
-    <div class="evaluacion-btn-container"
-         id="btnFinalizar">
-
-        <button class="btn-main"
-                onclick="calificar()">
-
+    <div class="evaluacion-btn-container" id="btnFinalizar">
+        <button class="btn-main" onclick="calificar()">
             Finalizar Evaluación
-
         </button>
     </div>
 
 </div>
 
-<script src="evaluacionPalabras.js"></script>
+<script src="js/evaluacionPalabras.js"></script>
 
 </body>
 </html>

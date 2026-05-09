@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Registro</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -12,7 +13,9 @@
         <h2>Crea tu cuenta</h2>
 
         <?php if(isset($_GET['error'])): ?>
-            <div class='error-msg'><?php echo htmlspecialchars($_GET['error']); ?></div>
+            <div class='error-msg'>
+                <?php echo htmlspecialchars($_GET['error']); ?>
+            </div>
         <?php endif; ?>
 
         <form action="../backend/procesar_registro.php" method="POST">
@@ -20,27 +23,35 @@
                 <label>Nombre</label>
                 <input type="text" name="nombres" placeholder="Tu nombre" required>
             </div>
+            
             <div class="input-group">
                 <label>Apellido Paterno</label>
                 <input type="text" name="paterno" placeholder="Apellido paterno" required>
             </div>
+            
             <div class="input-group">
                 <label>Apellido Materno</label>
                 <input type="text" name="materno" placeholder="Apellido materno" required>
             </div>
+            
             <div class="input-group">
                 <label>Correo Electrónico</label>
                 <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
             </div>
+            
             <div class="input-group">
                 <label>Contraseña</label>
                 <input type="password" name="contra" placeholder="Mínimo 8 caracteres" minlength="8" required>
             </div>
+            
             <button type="submit" class="btn-login">Crear Cuenta</button>
         </form>
 
         <div style="margin-top:20px; font-size:13px; color:#888;">
-            ¿Ya tienes cuenta? <a href="login.php" style="color:#2cc19c; text-decoration:none; font-weight:bold;">Inicia sesión</a>
+            ¿Ya tienes cuenta? 
+            <a href="login.php" style="color:#2cc19c; text-decoration:none; font-weight:bold;">
+                Inicia sesión
+            </a>
         </div>
     </div>
 </body>

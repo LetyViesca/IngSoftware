@@ -1,12 +1,7 @@
-<?php
-// 1. CONTROL DE SESIÓN Y SEGURIDAD
-session_start();
-
-// Validamos que el usuario esté autenticado
-if (!isset($_SESSION['nombre_usuario'])) {
-    header("Location: login.php");
-    exit();
-}
+<?php 
+// 1. CONTROL DE SEGURIDAD Y CONEXIÓN CENTRALIZADO
+include("../backend/auth.php"); 
+include("../backend/db.php"); 
 
 $nombre_usuario = $_SESSION['nombre_usuario'];
 ?>
@@ -17,19 +12,15 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Palabras LSM</title>
-
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
 <header>
     <nav>
-
         <a href="inicio.php">
-            <img src="imag/Logo_Zigna.png"
-                 class="main-logo"
-                 alt="ZIGNA">
+            <img src="imag/Logo_Zigna.png" class="main-logo" alt="ZIGNA">
         </a>
 
         <ul class="nav-menu">
@@ -39,174 +30,47 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         </ul>
 
         <div class="user-box">
-
             <span class="user-name">
-                Hola,
-                <?php echo htmlspecialchars($nombre_usuario); ?>
+                Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
             </span>
-
-            <a href="login.php"
-               style="text-decoration:none; color:#666; font-size:13px;">
-               Cerrar sesión
+            <a href="login.php" class="user-link" style="text-decoration:none; color:#666; font-size:13px; font-weight:bold;">
+                Cerrar sesión
             </a>
-
             <div class="user-icon">👤</div>
-
         </div>
     </nav>
 </header>
 
-<div class="palabras-container">
-    <h1 class="palabras-titulo">
-         Módulo: Palabras LSM
-    </h1>
+    <div class="palabras-container">
+    <h1 class="palabras-titulo">Módulo: Palabras LSM</h1>
 
-<?php
-include("../backend/db.php");
-?>
-<!-- ===== SALUDOS ===== -->
-
-<h2 class="palabras-subtitulo">Saludos</h2>
-
-<?php
-$querySaludos = "
-SELECT * FROM Contenido
-WHERE id_Modulo = 2
-LIMIT 6
-";
-
-$resultadoSaludos =
-mysqli_query($conexion, $querySaludos);
-?>
-
-<div class="palabras-grid">
-
-<?php while($fila = mysqli_fetch_assoc($resultadoSaludos)) { ?>
-
-    <div class="palabras-card">
-
-        <div class="palabras-img-container">
-            <img src="<?php echo $fila['imagen']; ?>">
+    <?php
+    $secciones = ["Saludos" => 0, "Familia" => 6, "Números" => 12];
+    foreach ($secciones as $titulo => $offset) { ?>
+        
+        <h2 class="palabras-subtitulo"><?php echo $titulo; ?></h2>
+        
+        <div class="palabras-grid">
+            <?php
+            $query = "SELECT * FROM Contenido WHERE id_Modulo = 2 LIMIT 6 OFFSET $offset";
+            $res = mysqli_query($conexion, $query);
+            while($fila = mysqli_fetch_assoc($res)) { ?>
+                <div class="palabras-card">
+                    <div class="palabras-img-container">
+                        <img src="<?php echo $fila['imagen']; ?>">
+                    </div>
+                    <div class="palabras-info">
+                        <h3><?php echo htmlspecialchars($fila['titulo']); ?></h3>
+                        <p><?php echo htmlspecialchars($fila['descripcion']); ?></p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
+    <?php } ?>
 
-        <div class="palabras-info">
-
-            <h3>
-                <?php echo $fila['titulo']; ?>
-            </h3>
-
-            <p>
-                <?php echo $fila['descripcion']; ?>
-            </p>
-
-        </div>
-
+    <div class="palabras-btn-container">
+        <a href="evaluacionPalabras.php" class="palabras-btn">Comenzar Evaluación ✨</a>
     </div>
-
-<?php } ?>
-
-</div>
-
-<!-- ===== FAMILIA ===== -->
-
-<h2 class="palabras-subtitulo">Familia</h2>
-
-<?php
-$queryFamilia = "
-SELECT * FROM Contenido
-WHERE id_Modulo = 2
-LIMIT 6 OFFSET 6
-";
-
-$resultadoFamilia =
-mysqli_query($conexion, $queryFamilia);
-?>
-
-<div class="palabras-grid">
-
-<?php while($fila = mysqli_fetch_assoc($resultadoFamilia)) { ?>
-
-    <div class="palabras-card">
-
-        <div class="palabras-img-container">
-            <img src="<?php echo $fila['imagen']; ?>">
-        </div>
-
-        <div class="palabras-info">
-
-            <h3>
-                <?php echo $fila['titulo']; ?>
-            </h3>
-
-            <p>
-                <?php echo $fila['descripcion']; ?>
-            </p>
-
-        </div>
-
-    </div>
-
-<?php } ?>
-
-</div>
-
-<!-- ===== NÚMEROS ===== -->
-
-<h2 class="palabras-subtitulo">Números</h2>
-
-<?php
-$queryNumeros = "
-SELECT * FROM Contenido
-WHERE id_Modulo = 2
-LIMIT 6 OFFSET 12
-";
-
-$resultadoNumeros =
-mysqli_query($conexion, $queryNumeros);
-?>
-
-<div class="palabras-grid">
-
-<?php while($fila = mysqli_fetch_assoc($resultadoNumeros)) { ?>
-
-    <div class="palabras-card">
-
-        <div class="palabras-img-container">
-            <img src="<?php echo $fila['imagen']; ?>">
-        </div>
-
-        <div class="palabras-info">
-
-            <h3>
-                <?php echo $fila['titulo']; ?>
-            </h3>
-
-            <p>
-                <?php echo $fila['descripcion']; ?>
-            </p>
-
-        </div>
-
-    </div>
-
-<?php } ?>
-
-</div>
-
-</div>
-
-<div class="palabras-btn-container">
-
-    <a href="evaluacionPalabras.php"
-       class="palabras-btn">
-
-       Comenzar Evaluación ✨
-
-    </a>
-
-</div>
-
-</div>
 
 </body>
 </html>

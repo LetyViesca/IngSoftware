@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Login</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="login_script.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/login_script.js" defer></script>
 </head>
 <body>
     <div class="card">
@@ -29,6 +29,7 @@
             </div>
             <button type="submit" class="btn-login">Entrar</button>
         </form>
+        
         <div class="links">
             ¿No tienes cuenta? <a href="registro_vista.php">Regístrate</a>
         </div>

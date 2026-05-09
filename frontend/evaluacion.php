@@ -1,12 +1,7 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['nombre_usuario'])) {
-    header("Location: login.php");
-    exit();
-}
-
-$nombre_usuario = $_SESSION['nombre_usuario'];
+<?php 
+// 1. CENTRALIZACIÓN DE SEGURIDAD
+// Usamos el id_usuario para futuras integraciones con la base de datos
+include("../backend/auth.php"); 
 ?>
 
 <!DOCTYPE html>
@@ -14,23 +9,17 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZIGNA - Evaluación</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script_abc.js"></script>
-
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/script_abc.js"></script>
+    <title>ZIGNA - Evaluación Abecedario</title>
     
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
 <header>
     <nav>
-
         <a href="inicio.php">
-            <img src="imag/Logo_Zigna.png"
-                 class="main-logo">
+            <img src="imag/Logo_Zigna.png" class="main-logo" alt="Zigna Logo">
         </a>
 
         <ul class="nav-menu">
@@ -40,18 +29,13 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         </ul>
 
         <div class="user-box">
-
             <span class="user-name">
                 Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
             </span>
-
-            <a href="login.php"
-               style="text-decoration:none; color:#666; font-size:13px;">
-               Cerrar sesión
+            <a href="login.php" class="user-link" style="text-decoration:none; color:#666; font-size:13px; font-weight:bold;">
+                Cerrar sesión
             </a>
-
             <div class="user-icon">👤</div>
-
         </div>
     </nav>
 </header>
@@ -59,7 +43,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <div class="evaluacion-container">
 
     <div class="btn-back">
-        <a href="M_abecedario.php" class="btn-main">
+        <a href="m_abecedario.php" class="btn-main">
             ⬅ Volver al módulo
         </a>
     </div>
@@ -67,12 +51,11 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     <h2>Evaluación: Abecedario LSM</h2>
 
     <div id="resultado" class="resultado"></div>
-
     <div id="preguntas"></div>
 
     <div class="evaluacion-btn-container">
-        <button id="btnFinalizar"
-                class="btn-main"
+        <button id="btnFinalizar" 
+                class="btn-main" 
                 onclick="calificar()">
             Finalizar Evaluación
         </button>
@@ -80,7 +63,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
 </div>
 
-<script src="evaluacion.js"></script>
+<script src="js/evaluacion.js"></script>
+
+<script src="js/evaluacion.js"></script>
 
 </body>
 </html>
