@@ -670,3 +670,46 @@ nav {
         grid-template-columns:1fr;
     }
 }
+
+/* ===== PROGRESO ===== */
+
+.titulo-progreso{
+    text-align:center;
+    margin-bottom:30px;
+    color:#333;
+}
+
+.grid-progreso{
+    display:grid;
+    gap:20px;
+}
+
+.modulo-card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    border:1px solid #eee;
+    transition:0.3s;
+}
+
+.modulo-card h3{
+    margin-bottom:15px;
+    color:#8a4fff;
+}
+
+.modulo-card p{
+    margin-bottom:10px;
+    color:#555;
+}
+
+.verde{
+    border-left:8px solid #00c853;
+}
+
+.naranja{
+    border-left:8px solid #ff9800;
+}
+
+.sin-intento{
+    border-left:8px solid #ccc;
+}
