@@ -16,10 +16,44 @@
         </a>
 
         <ul class="nav-menu">
-            <li><a href="inicio.php">Inicio</a></li>
-            <li><a href="modulos.php">Módulos</a></li>
-            <li><a href="progreso.php">Progreso</a></li>
+
+    <li>
+        <a href="inicio.php">Inicio</a>
+    </li>
+
+    <li class="dropdown">
+
+        <a href="#">Módulos ▾</a>
+
+        <ul class="dropdown-menu">
+
+            <li>
+                <a href="m_abecedario.php">
+                    Abecedario
+                </a>
+            </li>
+
+            <li>
+                <a href="m_palabras.php">
+                    Palabras
+                </a>
+            </li>
+
+            <li>
+                <a href="m_frases.php">
+                    Frases
+                </a>
+            </li>
+
         </ul>
+
+    </li>
+
+    <li>
+        <a href="progreso.php">Progreso</a>
+    </li>
+
+</ul>
 
         <div class="user-box">
             <span class="user-name">Hola, <?php echo htmlspecialchars($nombre_usuario); ?></span>
