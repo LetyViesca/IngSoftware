@@ -88,31 +88,19 @@ function actualizarProgreso() {
 
     datos.forEach(p => {
 
-        const opciones =
-        document.getElementsByName(p.id);
+        const opciones = document.getElementsByName(p.id);
 
         opciones.forEach(op => {
-
-            if(op.checked){
-                respondidas++;
-            }
+            if (op.checked) respondidas++;
         });
     });
 
-    let porcentaje =
-    (respondidas / datos.length) * 100;
+    let porcentaje = (respondidas / datos.length) * 100;
 
-    document.getElementById(
-        "progresoBarra"
-    ).style.width = porcentaje + "%";
+    document.getElementById("progresoBarra").style.width = porcentaje + "%";
 
-    document.getElementById(
-        "textoProgreso"
-    ).innerText =
-    respondidas +
-    " de " +
-    datos.length +
-    " preguntas respondidas";
+    document.getElementById("textoProgreso").innerText =
+        respondidas + " de " + datos.length + " preguntas respondidas";
 }
 
 datos.forEach((p, i) => {
@@ -181,8 +169,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="No corresponde
-                                   onclick="actualizarProgreso()"">
+                                   value="No corresponde"
+                                   onclick="actualizarProgreso()"
 
                             <span>
                                 No corresponde
@@ -222,179 +210,94 @@ datos.forEach((p, i) => {
 function calificar() {
 
     let faltantes = false;
-
     let aciertos = 0;
 
-    document.getElementById(
-        "mensajeError"
-    ).style.display = "none";
+    document.getElementById("mensajeError").style.display = "none";
 
+    // validar respuestas
     datos.forEach(p => {
 
-        const opciones =
-        document.getElementsByName(p.id);
-
-        const card =
-        document.getElementById(
-            "card-" + p.id
-        );
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
 
         let respondida = false;
 
         opciones.forEach(op => {
-
-            if (op.checked) {
-                respondida = true;
-            }
-
+            if (op.checked) respondida = true;
         });
 
         if (!respondida) {
-
             card.classList.add("error");
-
             faltantes = true;
-
         } else {
-
             card.classList.remove("error");
         }
     });
 
     if (faltantes) {
-
-        document.getElementById(
-            "mensajeError"
-        ).style.display = "block";
-
+        document.getElementById("mensajeError").style.display = "block";
         window.scrollTo(0, 0);
-
         return;
     }
 
+    // calificar
     datos.forEach(p => {
 
-        const opciones =
-        document.getElementsByName(p.id);
-
-        const card =
-        document.getElementById(
-            "card-" + p.id
-        );
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
 
         opciones.forEach(op => {
 
             if (op.checked) {
 
                 if (op.value === p.correcta) {
-
                     aciertos++;
-
-                    card.classList.add(
-                        "correcto"
-                    );
-
+                    card.classList.add("correcto");
                 } else {
-
-                    card.classList.add(
-                        "incorrecto"
-                    );
+                    card.classList.add("incorrecto");
                 }
             }
         });
     });
 
-    let porcentaje =
-    Math.round(
-        (aciertos / datos.length) * 100
-    );
+    let porcentaje = Math.round((aciertos / datos.length) * 100);
 
-    const parametros =
-    new URLSearchParams();
+    // 🔥 MOSTRAR MODAL (igual que abecedario)
+    const modal = document.getElementById("modalResultado");
+    const textoModal = document.getElementById("textoModal");
 
-    parametros.append(
-        'modulo',
-        'Frases'
-    );
+    if (porcentaje >= 70) {
+        textoModal.innerHTML = `🏆 Excelente trabajo<br>Obtuviste ${porcentaje}%`;
+    } else {
+        textoModal.innerHTML = `📚 Sigue practicando<br>Obtuviste ${porcentaje}%`;
+    }
 
-    parametros.append(
-        'puntaje',
-        porcentaje
-    );
+    modal.style.display = "flex";
 
+    // resultado visual
+    const res = document.getElementById("resultado");
+    res.innerText = `Resultado: ${aciertos} / 10 (${porcentaje}%)`;
+    res.style.color = porcentaje >= 70 ? "#00c853" : "#ff4757";
+
+    document.getElementById("btnFinalizar").style.display = "none";
+
+    document.getElementById("btnProgreso").innerHTML = `
+        <a href="progreso.php" class="btn-main">Ir al progreso</a>
+    `;
+
+    // guardar backend
     fetch("../backend/g_puntaje.php", {
-
-        method: 'POST',
-
+        method: "POST",
         headers: {
-            'Content-Type':
-            'application/x-www-form-urlencoded'
+            "Content-Type": "application/x-www-form-urlencoded"
         },
-
-        body: parametros
-
-    })
-
-    .then(response => response.json())
-
-    .then(data => {
-
-        if (data.status === "success") {
-
-            const res =
-            document.getElementById(
-                "resultado"
-            );
-
-            res.style.display = "block";
-
-            res.innerText =
-            `Resultado: ${aciertos} / 10 (${porcentaje}%)`;
-
-            res.style.color =
-            porcentaje >= 70
-            ? "#00c853"
-            : "#ff4757";
-
-            res.style.background =
-            porcentaje >= 70
-            ? "#e8f5e9"
-            : "#ffebee";
-
-            document.getElementById(
-                "btnFinalizar"
-            ).style.display = "none";
-
-            window.scrollTo(0, 0);
-
-            document.getElementById(
-    "btnProgreso"
-).innerHTML = `
-    <a href="progreso.php" class="btn-main">
-        Ir al progreso
-    </a>
-`;
-
-        } else {
-
-            alert(
-                "Error al guardar: " +
-                data.message
-            );
-        }
-
-    })
-
-    .catch(error => {
-
-        console.error(
-            "Error:",
-            error
-        );
-
-        alert(
-            "Error de conexión al guardar el progreso."
-        );
-
+        body: "puntaje=" + porcentaje + "&modulo=Frases"
     });
+}
+
+function cerrarModal(){
+
+    document.getElementById(
+        "modalResultado"
+    ).style.display = "none";
 }
