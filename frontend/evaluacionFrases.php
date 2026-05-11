@@ -80,6 +80,14 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
     <h2>Evaluación: Frases Comunes LSM</h2>
 
+    <div class="barra-progreso">
+    <div id="progresoBarra" class="progreso-barra"></div>
+</div>
+
+<p id="textoProgreso" class="texto-progreso">
+    0 de 10 preguntas respondidas
+</p>
+
     <div id="mensajeError" class="mensaje-error">
         ⚠️ Contesta todas las preguntas antes de finalizar.
     </div>

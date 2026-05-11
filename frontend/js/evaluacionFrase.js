@@ -61,8 +61,40 @@ const datos = [
     }
 ];
 
-const contenedor =
-document.getElementById("preguntas");
+const contenedor = document.getElementById("preguntas");
+
+function actualizarProgreso() {
+
+    let respondidas = 0;
+
+    datos.forEach(p => {
+
+        const opciones =
+        document.getElementsByName(p.id);
+
+        opciones.forEach(op => {
+
+            if(op.checked){
+                respondidas++;
+            }
+        });
+    });
+
+    let porcentaje =
+    (respondidas / datos.length) * 100;
+
+    document.getElementById(
+        "progresoBarra"
+    ).style.width = porcentaje + "%";
+
+    document.getElementById(
+        "textoProgreso"
+    ).innerText =
+    respondidas +
+    " de " +
+    datos.length +
+    " preguntas respondidas";
+}
 
 datos.forEach((p, i) => {
 
@@ -96,7 +128,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="${p.correcta}">
+                                   value="${p.correcta}"
+                                   onclick="actualizarProgreso()">
 
                             <span>
                                 ${p.correcta}
@@ -112,7 +145,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="Otras señas">
+                                   value="Otras señas"
+                                   onclick="actualizarProgreso()">
 
                             <span>
                                 Otras señas
@@ -128,7 +162,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="No corresponde">
+                                   value="No corresponde
+                                   onclick="actualizarProgreso()"">
 
                             <span>
                                 No corresponde
@@ -144,7 +179,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="No sé">
+                                   value="No sé"
+                                   onclick="actualizarProgreso()">
 
                             <span>
                                 No sé
