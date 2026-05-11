@@ -713,3 +713,29 @@ nav {
 .sin-intento{
     border-left:8px solid #ccc;
 }
+
+/* SOLUCIÓN OBSERVACIÓN QA: Diseño Responsive Sección Progreso */
+@media (max-width: 768px) {
+    .progreso-container, .progreso-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+        padding: 10px !important;
+    }
+
+    .progreso-card {
+        width: 90% !important; /* Elimina espacios vacíos laterales */
+        max-width: 400px;
+        margin: 0 auto !important;
+        text-align: center;
+    }
+
+    /* Ajuste de estadísticas para que no se amontonen */
+    .progreso-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
