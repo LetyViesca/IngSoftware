@@ -34,6 +34,39 @@ function mezclar(array) {
 const contenedor =
 document.getElementById("preguntas");
 
+function actualizarProgreso() {
+
+    let respondidas = 0;
+
+    datos.forEach(p => {
+
+        const opciones =
+        document.getElementsByName(p.id);
+
+        opciones.forEach(op => {
+
+            if(op.checked){
+                respondidas++;
+            }
+        });
+    });
+
+    let porcentaje =
+    (respondidas / datos.length) * 100;
+
+    document.getElementById(
+        "progresoBarra"
+    ).style.width = porcentaje + "%";
+
+    document.getElementById(
+        "textoProgreso"
+    ).innerText =
+    respondidas +
+    " de " +
+    datos.length +
+    " preguntas respondidas";
+}
+
 datos.forEach((p, i) => {
 
     let incorrectas =
@@ -84,7 +117,8 @@ datos.forEach((p, i) => {
 
                                 <input type="radio"
                                        name="${p.id}"
-                                       value="${op}">
+                                       value="${op}"
+                                       onclick="actualizarProgreso()">
 
                                 <span>${op}</span>
 

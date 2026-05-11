@@ -79,6 +79,14 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
     <h2>Evaluación: Palabras LSM</h2>
 
+    <div class="barra-progreso">
+    <div id="progresoBarra" class="progreso-barra"></div>
+</div>
+
+<p id="textoProgreso" class="texto-progreso">
+    0 de 10 preguntas respondidas
+</p>
+
     <div id="alerta" class="resultado"></div>
 
     <div id="resultado" class="resultado"></div>
