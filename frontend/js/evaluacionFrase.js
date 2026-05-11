@@ -312,6 +312,14 @@ function calificar() {
 
             window.scrollTo(0, 0);
 
+            document.getElementById(
+    "btnProgreso"
+).innerHTML = `
+    <a href="progreso.php" class="btn-main">
+        Ir al progreso
+    </a>
+`;
+
         } else {
 
             alert(

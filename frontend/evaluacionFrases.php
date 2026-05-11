@@ -35,19 +35,19 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     <ul class="dropdown-menu">
 
         <li>
-            <a href="M_abecedario.php">
+            <a href="m_abecedario.php">
                 Abecedario
             </a>
         </li>
 
         <li>
-            <a href="M_palabras.php">
+            <a href="m_palabras.php">
                 Palabras
             </a>
         </li>
 
         <li>
-            <a href="M_frases.php">
+            <a href="m_frases.php">
                 Frases
             </a>
         </li>
@@ -69,9 +69,14 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
 <div class="evaluacion-container">
 
-    <a href="m_frases.php" class="btn-volver">
-        ← Volver al módulo
-    </a>
+    <div class="top-buttons">
+
+        <a href="m_frases.php" class="btn-volver">
+            ← Volver al módulo
+        </a>
+
+        <div id="btnProgreso"></div>
+    </div>
 
     <h2>Evaluación: Frases Comunes LSM</h2>
 
