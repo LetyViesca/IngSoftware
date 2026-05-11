@@ -68,10 +68,14 @@ include("../backend/auth.php");
 
 <div class="evaluacion-container">
 
-    <div class="btn-back">
-        <a href="m_abecedario.php" class="btn-main">
-            ⬅ Volver al módulo
-        </a>
+    <div class="top-buttons">
+
+    <a href="m_abecedario.php" class="btn-volver">
+        ← Volver al módulo
+    </a>
+
+    <div id="btnProgreso"></div>
+
     </div>
 
     <h2>Evaluación: Abecedario LSM</h2>
