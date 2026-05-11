@@ -13,6 +13,39 @@ const datos = [
 
 const contenedor = document.getElementById("preguntas");
 
+function actualizarProgreso() {
+
+    let respondidas = 0;
+
+    datos.forEach(p => {
+
+        const opciones =
+        document.getElementsByName(p.id);
+
+        opciones.forEach(op => {
+
+            if(op.checked){
+                respondidas++;
+            }
+        });
+    });
+
+    let porcentaje =
+    (respondidas / datos.length) * 100;
+
+    document.getElementById(
+        "progresoBarra"
+    ).style.width = porcentaje + "%";
+
+    document.getElementById(
+        "textoProgreso"
+    ).innerText =
+    respondidas +
+    " de " +
+    datos.length +
+    " preguntas respondidas";
+}
+
 datos.forEach((p, i) => {
 
     contenedor.innerHTML += `
@@ -36,7 +69,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="${p.correcta}">
+                                   value="${p.correcta}"
+                                   onclick="actualizarProgreso()">
 
                             <span>${p.correcta}</span>
 
@@ -50,7 +84,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="M">
+                                   value="M"
+                                   onclick="actualizarProgreso()">
 
                             <span>M</span>
 
@@ -64,7 +99,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="R">
+                                   value="R"
+                                   onclick="actualizarProgreso()">
 
                             <span>R</span>
 
@@ -78,7 +114,8 @@ datos.forEach((p, i) => {
 
                             <input type="radio"
                                    name="${p.id}"
-                                   value="T">
+                                   value="T"
+                                   onclick="actualizarProgreso()">
 
                             <span>T</span>
 

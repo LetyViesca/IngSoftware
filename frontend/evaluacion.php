@@ -80,6 +80,14 @@ include("../backend/auth.php");
 
     <h2>Evaluación: Abecedario LSM</h2>
 
+    <div class="barra-progreso">
+    <div id="progresoBarra" class="progreso-barra"></div>
+</div>
+
+<p id="textoProgreso" class="texto-progreso">
+    0 de 10 preguntas respondidas
+</p>    
+
     <div id="resultado" class="resultado"></div>
     <div id="preguntas"></div>
 
