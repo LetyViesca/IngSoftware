@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIGNA - Módulos</title>
+
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; }
+
+        /* ===== HEADER ===== */
+        header { background: white; padding: 10px 5%; border-bottom: 1px solid #f0f0f0; }
+        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .main-logo { height: 35px; }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .user-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-icon {
+            background: #ff007a;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* ===== CONTENIDO ===== */
+        .learning-guide { padding: 30px 5%; }
+
+        /* 🔥 LISTA VERTICAL */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .module-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 15px;
+            transition: 0.25s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .img-container {
+            width: 120px;
+            height: 120px;
+            background: #eee;
+            border-radius: 15px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-info {
+            flex: 1;
+        }
+
+        .card-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            margin-top: 10px;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            .module-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .img-container {
+                width: 100%;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <nav>
+        <a href="inicio.html">
+            <img src="imag/Logo_Zigna.png" class="main-logo">
+        </a>
+
+        <ul class="nav-menu">
+            <li><a href="inicio.html" style="text-decoration:none; color:#333;">Inicio</a></li>
+            <li><a href="modulos.html" style="text-decoration:none; color:#333;">Módulos</a></li>
+            <li><a href="progreso.html" style="text-decoration:none; color:#333;">Progreso</a></li>
+        </ul>
+
+        <div class="user-box">
+            <a href="login.html" style="text-decoration:none; color:#666;">Cerrar sesión</a>
+            <div class="user-icon">👤</div>
+        </div>
+    </nav>
+</header>
+
+<!-- ===== SOLO MÓDULOS ===== -->
+<section class="learning-guide">
+    <div class="card-grid">
+
+        <!-- ABECEDARIO -->
+        <div class="module-card">
+            <div class="img-container">
+                <img src="imag/abecedario/w.png" class="card-img">
+            </div>
+
+            <div class="card-info">
+                <h3>Abecedario LSM</h3>
+                <p style="font-size:13px; color:#666;">
+                    Aprende las letras para comunicarte desde lo básico.
+                </p>
+
+                <a href="M_abecedario.html">
+                    <button class="btn" style="background:#8a4fff">
+                        ▶ Entrar al módulo
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- PALABRAS -->
+        <div class="module-card">
+            <div class="img-container">
+                <img src="imag/palabras/dos.png" class="card-img">
+            </div>
+
+            <div class="card-info">
+                <h3>Palabras Clave</h3>
+                <p style="font-size:13px; color:#666;">
+                    Aprende palabras comunes para el día a día.
+                </p>
+
+                <a href="M_palabras.html">
+                    <button class="btn" style="background:#00c2a8">
+                        ▶ Entrar al módulo
+                    </button>
+                </a>
+            </div>
+        </div>
+
+        <!-- FRASES -->
+        <div class="module-card">
+            <div class="img-container">
+                <img src="imag/frases/enfermo.png" class="card-img">
+            </div>
+
+            <div class="card-info">
+                <h3>Frases Comunes</h3>
+                <p style="font-size:13px; color:#666;">
+                    Aprende a comunicarte con frases completas.
+                </p>
+
+                <a href="M_frases.html">
+                    <button class="btn" style="background:#ff007a">
+                        ▶ Entrar al módulo
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
