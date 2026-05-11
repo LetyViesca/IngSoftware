@@ -794,3 +794,75 @@ nav {
     color:#555;
     margin-bottom:20px;
 }
+
+/* ===== ANIMACIONES EVALUACIÓN ===== */
+
+.question-card{
+    transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    border 0.3s;
+}
+
+.question-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.correct{
+    animation:correcta 0.5s ease;
+}
+
+.incorrect{
+    animation:errorShake 0.4s ease;
+}
+
+@keyframes correcta{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.02);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}
+
+@keyframes errorShake{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    25%{
+        transform:translateX(-5px);
+    }
+
+    50%{
+        transform:translateX(5px);
+    }
+
+    75%{
+        transform:translateX(-5px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
+
+.option{
+    transition:
+    background 0.3s,
+    transform 0.2s,
+    border 0.3s;
+}
+
+.option:hover{
+    background:#f8f4ff;
+    transform:scale(1.01);
+}

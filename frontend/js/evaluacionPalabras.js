@@ -34,6 +34,25 @@ function mezclar(array) {
 const contenedor =
 document.getElementById("preguntas");
 
+document.addEventListener("change", e => {
+
+    if(e.target.type === "radio"){
+
+        const opciones =
+        e.target.closest(".options-grid")
+        .querySelectorAll(".option");
+
+        opciones.forEach(op => {
+            op.style.border =
+            "1px solid #eee";
+        });
+
+        e.target.closest(".option")
+        .style.border =
+        "2px solid #8a4fff";
+    }
+});
+
 function actualizarProgreso() {
 
     let respondidas = 0;
