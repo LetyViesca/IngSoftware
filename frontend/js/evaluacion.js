@@ -235,11 +235,36 @@ function calificar() {
     Math.round((aciertos / datos.length) * 100);
 
     resultado.innerText =
-    "Resultado: " +
-    porcentaje +
-    "% (" +
-    aciertos +
-    "/10)";
+"Resultado: " +
+porcentaje +
+"% (" +
+aciertos +
+"/10)";
+
+const modal =
+document.getElementById(
+    "modalResultado"
+);
+
+const textoModal =
+document.getElementById(
+    "textoModal"
+);
+
+if(porcentaje >= 70){
+
+    textoModal.innerHTML =
+    "🏆 Excelente trabajo<br>Obtuviste " +
+    porcentaje + "%";
+
+}else{
+
+    textoModal.innerHTML =
+    "📚 Sigue practicando<br>Obtuviste " +
+    porcentaje + "%";
+}
+
+modal.style.display = "flex";
 
     resultado.style.color =
     porcentaje >= 70
@@ -276,4 +301,11 @@ function calificar() {
         "puntaje=" + porcentaje +
         "&modulo=Abecedario"
     });
+}
+
+function cerrarModal(){
+
+    document.getElementById(
+        "modalResultado"
+    ).style.display = "none";
 }

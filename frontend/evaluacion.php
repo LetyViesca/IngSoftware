@@ -89,6 +89,28 @@ include("../backend/auth.php");
 </p>    
 
     <div id="resultado" class="resultado"></div>
+
+    <div id="modalResultado" class="modal-resultado">
+
+    <div class="modal-contenido">
+
+        <h2 id="tituloModal">
+            🎉 ¡Evaluación completada!
+        </h2>
+
+        <p id="textoModal"></p>
+
+        <button class="btn-main"
+                onclick="cerrarModal()">
+
+            Continuar
+
+        </button>
+
+    </div>
+
+</div>
+
     <div id="preguntas"></div>
 
     <div class="evaluacion-btn-container">

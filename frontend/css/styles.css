@@ -866,3 +866,64 @@ nav {
     background:#f8f4ff;
     transform:scale(1.01);
 }
+
+/* ===== MODAL RESULTADO ===== */
+
+.modal-resultado{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:99999;
+    animation:fadeIn 0.3s ease;
+}
+
+.modal-contenido{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    max-width:400px;
+    width:90%;
+    animation:subir 0.4s ease;
+}
+
+.modal-contenido h2{
+    margin-bottom:15px;
+    color:#8a4fff;
+}
+
+.modal-contenido p{
+    margin-bottom:25px;
+    color:#555;
+    font-size:18px;
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes subir{
+
+    from{
+        transform:translateY(30px);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
