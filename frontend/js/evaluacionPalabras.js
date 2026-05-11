@@ -212,6 +212,19 @@ function calificar() {
         "btnFinalizar"
     ).style.display = "none";
 
+    document.getElementById(
+    "btnProgreso"
+).innerHTML = `
+
+    <a href="progreso.php"
+       class="btn-main">
+
+        Ir al progreso
+
+    </a>
+
+`;
+
     const parametros =
     new URLSearchParams();
 
