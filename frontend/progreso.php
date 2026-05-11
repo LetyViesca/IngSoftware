@@ -53,9 +53,18 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         </ul>
 
         <div class="user-box">
-            <span class="user-name">Hola, <?php echo htmlspecialchars($nombre_usuario); ?></span>
-            <div class="user-icon">👤</div>
-        </div>
+
+    <span class="user-name">
+        Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
+    </span>
+
+    <a href="login.php" class="user-link">
+        Cerrar sesión
+    </a>
+
+    <div class="user-icon">👤</div>
+
+</div>
     </nav>
 </header>
 
