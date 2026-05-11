@@ -160,146 +160,96 @@ function calificar() {
     let faltantes = false;
     let aciertos = 0;
 
-    const alerta =
-    document.getElementById("alerta");
-
+    const alerta = document.getElementById("alerta");
     alerta.style.display = "none";
 
     datos.forEach(p => {
 
-        const opciones =
-        document.getElementsByName(p.id);
-
-        const card =
-        document.getElementById(
-            "card-" + p.id
-        );
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
 
         let respondida = false;
 
-        card.classList.remove(
-            "error",
-            "correct",
-            "incorrect"
-        );
-
         opciones.forEach(op => {
-
-            if (op.checked) {
-                respondida = true;
-            }
+            if (op.checked) respondida = true;
         });
 
         if (!respondida) {
-
             card.classList.add("error");
-
             faltantes = true;
+        } else {
+            card.classList.remove("error");
         }
     });
 
     if (faltantes) {
-
         alerta.style.display = "block";
-
-        alerta.innerText =
-        "⚠️ Contesta todas las preguntas antes de finalizar.";
-
+        alerta.innerText = "⚠️ Contesta todas las preguntas antes de finalizar.";
         alerta.style.color = "#ff4757";
-
         window.scrollTo(0,0);
-
         return;
     }
 
     datos.forEach(p => {
 
-        const opciones =
-        document.getElementsByName(p.id);
-
-        const card =
-        document.getElementById(
-            "card-" + p.id
-        );
+        const opciones = document.getElementsByName(p.id);
+        const card = document.getElementById("card-" + p.id);
 
         let seleccionada = "";
 
         opciones.forEach(op => {
-
-            if (op.checked) {
-                seleccionada = op.value;
-            }
+            if (op.checked) seleccionada = op.value;
         });
 
         if (seleccionada === p.correcta) {
-
             aciertos++;
-
             card.classList.add("correct");
-
         } else {
-
             card.classList.add("incorrect");
         }
     });
 
-    let porcentaje =
-    Math.round(
-        (aciertos / datos.length) * 100
-    );
+    let porcentaje = Math.round((aciertos / datos.length) * 100);
 
-    const resultado =
-    document.getElementById("resultado");
-
+    // RESULTADO
+    const resultado = document.getElementById("resultado");
     resultado.style.display = "block";
+    resultado.innerText = `Resultado: ${porcentaje}% (${aciertos}/10)`;
+    resultado.style.color = porcentaje >= 70 ? "#2ecc71" : "#ff4757";
 
-    resultado.innerText =
-    `Resultado: ${porcentaje}% (${aciertos}/10)`;
+    // MODAL
+    const modal = document.getElementById("modalResultado");
+    const textoModal = document.getElementById("textoModal");
 
-    resultado.style.color =
-    porcentaje >= 70
-    ? "#2ecc71"
-    : "#ff4757";
+    if (porcentaje >= 70) {
+        textoModal.innerHTML = `🏆 Excelente trabajo<br>Obtuviste ${porcentaje}%`;
+    } else {
+        textoModal.innerHTML = `📚 Sigue practicando<br>Obtuviste ${porcentaje}%`;
+    }
 
-    document.getElementById(
-        "btnFinalizar"
-    ).style.display = "none";
+    modal.style.display = "flex";
 
-    document.getElementById(
-    "btnProgreso"
-).innerHTML = `
+    // UI
+    document.getElementById("btnFinalizar").style.display = "none";
 
-    <a href="progreso.php"
-       class="btn-main">
+    document.getElementById("btnProgreso").innerHTML = `
+        <a href="progreso.php" class="btn-main">Ir al progreso</a>
+    `;
 
-        Ir al progreso
-
-    </a>
-
-`;
-
-    const parametros =
-    new URLSearchParams();
-
-    parametros.append(
-        "modulo",
-        "Palabras"
-    );
-
-    parametros.append(
-        "puntaje",
-        porcentaje
-    );
+    // BACKEND
+    const parametros = new URLSearchParams();
+    parametros.append("modulo", "Palabras");
+    parametros.append("puntaje", porcentaje);
 
     fetch("../backend/g_puntaje.php", {
-
         method: "POST",
-
         headers: {
-            "Content-Type":
-            "application/x-www-form-urlencoded"
+            "Content-Type": "application/x-www-form-urlencoded"
         },
-
         body: parametros
     });
+}
+
+function cerrarModal() {
+    document.getElementById("modalResultado").style.display = "none";
 }
