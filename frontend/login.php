@@ -13,9 +13,28 @@
         <h2>Bienvenido de nuevo</h2>
         <p style="color: #777; font-size: 14px; margin-bottom: 20px;">Inicia sesión para continuar</p>
 
-        <?php if(isset($_GET['error'])): ?>
-            <div class="error-msg"><?php echo htmlspecialchars($_GET['error']); ?></div>
-        <?php endif; ?>
+  <?php
+if(isset($_GET['error'])){
+
+    $mensaje = "";
+
+    switch($_GET['error']){
+
+        case 'credenciales_invalidas':
+            $mensaje = "Correo o contraseña incorrectos.";
+        break;
+
+        case 'error_interno':
+            $mensaje = "Ocurrió un error interno. Intenta nuevamente.";
+        break;
+
+        default:
+            $mensaje = "No se pudo iniciar sesión.";
+    }
+
+    echo "<div class='error-msg'>$mensaje</div>";
+}
+?>
 
         <form action="../backend/procesar_login.php" method="POST">
             <div class="form-group">
