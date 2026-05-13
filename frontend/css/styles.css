@@ -16,7 +16,7 @@ body {
 }
 
 /* --- TARJETAS (LOGIN Y REGISTRO) --- */
-.card, .login-card { 
+.login-card { 
     background: white; 
     padding: 30px 40px; 
     border-radius: 30px; 
@@ -960,4 +960,23 @@ nav {
     .grid-progreso{
         grid-template-columns:1fr;
     }
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+}
+
+.container{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+}
+
+.grid-progreso{
+    width:100%;
+}
+
+.modulo-card{
+    width:100%;
 }
