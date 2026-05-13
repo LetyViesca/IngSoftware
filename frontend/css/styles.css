@@ -201,9 +201,10 @@ nav {
 /* ===== MÓDULO ABECEDARIO ===== */
 
 .container {
-    max-width: 900px;
+    width: 100%;
+    max-width: 1400px;
     margin: 20px auto;
-    padding: 0 15px;
+    padding: 0 20px;
 }
 
 .titulo-modulo {
@@ -683,7 +684,14 @@ nav {
 
 .grid-progreso{
     display:grid;
-    gap:20px;
+    grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+    gap:25px;
+    width:100%;
+}
+
+.modulo-card{
+    width:100%;
+    min-height:180px;
 }
 
 .modulo-card{
@@ -925,5 +933,31 @@ nav {
     to{
         transform:translateY(0);
         opacity:1;
+    }
+}
+
+@media (max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+
+    .nav-menu{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .user-box{
+        justify-content:center;
+    }
+
+    .container{
+        padding:15px;
+    }
+
+    .grid-progreso{
+        grid-template-columns:1fr;
     }
 }
