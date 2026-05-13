@@ -1,8 +1,3 @@
-/**
- * ARCHIVO: frontend/js/evaluacion.js
- * REFACTORIZACIÓN: Validación obligatoria + Resaltado de errores + Persistencia
- */
-
 const datos = [
     { id:'p1', correcta:'A', img:'imag/abecedario/a.png' },
     { id:'p2', correcta:'B', img:'imag/abecedario/b.png' },
@@ -18,105 +13,299 @@ const datos = [
 
 const contenedor = document.getElementById("preguntas");
 
-// Renderizado de preguntas
+document.addEventListener("change", e => {
+
+    if(e.target.type === "radio"){
+
+        const opciones =
+        e.target.closest(".options-grid")
+        .querySelectorAll(".option");
+
+        opciones.forEach(op => {
+            op.style.border =
+            "1px solid #eee";
+        });
+
+        e.target.closest(".option")
+        .style.border =
+        "2px solid #8a4fff";
+    }
+});
+
+function actualizarProgreso() {
+
+    let respondidas = 0;
+
+    datos.forEach(p => {
+
+        const opciones =
+        document.getElementsByName(p.id);
+
+        opciones.forEach(op => {
+
+            if(op.checked){
+                respondidas++;
+            }
+        });
+    });
+
+    let porcentaje =
+    (respondidas / datos.length) * 100;
+
+    document.getElementById(
+        "progresoBarra"
+    ).style.width = porcentaje + "%";
+
+    document.getElementById(
+        "textoProgreso"
+    ).innerText =
+    respondidas +
+    " de " +
+    datos.length +
+    " preguntas respondidas";
+}
+
 datos.forEach((p, i) => {
+
     contenedor.innerHTML += `
     <div class="question-card" id="card-${p.id}">
+
         <div class="question-header">
+
             <img src="${p.img}" class="question-img">
+
             <div style="flex:1;">
+
                 <p><strong>Pregunta ${i+1}</strong></p>
+
                 <p>¿Qué letra es esta?</p>
+
                 <div class="options-grid">
-                    ${['A', 'M', 'R', 'T'].map(letra => {
-                        // Aseguramos que la opción correcta de cada objeto 'p' esté en la lista
-                        // (Aquí podrías aleatorizar si quisieras)
-                        let valorFinal = (letra === 'A') ? p.correcta : letra; 
-                        return `
-                        <label class="option">
-                            <div class="option-content">
-                                <input type="radio" name="${p.id}" value="${valorFinal}">
-                                <span>${valorFinal}</span>
-                            </div>
-                        </label>`;
-                    }).join('')}
+
+                    <label class="option">
+
+                        <div class="option-content">
+
+                            <input type="radio"
+                                   name="${p.id}"
+                                   value="${p.correcta}"
+                                   onclick="actualizarProgreso()">
+
+                            <span>${p.correcta}</span>
+
+                        </div>
+
+                    </label>
+
+                    <label class="option">
+
+                        <div class="option-content">
+
+                            <input type="radio"
+                                   name="${p.id}"
+                                   value="M"
+                                   onclick="actualizarProgreso()">
+
+                            <span>M</span>
+
+                        </div>
+
+                    </label>
+
+                    <label class="option">
+
+                        <div class="option-content">
+
+                            <input type="radio"
+                                   name="${p.id}"
+                                   value="R"
+                                   onclick="actualizarProgreso()">
+
+                            <span>R</span>
+
+                        </div>
+
+                    </label>
+
+                    <label class="option">
+
+                        <div class="option-content">
+
+                            <input type="radio"
+                                   name="${p.id}"
+                                   value="T"
+                                   onclick="actualizarProgreso()">
+
+                            <span>T</span>
+
+                        </div>
+
+                    </label>
+
                 </div>
+
             </div>
         </div>
-    </div>`;
+    </div>
+    `;
 });
 
 function calificar() {
+
     let faltantes = false;
     let aciertos = 0;
-    const resultado = document.getElementById("resultado");
+
+    const resultado =
+    document.getElementById("resultado");
+
     resultado.innerText = "";
 
-    // 1. VALIDACIÓN: Revisar si hay preguntas sin contestar (Checklist Punto 4)
     datos.forEach(p => {
-        const opciones = document.getElementsByName(p.id);
-        const card = document.getElementById("card-" + p.id);
+
+        const opciones =
+        document.getElementsByName(p.id);
+
+        const card =
+        document.getElementById("card-" + p.id);
+
         let respondida = false;
 
-        // Limpiamos estilos de intentos previos
-        card.classList.remove("error", "correct", "incorrect");
-        card.style.border = "1px solid #ddd"; // Reset visual
+        card.classList.remove(
+            "error",
+            "correct",
+            "incorrect"
+        );
 
         opciones.forEach(op => {
-            if (op.checked) respondida = true;
+            if (op.checked) {
+                respondida = true;
+            }
         });
 
         if (!respondida) {
-            // APLICAR RESALTADO EN ROJO (Checklist Punto 4)
+
             card.classList.add("error");
-            card.style.border = "2px solid #ff4757";
-            card.style.backgroundColor = "#fff5f5";
+
             faltantes = true;
         }
     });
 
     if (faltantes) {
-        resultado.innerText = "Por favor, contesta todas las preguntas antes de finalizar.";
+
+        resultado.innerText =
+        "⚠️ Contesta todas las preguntas antes de finalizar.";
+
         resultado.style.color = "#ff4757";
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        return; // BLOQUEAR ENVÍO (Checklist Punto 4)
+
+        window.scrollTo(0,0);
+
+        return;
     }
 
-    // 2. CALIFICACIÓN: Si todo está contestado, evaluamos
     datos.forEach(p => {
-        const opciones = document.getElementsByName(p.id);
-        const card = document.getElementById("card-" + p.id);
+
+        const opciones =
+        document.getElementsByName(p.id);
+
+        const card =
+        document.getElementById("card-" + p.id);
+
         let seleccionada = "";
 
         opciones.forEach(op => {
-            if (op.checked) seleccionada = op.value;
+
+            if (op.checked) {
+                seleccionada = op.value;
+            }
         });
 
         if (seleccionada === p.correcta) {
+
             aciertos++;
+
             card.classList.add("correct");
-            card.style.border = "2px solid #2ecc71";
-            card.style.backgroundColor = "#fafffa";
+
         } else {
+
             card.classList.add("incorrect");
-            card.style.border = "2px solid #ff4757";
-            card.style.backgroundColor = "#fff5f5";
         }
     });
 
-    // 3. MOSTRAR RESULTADOS Y PERSISTENCIA
-    let porcentaje = Math.round((aciertos / datos.length) * 100);
-    resultado.innerText = `Evaluación Finalizada: ${porcentaje}% (${aciertos}/${datos.length})`;
-    resultado.style.color = porcentaje >= 70 ? "#2ecc71" : "#ff4757";
+    let porcentaje =
+    Math.round((aciertos / datos.length) * 100);
 
-    document.getElementById("btnFinalizar").style.display = "none";
+    resultado.innerText =
+"Resultado: " +
+porcentaje +
+"% (" +
+aciertos +
+"/10)";
 
-    // Envío seguro al backend (Ruta de la nueva arquitectura)
+const modal =
+document.getElementById(
+    "modalResultado"
+);
+
+const textoModal =
+document.getElementById(
+    "textoModal"
+);
+
+if(porcentaje >= 70){
+
+    textoModal.innerHTML =
+    "🏆 Excelente trabajo<br>Obtuviste " +
+    porcentaje + "%";
+
+}else{
+
+    textoModal.innerHTML =
+    "📚 Sigue practicando<br>Obtuviste " +
+    porcentaje + "%";
+}
+
+modal.style.display = "flex";
+
+    resultado.style.color =
+    porcentaje >= 70
+    ? "#2ecc71"
+    : "#ff4757";
+
+    document.getElementById(
+        "btnFinalizar"
+    ).style.display = "none";
+
+    document.getElementById(
+    "btnProgreso"
+).innerHTML = `
+
+    <a href="progreso.php"
+       class="btn-main">
+
+        Ir al progreso
+
+    </a>
+
+`;
+
     fetch("../backend/g_puntaje.php", {
+
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `puntaje=${porcentaje}&modulo=Abecedario`
-    })
-    .then(res => console.log("Puntaje guardado exitosamente"))
-    .catch(err => console.error("Error al guardar puntaje"));
+
+        headers: {
+            "Content-Type":
+            "application/x-www-form-urlencoded"
+        },
+
+        body:
+        "puntaje=" + porcentaje +
+        "&modulo=Abecedario"
+    });
+}
+
+function cerrarModal(){
+
+    document.getElementById(
+        "modalResultado"
+    ).style.display = "none";
 }

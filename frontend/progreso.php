@@ -22,14 +22,49 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
-            <li><a href="modulos.php">Módulos</a></li>
+            <li class="dropdown">
+
+    <a href="#">Módulos ▾</a>
+
+    <ul class="dropdown-menu">
+
+        <li>
+            <a href="M_abecedario.php">
+                Abecedario
+            </a>
+        </li>
+
+        <li>
+            <a href="M_palabras.php">
+                Palabras
+            </a>
+        </li>
+
+        <li>
+            <a href="M_frases.php">
+                Frases
+            </a>
+        </li>
+
+    </ul>
+
+</li>
             <li><a href="progreso.php">Progreso</a></li>
         </ul>
 
         <div class="user-box">
-            <span class="user-name">Hola, <?php echo htmlspecialchars($nombre_usuario); ?></span>
-            <div class="user-icon">👤</div>
-        </div>
+
+    <span class="user-name">
+        Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
+    </span>
+
+    <a href="login.php" class="user-link">
+        Cerrar sesión
+    </a>
+
+    <div class="user-icon">👤</div>
+
+</div>
     </nav>
 </header>
 

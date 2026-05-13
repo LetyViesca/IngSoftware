@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // 4. VERIFICAR SI EL CORREO YA EXISTE
-    $stmt_check = $conexion->prepare("SELECT id FROM usuarios WHERE correo = ?");
+    $stmt_check = $conexion->prepare("SELECT id_usuario FROM Usuario  WHERE correo = ?");
     $stmt_check->bind_param("s", $correo);
     $stmt_check->execute();
     if ($stmt_check->get_result()->num_rows > 0) {
@@ -39,11 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 5. CIFRADO Y REGISTRO
     $pass_cifrada = password_hash($contra, PASSWORD_BCRYPT);
-    $stmt_insert = $conexion->prepare("INSERT INTO usuarios (nombres, paterno, materno, correo, contra) VALUES (?, ?, ?, ?, ?)");
+    $stmt_insert = $conexion->prepare("INSERT INTO Usuario (nombres, apellido_paterno, apellido_materno, correo, contrasena) VALUES (?, ?, ?, ?, ?)");
     $stmt_insert->bind_param("sssss", $nombres, $paterno, $materno, $correo, $pass_cifrada);
 
     if ($stmt_insert->execute()) {
-        header("Location: ../frontend/login_vista.php?registro=exitoso");
+        header("Location: ../frontend/login.php?registro=exitoso");
     } else {
         header("Location: ../frontend/registro_vista.php?error=tecnico");
     }
