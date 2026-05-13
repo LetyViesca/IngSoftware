@@ -43,6 +43,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             <span class="user-name">
                 Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
             </span>
+            <a href="login.php" class="user-link" style="text-decoration:none; color:#666; font-size:13px; font-weight:bold;">
+                Cerrar sesión
+            </a>
             <div class="user-icon">👤</div>
         </div>
     </nav>
