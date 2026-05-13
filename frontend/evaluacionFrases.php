@@ -29,32 +29,13 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
             <li class="dropdown">
-
-    <a href="#">Módulos ▾</a>
-
-    <ul class="dropdown-menu">
-
-        <li>
-            <a href="m_abecedario.php">
-                Abecedario
-            </a>
-        </li>
-
-        <li>
-            <a href="m_palabras.php">
-                Palabras
-            </a>
-        </li>
-
-        <li>
-            <a href="m_frases.php">
-                Frases
-            </a>
-        </li>
-
-    </ul>
-
-</li>
+                <a href="#">Módulos ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="m_abecedario.php">Abecedario</a></li>
+                    <li><a href="m_palabras.php">Palabras</a></li>
+                    <li><a href="m_frases.php">Frases</a></li>
+                </ul>
+            </li>
             <li><a href="progreso.php">Progreso</a></li>
         </ul>
 
@@ -70,62 +51,45 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <div class="evaluacion-container">
 
     <div class="top-buttons">
-
         <a href="m_frases.php" class="btn-volver">
             ← Volver al módulo
         </a>
-
         <div id="btnProgreso"></div>
     </div>
 
     <h2>Evaluación: Frases Comunes LSM</h2>
 
     <div class="barra-progreso">
-    <div id="progresoBarra" class="progreso-barra"></div>
-</div>
+        <div id="progresoBarra" class="progreso-barra"></div>
+    </div>
 
-<p id="textoProgreso" class="texto-progreso">
-    0 de 10 preguntas respondidas
-</p>
+    <p id="textoProgreso" class="texto-progreso">
+        0 de 10 preguntas respondidas
+    </p>
 
-    <div id="mensajeError" class="mensaje-error">
+    <div id="mensajeError" class="error-evaluacion" style="display: none; color: #ff4d6d; font-size: 22px; font-weight: bold; text-align: center; margin: 20px 0;">
         ⚠️ Contesta todas las preguntas antes de finalizar.
     </div>
 
     <div id="resultado" class="resultado"></div>
 
     <div id="modalResultado" class="modal-resultado">
-
-    <div class="modal-contenido">
-
-        <h2 id="tituloModal">
-            🎉 ¡Evaluación completada!
-        </h2>
-
-        <p id="textoModal"></p>
-
-        <button class="btn-main"
-                onclick="cerrarModal()">
-
-            Continuar
-
-        </button>
-
+        <div class="modal-contenido">
+            <h2 id="tituloModal">🎉 ¡Evaluación completada!</h2>
+            <p id="textoModal"></p>
+            <button class="btn-main" onclick="cerrarModal()">Continuar</button>
+        </div>
     </div>
-
-</div>
 
     <div id="preguntas"></div>
 
-    <div class="evaluacion-btn-container" id="btnFinalizar">
-        <button class="btn-main" onclick="calificar()">
+    <div class="evaluacion-btn-container">
+        <button id="btnFinalizar" class="btn-main" onclick="calificar()">
             Finalizar Evaluación
         </button>
     </div>
 
 </div>
-
-<script src="js/evaluacionFrase.js"></script>
 
 <script src="js/evaluacionFrase.js"></script>
 
