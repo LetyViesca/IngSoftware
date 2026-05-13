@@ -25,33 +25,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
-            <li class="dropdown">
-
-    <a href="#">Módulos ▾</a>
-
-    <ul class="dropdown-menu">
-
-        <li>
-            <a href="M_abecedario.php">
-                Abecedario
-            </a>
-        </li>
-
-        <li>
-            <a href="M_palabras.php">
-                Palabras
-            </a>
-        </li>
-
-        <li>
-            <a href="M_frases.php">
-                Frases
-            </a>
-        </li>
-
-    </ul>
-
-</li>
+            <li><a href="modulos.php">Módulos</a></li>
             <li><a href="progreso.php">Progreso</a></li>
         </ul>
 

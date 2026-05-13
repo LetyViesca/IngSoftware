@@ -83,8 +83,6 @@ nav {
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
-    position: relative;
-    z-index: 1000;
 }
 
 .main-logo { height: 35px; }
@@ -716,214 +714,28 @@ nav {
     border-left:8px solid #ccc;
 }
 
-/* ===== DROPDOWN MÓDULOS ===== */
-
-.dropdown{
-    position: relative;
-    padding-bottom: 5px;
-}
-
-.dropdown-menu{
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    min-width: 180px;
-    border-radius: 12px;
-    padding: 10px 0;
-    list-style: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    z-index: 9999;
-}
-
-.dropdown-menu li a{
-    display: block;
-    padding: 12px 18px;
-    color: #333;
-    text-decoration: none;
-}
-
-.dropdown-menu li a:hover{
-    background: #f5f5f5;
-    color: #8a4fff;
-}
-
-.dropdown:hover .dropdown-menu{
-    display: block;
-}
-
-.top-buttons{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    width:100%;
-    margin-bottom:20px;
-}
-
-.btn-volver{
-    margin-bottom:0;
-}
-
-#btnProgreso{
-    display:flex;
-    justify-content:flex-end;
-}
-
-/* ===== BARRA DE PROGRESO ===== */
-
-.barra-progreso{
-    width:100%;
-    height:18px;
-    background:#e4e4e4;
-    border-radius:20px;
-    overflow:hidden;
-    margin:15px 0 10px;
-}
-
-.progreso-barra{
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#8a4fff,#ff007a);
-    transition:0.4s;
-}
-
-.texto-progreso{
-    text-align:center;
-    font-size:14px;
-    color:#555;
-    margin-bottom:20px;
-}
-
-/* ===== ANIMACIONES EVALUACIÓN ===== */
-
-.question-card{
-    transition:
-    transform 0.3s,
-    box-shadow 0.3s,
-    border 0.3s;
-}
-
-.question-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
-}
-
-.correct{
-    animation:correcta 0.5s ease;
-}
-
-.incorrect{
-    animation:errorShake 0.4s ease;
-}
-
-@keyframes correcta{
-
-    0%{
-        transform:scale(1);
+/* SOLUCIÓN OBSERVACIÓN QA: Diseño Responsive Sección Progreso */
+@media (max-width: 768px) {
+    .progreso-container, .progreso-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+        width: 100% !important;
+        padding: 10px !important;
     }
 
-    50%{
-        transform:scale(1.02);
+    .progreso-card {
+        width: 90% !important; /* Elimina espacios vacíos laterales */
+        max-width: 400px;
+        margin: 0 auto !important;
+        text-align: center;
     }
 
-    100%{
-        transform:scale(1);
-    }
-}
-
-@keyframes errorShake{
-
-    0%{
-        transform:translateX(0);
-    }
-
-    25%{
-        transform:translateX(-5px);
-    }
-
-    50%{
-        transform:translateX(5px);
-    }
-
-    75%{
-        transform:translateX(-5px);
-    }
-
-    100%{
-        transform:translateX(0);
-    }
-}
-
-.option{
-    transition:
-    background 0.3s,
-    transform 0.2s,
-    border 0.3s;
-}
-
-.option:hover{
-    background:#f8f4ff;
-    transform:scale(1.01);
-}
-
-/* ===== MODAL RESULTADO ===== */
-
-.modal-resultado{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.5);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:99999;
-    animation:fadeIn 0.3s ease;
-}
-
-.modal-contenido{
-    background:white;
-    padding:40px;
-    border-radius:25px;
-    text-align:center;
-    max-width:400px;
-    width:90%;
-    animation:subir 0.4s ease;
-}
-
-.modal-contenido h2{
-    margin-bottom:15px;
-    color:#8a4fff;
-}
-
-.modal-contenido p{
-    margin-bottom:25px;
-    color:#555;
-    font-size:18px;
-}
-
-@keyframes fadeIn{
-
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
-}
-
-@keyframes subir{
-
-    from{
-        transform:translateY(30px);
-        opacity:0;
-    }
-
-    to{
-        transform:translateY(0);
-        opacity:1;
+    /* Ajuste de estadísticas para que no se amontonen */
+    .progreso-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 }

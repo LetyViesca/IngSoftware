@@ -1,13 +1,18 @@
 <?php
+/**
+ * ARCHIVO: backend/procesar_login.php
+ * REFACTORIZACIÓN: Verificación Bcrypt + Manejo de Errores Limpios
+ */
+
 include("db.php"); 
 session_start(); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // 1. Limpieza de datos (aunque usaremos prepared statements, es buena práctica)
+    // 1. Limpieza y recepción de datos
     $correo = trim($_POST['correo']);
     $contra = $_POST['contra'];
 
-    // 2. Uso de Prepared Statements para evitar Inyección SQL
+    // 2. Uso de Prepared Statements (Checklist Punto 2)
     $sql = "SELECT id_usuario, nombres, contrasena FROM Usuario WHERE correo = ?";
     $stmt = mysqli_prepare($conexion, $sql);
     
@@ -18,31 +23,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($usuario = mysqli_fetch_assoc($resultado)) {
             
-            // 3. Verificación de contraseña
-            // Nota: En producción deberías usar password_verify() con hashes, 
-            // pero mantenemos la lógica de comparación directa por ahora.
-            if ($contra === $usuario['contrasena']) {
-                // Seteamos las variables de sesión que usan todas tus vistas
+            // 3. VERIFICACIÓN DE CONTRASEÑA CON BCRYPT (Checklist Punto 1)
+            // Reemplazamos el === por password_verify para validar el hash
+            if (password_verify($contra, $usuario['contrasena'])) {
+                
+                // Regenerar el ID de sesión por seguridad (Buena práctica adicional)
+                session_regenerate_id();
+
                 $_SESSION['id_usuario'] = $usuario['id_usuario'];
                 $_SESSION['nombre_usuario'] = $usuario['nombres'];
                 
-                // Redirigimos al inicio en el frontend
+                // Redirigimos al inicio en la nueva ruta del frontend
                 header("Location: ../frontend/inicio.php"); 
                 exit();
             } else {
-                header("Location: ../frontend/login.php?error=La contraseña es incorrecta");
+                // Mensaje genérico para no dar pistas a atacantes
+                header("Location: ../frontend/login.php?error=credenciales_invalidas");
                 exit();
             }
         } else {
-            header("Location: ../frontend/login.php?error=Este correo no está registrado");
+            header("Location: ../frontend/login.php?error=credenciales_invalidas");
             exit();
         }
         
         mysqli_stmt_close($stmt);
     } else {
-        // Error de preparación de la consulta
-        header("Location: ../frontend/login.php?error=Error interno del servidor");
+        // Error técnico oculto al usuario final (Checklist Punto 5)
+        header("Location: ../frontend/login.php?error=error_interno");
         exit();
     }
 }
+$conexion->close();
 ?>

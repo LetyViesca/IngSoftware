@@ -26,33 +26,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
-            <li class="dropdown">
-
-    <a href="#">Módulos ▾</a>
-
-    <ul class="dropdown-menu">
-
-        <li>
-            <a href="M_abecedario.php">
-                Abecedario
-            </a>
-        </li>
-
-        <li>
-            <a href="M_palabras.php">
-                Palabras
-            </a>
-        </li>
-
-        <li>
-            <a href="M_frases.php">
-                Frases
-            </a>
-        </li>
-
-    </ul>
-
-</li>
+            <li><a href="modulos.php">Módulos</a></li>
             <li><a href="progreso.php">Progreso</a></li>
         </ul>
 
@@ -67,25 +41,13 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
 <div class="evaluacion-container">
 
-    <div class="top-buttons">
-
-    <a href="m_palabras.php" class="btn-volver">
-        ← Volver al módulo
-    </a>
-
-    <div id="btnProgreso"></div>
-
+    <div class="btn-back">
+        <a href="m_palabras.php" class="btn-main">
+            ⬅ Volver al módulo
+        </a>
     </div>
 
     <h2>Evaluación: Palabras LSM</h2>
-
-    <div class="barra-progreso">
-    <div id="progresoBarra" class="progreso-barra"></div>
-</div>
-
-<p id="textoProgreso" class="texto-progreso">
-    0 de 10 preguntas respondidas
-</p>
 
     <div id="alerta" class="resultado"></div>
 
@@ -98,24 +60,6 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             Finalizar Evaluación
         </button>
     </div>
-
-    <div id="modalResultado" class="modal-resultado">
-
-    <div class="modal-contenido">
-
-        <h2 id="tituloModal">
-            🎉 ¡Evaluación completada!
-        </h2>
-
-        <p id="textoModal"></p>
-
-        <button class="btn-main" onclick="cerrarModal()">
-            Continuar
-        </button>
-
-    </div>
-
-</div>
 
 </div>
 
