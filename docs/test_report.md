@@ -1,93 +1,123 @@
 # REPORTE DE PRUEBAS – ZIGNA
 
-## Sprint 4 – QA y Validaciones
+## Sprint 4 – QA, Validaciones y Corrección de Errores
 
 ---
 
 # 1. Información General
 
-**Proyecto:** ZIGNA
-**Módulo evaluado:** Sistema web de Lengua de Señas Mexicana
-**Sprint:** Sprint 4
-**Responsable QA:** Renata Monserrath Flores Ramirez
-**Fecha de entrega:** 5/13/2026 
+| Campo | Información |
+|---|---|
+| **Proyecto** | ZIGNA |
+| **Tipo de sistema** | Plataforma web de aprendizaje de Lengua de Señas Mexicana |
+| **Sprint evaluado** | Sprint 4 |
+| **Responsable QA** | Renata Monserrath Flores Ramírez |
+| **Fecha de entrega** | 13 de mayo de 2026 |
+| **Entorno de pruebas** | XAMPP, PHP, MySQL, HTML, CSS, JavaScript |
+| **Repositorio** | GitHub – IngSoftware |
 
 ---
 
 # 2. Objetivo de las pruebas
 
-Verificar el correcto funcionamiento de las funcionalidades principales del sistema, validar el comportamiento ante entradas inválidas y documentar errores detectados durante el Sprint 4.
+Verificar el correcto funcionamiento de las funcionalidades principales del sistema ZIGNA mediante pruebas funcionales, validaciones de formularios, pruebas de navegación y pruebas de manejo de errores, con el propósito de garantizar la estabilidad, seguridad y usabilidad del sistema antes de su integración final.
 
 ---
 
 # 3. Alcance de las pruebas
 
-Las pruebas realizadas abarcan:
+Las pruebas realizadas durante el Sprint 4 abarcan los siguientes módulos y funcionalidades:
 
-* Registro de usuario
-* Inicio de sesión
-* Navegación entre módulos
-* Evaluaciones
-* Guardado de progreso
-* Validaciones de formularios
-* Conexión con base de datos
-* Interfaz visual y navegación
+- Registro de usuarios
+- Inicio y cierre de sesión
+- Navegación entre módulos
+- Evaluaciones interactivas
+- Guardado y actualización de progreso
+- Validaciones de formularios
+- Manejo de errores
+- Conexión y consultas a base de datos
+- Diseño responsive
+- Seguridad básica contra inyección SQL
 
 ---
 
 # 4. Casos de prueba exitosos
 
-| ID    | Caso de prueba             | Resultado esperado               | Resultado obtenido               | Estado    |
-| ----- | -------------------------- | -------------------------------- | -------------------------------- | --------- |
-| CP-01 | Registro de usuario válido | Usuario registrado correctamente | Registro exitoso                 | Exitoso |
-| CP-02 | Inicio de sesión correcto  | Acceso al sistema                | Acceso permitido                 | Exitoso |
-| CP-03 | Navegación entre módulos   | Cambio correcto entre páginas    | Navegación funcional             | Exitoso |
-| CP-04 | Realizar evaluación        | Mostrar resultado final          | Resultado mostrado correctamente | Exitoso |
-| CP-05 | Visualización de módulos   | Mostrar contenido educativo      | Contenido visible correctamente  | Exitoso |
+| ID | Caso de prueba | Resultado esperado | Resultado obtenido | Estado |
+|---|---|---|---|---|
+| CP-01 | Registro de usuario válido          | Registrar correctamente al usuario  | Usuario registrado exitosamente             | Exitoso |
+| CP-02 | Inicio de sesión válido             | Permitir acceso al sistema          | Acceso concedido correctamente              | Exitoso |
+| CP-03 | Navegación entre módulos            | Cambiar correctamente entre páginas | Navegación funcional                        | Exitoso |
+| CP-04 | Realización de evaluaciones         | Mostrar resultados y puntaje        | Resultados mostrados correctamente          | Exitoso |
+| CP-05 | Visualización de módulos educativos | Mostrar contenido multimedia y textual | Contenido visible correctamente          | Exitoso |
+| CP-06 | Guardado de progreso                | Almacenar progreso del usuario      | Datos guardados correctamente en MySQL      | Exitoso |
+| CP-07 | Actualización de evaluación         | Sobrescribir resultados anteriores  | Última evaluación actualizada correctamente | Exitoso |
 
 ---
 
-# 5. Stress Tests / Pruebas de entradas inválidas
+# 5. Pruebas de validación y estrés
 
-| ID    | Prueba realizada                 | Resultado esperado          | Resultado obtenido               | Estado |
-| ----- | -------------------------------- | --------------------------- | -------------------------------- | ------ |
-| ST-01 | Campos vacíos en login           | Mostrar mensaje de error    | Error mostrado correctamente     | Exitoso|
-| ST-02 | Correo inválido                  | Bloquear acceso             | Error mostrado correctamente     | Exitoso|
-| ST-03 | Contraseña incorrecta            | Mostrar error               | Error mostrado correctamente     | Exitoso|
-| ST-04 | Inyección SQL básica             | Bloquear consulta maliciosa | Error mostrado correctamente     | Exitoso|
-| ST-05 | Enviar evaluación incompleta     | No permitir envío           | Error mostrado correctamente     | Exitoso|
-| ST-06 | Introducir caracteres especiales | Evitar errores del sistema  | Error mostrado correctamente     | Exitoso|
+| ID | Prueba realizada | Resultado esperado | Resultado obtenido | Estado |
+|---|---|---|---|---|
+| ST-01 | Campos vacíos en login               | Mostrar mensaje de error      | Validación aplicada correctamente               | Exitoso |
+| ST-02 | Correo inválido                      | Bloquear registro/login       | Mensaje mostrado correctamente                  | Exitoso |
+| ST-03 | Contraseña incorrecta                | Denegar acceso                | Error controlado correctamente                  | Exitoso |
+| ST-04 | Intento básico de inyección SQL      | Bloquear consulta maliciosa   | Consulta protegida mediante Prepared Statements | Exitoso |
+| ST-05 | Evaluación incompleta                | Impedir envío del formulario  | Validación aplicada correctamente               | Exitoso |
+| ST-06 | Caracteres especiales en formularios | Evitar fallos del sistema     | Sistema respondió correctamente                 | Exitoso |
+| ST-07 | Contraseña menor a 8 caracteres      | Bloquear registro             | Restricción aplicada correctamente              | Exitoso |
+| ST-08 | Correo duplicado                     | Evitar duplicidad de usuarios | Validación aplicada correctamente               | Exitoso |
 
 ---
 
-# 6. Errores encontrados y reportados
+# 6. Errores encontrados y corregidos
 
-| ID    | Error detectado                        | Severidad | Estado                 |
-| ----- | -------------------------------------- | --------- | ---------------------- |
-| ER-01 | No guardaba progreso del usuario       | Alta      | Corregido              |
-| ER-02 | Evaluaciones no almacenaban resultados | Alta      | Corregido              |
-| ER-03 | Mezcla de lógica e interfaz            | Media     | Corregido              |
-| ER-04 | Falta de validaciones en formularios   | Alta      | Corregido              |
-| ER-05 | Problemas de organización de carpetas  | Media     | Corregido              |
+| ID | Error detectado | Severidad | Estado |
+|---|---|---|---|
+| ER-01 | El progreso del usuario no se almacenaba correctamente  | Alta  | Corregido |
+| ER-02 | Las evaluaciones no actualizaban resultados posteriores | Alta  | Corregido |
+| ER-03 | Las respuestas de evaluaciones permanecían estáticas    | Media | Corregido |
+| ER-04 | Falta de validaciones en formularios                    | Alta  | Corregido |
+| ER-05 | Problemas de organización y rutas de archivos           | Media | Corregido |
+| ER-06 | Mensajes de error poco comprensibles para el usuario    | Media | Corregido |
+| ER-07 | Problemas de responsive design en móviles               | Media | Corregido |
+| ER-08 | Desbordamiento visual en evaluaciones móviles           | Media | Corregido |
 
 ---
 
 # 7. Evidencias
 
-* Registro exitoso
-* Inicio de sesión
-* Validaciones de error
-* Resultados de evaluación
-* Errores detectados
-* Cambios en estructura del proyecto
-* Evidencia de pruebas realizadas
+## Evidencias visuales y documentación
+
+- Registro exitoso de usuarios
+- Inicio de sesión funcional
+- Validaciones de formularios
+- Resultados de evaluaciones
+- Guardado de progreso
+- Errores detectados y corregidos
+- Evidencias responsive en dispositivos móviles
+- Cambios realizados en estructura del proyecto
+
+## Repositorio de evidencias
+
+### Correcciones y resultados QA
+
+```txt
+https://github.com/LetyViesca/IngSoftware/tree/d59bba553471ecdfcdf0ca1b50e195c71d8b546e/Imagenes_Sprint4/Correcciones-Resultados_Qa
+```
+
+### Evidencia de errores detectados
+
+```txt
+https://github.com/LetyViesca/IngSoftware/tree/d59bba553471ecdfcdf0ca1b50e195c71d8b546e/Imagenes_Sprint4/Errores_Qa
+```
 
 ---
 
 # 8. Conclusiones
 
-El sistema presenta mejoras significativas respecto a sprints anteriores, especialmente en organización del proyecto, validaciones y estructura general. Las funcionalidades principales son parcialmente funcionales y se logró corregir diversos errores críticos relacionados con evaluaciones y almacenamiento de datos.
+Durante el Sprint 4 se realizaron pruebas funcionales y de validación sobre los módulos principales del sistema ZIGNA, identificando y corrigiendo errores relacionados con almacenamiento de progreso, validaciones de formularios, evaluaciones y diseño responsive.
 
-Sin embargo, aún existen áreas pendientes de mejora relacionadas con validaciones y seguridad.
+Las mejoras implementadas permitieron incrementar la estabilidad del sistema, fortalecer la seguridad básica mediante consultas preparadas (*Prepared Statements*) y mejorar significativamente la experiencia visual y de navegación tanto en dispositivos móviles como de escritorio.
 
-Se recomienda continuar fortaleciendo las pruebas funcionales y no funcionales antes de considerar el sistema como estable para producción.
+Actualmente, las funcionalidades principales del sistema operan de manera correcta y estable, cumpliendo con los requisitos establecidos para el sprint evaluado.
