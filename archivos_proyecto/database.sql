@@ -1,14 +1,15 @@
 CREATE DATABASE zigna;
 USE zigna;
 
--- Solo cambiamos el nombre a plural y el tamaño de la contra
-CREATE TABLE usuarios (
+-- Tabla Usuario
+CREATE TABLE Usuario 
+(
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombres VARCHAR(45),
     apellido_paterno VARCHAR(45),
     apellido_materno VARCHAR(45),
     correo VARCHAR(45) UNIQUE,
-    contra VARCHAR(255) -- Solo subimos este número para que no falle el login
+    contrasena VARCHAR(100)
 );
 
 -- Tabla Modulo
