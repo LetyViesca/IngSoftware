@@ -3,14 +3,28 @@ Fecha: 14 de mayo de 2026
 Responsable: Equipo de Desarrollo (Rama: feature-diseno diseñador)
 Estado General: ✅ VALIDADO
 
-1. Validación de Requisitos No Funcionales (RNF)
-ID	Requisito	Estado	Observaciones de Validación
-RNF-01	Seguridad de Contraseñas	✅	Se confirmó la migración de texto plano a cifrado mediante bcrypt en el archivo procesar_registro.php.
-RNF-02	Protección Inyección SQL	✅	Se validó la implementación de Prepared Statements en todos los módulos de backend (db.php, g_puntaje.php).
-RNF-03	Diseño Responsive	✅	El archivo styles.css incluye Media Queries que cubren desde 360px hasta 1920px.
-RNF-04	Tiempo de Respuesta	✅	Pruebas locales en XAMPP muestran tiempos de carga menores a 2 segundos en módulos de LSM.
-RNF-05	Disponibilidad	✅	El sistema es estable en entorno local; preparado para migración a servidor productivo.
-RNF-06	Protección de Datos	✅	Se tiene la hoja de ruta para la implementación de certificados SSL/HTTPS en el despliegue final.
+## Validación de Requisitos (RNF)
+
+### 1. Requisitos No Funcionales (RNF)
+| ID | Requisito | Estado | Evidencia de Validación |
+| :--- | :--- | :--- | :--- |
+| **RNF-01** | Seguridad de Contraseñas | ✅ | Implementación de **bcrypt** para evitar texto plano. |
+| **RNF-02** | Protección Inyección SQL | ✅ | Uso de **Prepared Statements** en `db.php` y `g_puntaje.php`. |
+| **RNF-03** | Diseño Responsive | ✅ | Adaptación visual desde 360px hasta 1920px mediante CSS. |
+| **RNF-04** | Tiempo de Respuesta | ✅ | Optimización de carga en módulos de dactilología. |
+| **RNF-05** | Disponibilidad | ✅ | Verificado en entorno local XAMPP sin caídas. |
+| **RNF-06** | Protección de Datos | ✅ | Planificación de protocolo HTTPS para despliegue final. |
+
+---
+
+### 2. Validación de Formularios y Errores
+| Formulario | Validación Realizada | Estado |
+| :--- | :--- | :--- |
+| **Registro** | Bloqueo de campos vacíos y formato de correo electrónico. | ✅ |
+| **Login** | Validación de credenciales seguras contra base de datos. | ✅ |
+| **Evaluación** | Control de respuestas obligatorias antes del envío. | ✅ |
+| **Errores** | Mensajes claros y resaltado visual en rojo (UX). | ✅ |
+
 ________________________________________
 2. Auditoría de Formularios
 A. Registro e Inicio de Sesión
