@@ -1,185 +1,70 @@
-# ZIGNA
+# ZIGNA - Plataforma Educativa de Lengua de Señas Mexicana (LSM)
 
 ## Descripción del proyecto
+ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje de la Lengua de Señas Mexicana (LSM). El sistema permite gestionar el ciclo completo de aprendizaje del usuario, desde el registro y autenticación segura hasta la interacción con módulos educativos y la ejecución de evaluaciones con monitoreo de progreso en tiempo real.
 
-ZIGNA es una plataforma web educativa enfocada en el aprendizaje de Lengua de Señas Mexicana (LSM). El sistema permite a los usuarios registrarse, iniciar sesión, acceder a módulos educativos, realizar evaluaciones y visualizar su progreso académico dentro de la plataforma.
+## Tecnologías y arquitectura
+El proyecto implementa una arquitectura de **separación de capas** para mejorar la mantenibilidad y seguridad:
 
----
+* **Directorio `backend/`**: Lógica de servidor y control de datos.
+    * `db.php`: Conexión centralizada a la BD.
+    * `procesar_registro.php` / `procesar_login.php`: Controladores de formularios con validaciones robustas.
+* **Directorio `frontend/`**: Interfaz de usuario y recursos públicos.
+    * `registro_vista.php`, `login_vista.php`, `inicio.php`: Vistas principales.
+    * `css/` y `js/`: Estilos responsivos y validaciones dinámicas del lado del cliente.
 
-# Tecnologías utilizadas
-
-- Frontend: HTML, CSS y JavaScript
-- Backend: PHP
-- Base de datos: MySQL
-- Servidor local recomendado: XAMPP
-
----
-
-# Estructura general del proyecto
-
-```plaintext
-backend/
-│
-├── css/
-├── js/
-├── php/
-├── docs/
-├── index.html
-├── menu.html
-├── modulo.html
-├── evaluacion.html
-├── resultados.html
-└── README.md
-```
+## Requisitos No Funcionales (RNF) Implementados
+* **RNF-01 (Seguridad)**: Cifrado de credenciales mediante `password_hash` (Bcrypt).
+* **RNF-02 (Integridad)**: Prevención de Inyección SQL mediante **Consultas Preparadas** en toda la capa de `backend/`.
+* **RNF-03 (Validación de Datos)**: Implementación de filtros de servidor (`filter_var`) para asegurar estructuras de correo válidas y limpieza de inputs.
+* **RNF-04 (Diseño Adaptativo)**: Interfaz optimizada para dispositivos móviles mediante `media queries`, corrigiendo desalineaciones en la sección de progreso.
 
 ---
 
-# Instrucciones de instalación y ejecución
+## Instrucciones de instalación y ejecución
 
-## 1. Instalar XAMPP
+### 1. Preparación del entorno
+Es necesario contar con un servidor local activo (ej. **XAMPP**) con los servicios de Apache y MySQL iniciados.
 
-Descargar e instalar XAMPP para habilitar Apache y MySQL en un entorno local.
+### 2. Ubicación del proyecto y ejecución
+Colocar la carpeta raíz del proyecto (`IngSoftware`) dentro del directorio `C:\xampp\htdocs\`. 
 
-## 2. Iniciar servicios
+**Nota de acceso:** Por la separación de capas, el ingreso no es directo en la raíz. Se debe utilizar la siguiente ruta específica para evitar errores de carga de scripts del backend:
+> [http://localhost/IngSoftware/frontend/inicio.php](http://localhost/IngSoftware/frontend/inicio.php)
 
-Desde el panel de control de XAMPP iniciar:
+### 3. Configuración de la base de datos
+1.  Crear una base de datos denominada: `zigna`.
+2.  Importar el archivo `database.sql` ubicado en la raíz del proyecto.
+3.  **Nota técnica**: La columna `contra` en la tabla `usuarios` debe tener una longitud de **VARCHAR(255)** para soportar el hash de Bcrypt.
 
-- Apache
-- MySQL
+### 4. Configuración de conexión (Capa Backend)
+El archivo de configuración central se encuentra en: `INGSOFTWARE/backend/db.php`  
+Asegúrese de que las credenciales coincidan con su servidor local (Usuario: `root`, Puerto: `3306`).
 
-## 3. Colocar el proyecto en la carpeta del servidor local
+### 5. Acceso al sistema (Punto de Entrada Único)
+Para garantizar el correcto funcionamiento de la arquitectura de capas, el acceso debe realizarse **exclusivamente** a través de la interfaz de usuario. La carpeta `backend/` contiene lógica de servidor y no es navegable.
 
-Mover la carpeta del proyecto dentro de:
+**URL Directa de Inicio:**
+> [http://localhost/IngSoftware/frontend/inicio.php](http://localhost/IngSoftware/frontend/inicio.php)
 
-```plaintext
-C:\xampp\htdocs\
-```
-
-Ejemplo:
-
-```plaintext
-C:\xampp\htdocs\backend
-```
-
-> Nota: El nombre de la carpeta puede variar dependiendo del nombre asignado al proyecto local.
-
-## 4. Crear la base de datos
-
-La base de datos puede configurarse utilizando herramientas compatibles como:
-
-- phpMyAdmin
-- MySQL Workbench
-
-Crear una base de datos con el nombre:
-
-```plaintext
-zigna
-```
-
-## 5. Importar el archivo SQL
-
-Importar el archivo `.sql` proporcionado en el proyecto dentro de la base de datos creada previamente.
-
-## 6. Configurar la conexión en PHP
-
-Verificar que la conexión a la base de datos esté correctamente configurada:
-
-```php
-$conexion = new mysqli("localhost", "root", "", "zigna");
-```
-
-En caso de utilizar un puerto personalizado, agregarlo en la conexión:
-
-```php
-$conexion = new mysqli("localhost", "root", "", "zigna", 3306);
-```
-
-## 7. Ejecutar el sistema
-
-Abrir el navegador y acceder a:
-
-```plaintext
-http://localhost/backend
-```
-
-> Nota: La ruta puede cambiar dependiendo del nombre asignado a la carpeta del proyecto.
+*Nota: Cualquier intento de acceso a través de la raíz o la carpeta `/backend/` resultará en errores de navegación o denegación de acceso por diseño de seguridad.*
 
 ---
 
-# Flujo principal del sistema
+## Flujo de Trabajo y Estructura de Rutas
+* **Vistas**: Residen en `/frontend/` y consumen servicios de `/backend/`.
+* **Procesamiento**: Los formularios envían peticiones a `../backend/nombre_archivo.php`.
+* **Mensajes de error**: El sistema traduce códigos técnicos a mensajes amigables mediante parámetros `GET` gestionados en las vistas de registro y login.
 
-1. Registro de usuario.
-2. Inicio de sesión.
-3. Acceso a módulos educativos.
-4. Visualización de contenido de aprendizaje.
-5. Realización de evaluaciones.
-6. Retroalimentación de resultados.
-7. Visualización de progreso del usuario.
+## Equipo de desarrollo
+* **Leticia Viesca** — Coordinadora
+* **Dannia Hernández** — Desarrolladora
+* **Renata Flores** — QA (Quality Assurance)
+* **Valeria García** — Analista
+* **Blanca Ruiz** — Diseñadora
 
----
+## Estado del proyecto
+**Sprint 4 - Finalizado**
 
-# Usuarios de prueba y configuración de base de datos
-
-## Usuario de prueba
-
-```plaintext
-Correo: prueba@zigna.com
-Contraseña: prueba123
-```
-
-## Configuración de base de datos
-
-- Base de datos: `zigna`
-- Usuario MySQL: `root`
-- Puerto predeterminado de MySQL: `3306`
-
-> Nota: Algunos entornos personalizados pueden utilizar puertos diferentes.
-
----
-
-# Limitaciones actuales del sistema
-
-- Algunas validaciones avanzadas continúan en desarrollo.
-- El sistema aún no cuenta con despliegue en un servidor de producción.
-- No se incluye funcionalidad de recuperación de contraseña.
-- Algunas características de seguridad continúan en proceso de integración.
-
----
-
-# Estado actual del proyecto
-
-## Sprint 4 – Calidad, refactorización y requisitos no funcionales
-
-Avance estimado del proyecto: **70%**
-
-## Funcionalidades implementadas
-
-- Interfaces principales del sistema.
-- Navegación entre pantallas.
-- Módulos educativos.
-- Evaluaciones básicas.
-- Validaciones iniciales.
-- Integración básica con base de datos.
-
-## Funcionalidades pendientes
-
-- Implementación completa de requisitos no funcionales.
-- Validaciones de seguridad adicionales.
-- Optimización de rendimiento.
-- Mejoras de accesibilidad y usabilidad.
-
----
-
-# Equipo de desarrollo y roles
-
-- Renata Flores — QA
-- Valeria García — Analista
-- Dannia Hernández — Desarrollador
-- Blanca Ruiz — Diseñador
-- Leticia Viesca — Coordinador
-
----
-
-# Estado del proyecto
-
-El proyecto se encuentra en una etapa de mejora continua enfocada en calidad de software, refactorización de código, validaciones, buenas prácticas de desarrollo y fortalecimiento técnico del sistema.
+* Atendidas observaciones de QA sobre validaciones de correo y diseño responsive.
+* Implementada traducción de errores técnicos a mensajes de usuario final.
