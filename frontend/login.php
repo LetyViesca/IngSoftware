@@ -8,28 +8,40 @@
     <script src="js/login_script.js" defer></script>
 </head>
 <body>
-    <div class="card">
+    <div class="login-card">
         <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="logo-login">
         <h2>Bienvenido de nuevo</h2>
         <p style="color: #777; font-size: 14px; margin-bottom: 20px;">Inicia sesión para continuar</p>
 
-  <?php
+        <?php
 if(isset($_GET['error'])){
 
     $mensaje = "";
 
     switch($_GET['error']){
 
-        case 'credenciales_invalidas':
-            $mensaje = "Correo o contraseña incorrectos.";
+        case 'formato_nombre':
+            $mensaje = "El nombre y los apellidos solo deben contener letras.";
         break;
 
-        case 'error_interno':
-            $mensaje = "Ocurrió un error interno. Intenta nuevamente.";
+        case 'correo_invalido':
+            $mensaje = "Ingresa un correo electrónico válido.";
+        break;
+
+        case 'correo_duplicado':
+            $mensaje = "Ese correo ya está registrado.";
+        break;
+
+        case 'contra_corta':
+            $mensaje = "La contraseña debe tener mínimo 8 caracteres.";
+        break;
+
+        case 'tecnico':
+            $mensaje = "Ocurrió un error al registrar la cuenta.";
         break;
 
         default:
-            $mensaje = "No se pudo iniciar sesión.";
+            $mensaje = "Ocurrió un error inesperado.";
     }
 
     echo "<div class='error-msg'>$mensaje</div>";
@@ -37,20 +49,25 @@ if(isset($_GET['error'])){
 ?>
 
         <form action="../backend/procesar_login.php" method="POST">
-            <div class="form-group">
+            <div class="input-group">
                 <label>Correo Electrónico</label>
                 <input type="email" name="correo" required placeholder="tu@correo.com">
             </div>
-            <div class="form-group">
+            
+            <div class="input-group" style="position: relative;">
                 <label>Contraseña</label>
                 <input type="password" name="contra" id="loginPass" required placeholder="Tu contraseña">
-                <span class="show-pass" onclick="togglePass()">👁️ Ver</span>
+                <span class="show-pass" onclick="togglePass()" style="position: absolute; right: 10px; bottom: 10px; cursor: pointer; font-size: 12px; color: #2cc19c;">👁️ Ver</span>
             </div>
+
             <button type="submit" class="btn-login">Entrar</button>
         </form>
         
-        <div class="links">
-            ¿No tienes cuenta? <a href="registro_vista.php">Regístrate</a>
+        <div style="margin-top:20px; font-size:13px; color:#888;">
+            ¿No tienes cuenta? 
+            <a href="registro_vista.php" style="color:#2cc19c; text-decoration:none; font-weight:bold;">
+                Regístrate
+            </a>
         </div>
     </div>
 </body>
