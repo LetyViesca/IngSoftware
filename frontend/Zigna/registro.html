@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIGNA - Registro</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); 
+            height: 100vh; display: flex; align-items: center; justify-content: center; 
+        }
+        .login-card {
+            background: white; padding: 30px 40px; border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center;
+        }
+        .logo-login { height: 45px; margin-bottom: 15px; }
+        h2 { color: #333; margin-bottom: 5px; }
+        p { color: #777; margin-bottom: 25px; font-size: 14px; }
+        .input-group { text-align: left; margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 13px; font-weight: 600; color: #555; }
+        input {
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; outline: none; transition: 0.3s;
+        }
+        input:invalid:not(:placeholder-shown) { border: 2px solid #ff007a; background-color: #fff0f5; }
+        input:valid:not(:placeholder-shown) { border: 2px solid #2cc19c; }
+
+        .btn-login {
+            width: 100%; background: #8a4fff; color: white; border: none;
+            padding: 14px; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 10px;
+        }
+        .footer-links { margin-top: 20px; font-size: 13px; color: #888; }
+        .footer-links a { color: #2cc19c; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="logo-login">
+        <h2>Crea tu cuenta</h2>
+        <p>Regístrate para guardar tu progreso.</p>
+
+        <form action="login.html">
+            
+            <!-- NOMBRE -->
+            <div class="input-group">
+                <label>Nombre</label>
+                <input type="text" placeholder="Tu nombre" required>
+            </div>
+
+            <!-- APELLIDO PATERNO -->
+            <div class="input-group">
+                <label>Apellido Paterno</label>
+                <input type="text" placeholder="Apellido paterno" required>
+            </div>
+
+            <!-- APELLIDO MATERNO -->
+            <div class="input-group">
+                <label>Apellido Materno</label>
+                <input type="text" placeholder="Apellido materno" required>
+            </div>
+
+            <div class="input-group">
+                <label>Correo Electrónico</label>
+                <input type="email" placeholder="ejemplo@correo.com" required>
+            </div>
+
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" placeholder="Mínimo 8 caracteres" minlength="8" required>
+            </div>
+
+            <button type="submit" class="btn-login">Crear Cuenta</button>
+        </form>
+
+        <div class="footer-links">
+            ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+        </div>
+    </div>
+
+</body>
+</html>
