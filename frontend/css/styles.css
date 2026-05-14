@@ -10,11 +10,20 @@ body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh; 
     width: 100%;
+<<<<<<< HEAD
+=======
+    display: flex;
+    flex-direction: column;
+>>>>>>> e33db39af2be16c54559c831c68c9be6d323f2be
     overflow-x: hidden;
 }
 
 /* --- TARJETAS (LOGIN Y REGISTRO) --- */
+<<<<<<< HEAD
 .login-card { 
+=======
+.card, .login-card { 
+>>>>>>> e33db39af2be16c54559c831c68c9be6d323f2be
     background: white; 
     padding: 30px 40px; 
     border-radius: 30px; 
@@ -198,11 +207,18 @@ nav {
 
 /* ===== MÓDULO ABECEDARIO ===== */
 
+<<<<<<< HEAD
 .container{
     width:100%;
     max-width:1200px;
     margin:40px auto;
     padding:20px;
+=======
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+>>>>>>> e33db39af2be16c54559c831c68c9be6d323f2be
 }
 
 .titulo-modulo {
@@ -676,17 +692,26 @@ nav {
 
 .titulo-progreso{
     text-align:center;
+<<<<<<< HEAD
     margin:40px 0 40px;
     color:#333;
     font-size:32px;
+=======
+    margin-bottom:30px;
+    color:#333;
+>>>>>>> e33db39af2be16c54559c831c68c9be6d323f2be
 }
 
 .grid-progreso{
     display:grid;
+<<<<<<< HEAD
     grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
     gap:25px;
     width:100%;
     align-items:stretch;
+=======
+    gap:20px;
+>>>>>>> e33db39af2be16c54559c831c68c9be6d323f2be
 }
 
 .modulo-card{
@@ -929,6 +954,7 @@ nav {
         transform:translateY(0);
         opacity:1;
     }
+<<<<<<< HEAD
 }
 
 @media (max-width:768px){
@@ -957,3 +983,6 @@ nav {
     }
 }
 
+=======
+}
+>>>>>>> e33db39af2be16c54559c831c68c9be6d323f2be
