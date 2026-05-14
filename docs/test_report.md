@@ -9,8 +9,8 @@
 **Proyecto:** ZIGNA
 **Módulo evaluado:** Sistema web de Lengua de Señas Mexicana
 **Sprint:** Sprint 4
-**Responsable QA:** Renata Flores
-**Fecha de pruebas:** [Agregar fecha]
+**Responsable QA:** Renata Monserrath Flores Ramirez
+**Fecha de entrega:** 5/13/2026 
 
 ---
 
@@ -51,12 +51,12 @@ Las pruebas realizadas abarcan:
 
 | ID    | Prueba realizada                 | Resultado esperado          | Resultado obtenido               | Estado |
 | ----- | -------------------------------- | --------------------------- | -------------------------------- | ------ |
-| ST-01 | Campos vacíos en login           | Mostrar mensaje de error    | Validación correcta              | Exitoso|
-| ST-02 | Correo inválido                  | Bloquear acceso             | Validación correcta              | Exitoso|
+| ST-01 | Campos vacíos en login           | Mostrar mensaje de error    | Error mostrado correctamente     | Exitoso|
+| ST-02 | Correo inválido                  | Bloquear acceso             | Error mostrado correctamente     | Exitoso|
 | ST-03 | Contraseña incorrecta            | Mostrar error               | Error mostrado correctamente     | Exitoso|
-| ST-04 | Inyección SQL básica             | Bloquear consulta maliciosa | Pendiente de validación completa | Pendiente|
-| ST-05 | Enviar evaluación incompleta     | No permitir envío           | Validación parcial               | Pendiente|
-| ST-06 | Introducir caracteres especiales | Evitar errores del sistema  | Sin fallos críticos              | Exitoso|
+| ST-04 | Inyección SQL básica             | Bloquear consulta maliciosa | Error mostrado correctamente     | Exitoso|
+| ST-05 | Enviar evaluación incompleta     | No permitir envío           | Error mostrado correctamente     | Exitoso|
+| ST-06 | Introducir caracteres especiales | Evitar errores del sistema  | Error mostrado correctamente     | Exitoso|
 
 ---
 
@@ -67,14 +67,12 @@ Las pruebas realizadas abarcan:
 | ER-01 | No guardaba progreso del usuario       | Alta      | Corregido              |
 | ER-02 | Evaluaciones no almacenaban resultados | Alta      | Corregido              |
 | ER-03 | Mezcla de lógica e interfaz            | Media     | Corregido              |
-| ER-04 | Falta de validaciones en formularios   | Alta      | En proceso             |
+| ER-04 | Falta de validaciones en formularios   | Alta      | Corregido              |
 | ER-05 | Problemas de organización de carpetas  | Media     | Corregido              |
 
 ---
 
 # 7. Evidencias
-
-Agregar capturas (Pendiente):
 
 * Registro exitoso
 * Inicio de sesión
