@@ -1,0 +1,191 @@
+/* =====================================================================
+   GLOBAL.CSS - CONFIGURACIÓN GLOBAL Y BASE DEL PROYECTO
+   - Reset de estilos
+   - Variables de color y fuentes
+   - Body y elementos base
+   - Animaciones reutilizables
+   ===================================================================== */
+
+/* ========== RESET GLOBAL ========== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ========== BODY Y ESTILOS BASE ========== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+h3 {
+    color: #8a4fff;
+    margin-bottom: 8px;
+}
+
+p {
+    color: #666;
+}
+
+/* ========== CONTENEDORES BASE ========== */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.evaluacion-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 40px;
+}
+
+.palabras-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.frases-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+/* ========== TÍTULOS ========== */
+.titulo-modulo,
+.palabras-titulo,
+.frases-container h1 {
+    text-align: center;
+    margin: 20px 0 30px;
+    color: #333;
+}
+
+.evaluacion-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.titulo-progreso {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* ========== SUBTÍTULOS ========== */
+.subtitulo,
+.palabras-subtitulo {
+    margin: 30px 0 15px;
+    color: #8a4fff;
+    padding-left: 10px;
+    border-left: 5px solid #ff007a;
+}
+
+/* ========== ELEMENTOS GENERALES ========== */
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.user-link {
+    text-decoration: none;
+    color: #666;
+    font-size: 13px;
+}
+
+/* ========== MENSAJES Y ALERTAS ========== */
+.error-msg {
+    color: #ff007a;
+    background: #fff0f5;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 15px;
+    border: 1px solid #ff007a;
+}
+
+.mensaje-error {
+    display: none;
+    background: #fff3cd;
+    color: #856404;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ========== ANIMACIONES ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes correcta {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes errorShake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ========== RESPONSIVE GLOBAL ========== */
+@media (max-width: 900px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

@@ -1,0 +1,93 @@
+/* =====================================================================
+   PROGRESO.CSS - ESTILOS DE SEGUIMIENTO DE PROGRESO
+   - Grid de módulos con progreso
+   - Barra de progreso
+   - Estados de progreso
+   - Indicadores visuales
+   ===================================================================== */
+
+/* ========== GRID DE PROGRESO ========== */
+.grid-progreso {
+    display: grid;
+    gap: 20px;
+}
+
+/* ========== TARJETA DE MÓDULO CON PROGRESO ========== */
+.modulo-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.modulo-card h3 {
+    margin-bottom: 15px;
+    color: #8a4fff;
+    font-size: 18px;
+}
+
+.modulo-card p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 14px;
+}
+
+/* ========== INDICADORES DE ESTADO ========== */
+.verde {
+    border-left: 8px solid #00c853;
+}
+
+.naranja {
+    border-left: 8px solid #ff9800;
+}
+
+.sin-intento {
+    border-left: 8px solid #ccc;
+}
+
+/* ========== BARRA DE PROGRESO ========== */
+.barra-progreso {
+    width: 100%;
+    height: 18px;
+    background: #e4e4e4;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 15px 0 10px;
+}
+
+.progreso-barra {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
+    transition: width 0.4s ease;
+}
+
+.texto-progreso {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* ========== RESPONSIVE PROGRESO ========== */
+@media (max-width: 768px) {
+    .modulo-card {
+        padding: 15px;
+    }
+    
+    .modulo-card h3 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-progreso {
+        gap: 15px;
+    }
+    
+    .modulo-card {
+        padding: 12px;
+    }
+}

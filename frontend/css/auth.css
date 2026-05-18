@@ -1,0 +1,115 @@
+/* =====================================================================
+   AUTH.CSS - ESTILOS DE LOGIN Y REGISTRO
+   - Tarjetas de autenticación
+   - Formularios
+   - Campos de entrada
+   - Botones de autenticación
+   ===================================================================== */
+
+/* ========== TARJETAS DE AUTENTICACIÓN ========== */
+.card,
+.login-card {
+    background: white;
+    padding: 30px 40px;
+    border-radius: 30px;
+    width: 90%;
+    max-width: 380px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: auto;
+}
+
+.logo-login {
+    height: 45px;
+    margin-bottom: 15px;
+}
+
+/* ========== GRUPOS DE FORMULARIOS ========== */
+.form-group,
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+}
+
+/* ========== CAMPOS DE ENTRADA ========== */
+input {
+    width: 100%;
+    padding: 12px;
+    padding-right: 40px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #8a4fff;
+    box-shadow: 0 0 0 3px rgba(138, 79, 255, 0.1);
+}
+
+/* ========== BOTÓN VER/OCULTAR CONTRASEÑA ========== */
+.show-pass {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    cursor: pointer;
+    color: #8a4fff;
+    font-size: 14px;
+    z-index: 10;
+    user-select: none;
+}
+
+.show-pass:hover {
+    color: #ff007a;
+}
+
+/* ========== BOTONES DE AUTENTICACIÓN ========== */
+.btn-login {
+    width: 100%;
+    background: #8a4fff;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: #7a3ff0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(138, 79, 255, 0.3);
+}
+
+.btn-login:active {
+    transform: translateY(0);
+}
+
+/* ========== ENLACES DE FORMULARIOS ========== */
+.links {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #888;
+}
+
+.links a {
+    color: #2cc19c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    color: #1fab8a;
+}

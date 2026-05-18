@@ -1,0 +1,293 @@
+/* =====================================================================
+   MODULOS.CSS - ESTILOS DE INICIO Y MÓDULOS DE APRENDIZAJE
+   - Hero section (Inicio/Dashboard)
+   - Grid de módulos
+   - Módulo Abecedario
+   - Módulo Palabras
+   - Módulo Frases
+   ===================================================================== */
+
+/* ========== SECTION HERO ========== */
+.hero-section {
+    padding: 30px 5% 15px;
+}
+
+.hero-card {
+    background: white;
+    padding: 20px 25px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+}
+
+.zigna-text {
+    color: #8a4fff;
+    font-weight: bold;
+}
+
+/* ========== GRID DE MÓDULOS - INICIO ========== */
+.learning-guide {
+    padding: 10px 5% 30px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: stretch;
+}
+
+.module-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* ========== CONTENEDOR DE IMÁGENES GENÉRICO ========== */
+.img-container {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background: #f9f9f9;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img,
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* ========== BADGE ========== */
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.badge-palabra {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(138, 79, 255, 0.1);
+    color: #8a4fff;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* ========== INFORMACIÓN DE TARJETA ========== */
+.card-info,
+.info,
+.info-palabra,
+.palabras-info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.card-info h3,
+.info h3,
+.info-palabra h3,
+.palabras-info h3 {
+    color: #8a4fff;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.card-info p,
+.info p,
+.info-palabra p,
+.palabras-info p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+/* ========== BOTONES DE TARJETA ========== */
+.btn-card,
+.btn,
+.btn-main,
+.palabras-btn,
+.btn-ready,
+.btn-volver {
+    width: 100%;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    background: linear-gradient(90deg, #8a4fff, #ff007a);
+}
+
+.btn-card:hover,
+.btn:hover,
+.btn-main:hover,
+.palabras-btn:hover,
+.btn-ready:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.btn-ready,
+.palabras-btn {
+    margin: 30px auto 40px;
+    display: block;
+    width: auto;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+.btn-volver {
+    margin-bottom: 20px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(255,0,122,0.2);
+}
+
+.btn-volver:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.btn-container {
+    text-align: center;
+}
+
+.palabras-btn-container {
+    text-align: center;
+    margin: 50px 0 80px;
+}
+
+.evaluacion-btn-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ========== MÓDULO ABECEDARIO ========== */
+.palabras-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card-palabra {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.25s;
+    border: 1px solid #eee;
+}
+
+.card-palabra:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.img-palabra-container {
+    height: 150px;
+    background: #fff;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.img-palabra-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ========== MÓDULO PALABRAS ========== */
+.palabras-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: 0.25s;
+    border: 1px solid #eee;
+}
+
+.palabras-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.palabras-img-container {
+    height: 160px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.palabras-img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ========== MÓDULO FRASES ========== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+/* ========== RESPONSIVE MÓDULOS ========== */
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .palabras-grid,
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .palabras-grid,
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
