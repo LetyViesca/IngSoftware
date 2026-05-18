@@ -1,12 +1,16 @@
-<?php
-include("db.php");
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZIGNA - Registro</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nombres = trim($_POST['nombres']);
-    $paterno = trim($_POST['paterno']);
-    $materno = trim($_POST['materno']);
-    $correo  = trim($_POST['correo']);
-    $contra  = $_POST['contra'];
+    <div class="login-card">
+        <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="logo-login">
+        <h2>Crea tu cuenta</h2>
 
         <?php
 if(isset($_GET['error'])){
@@ -43,39 +47,41 @@ if(isset($_GET['error'])){
 }
 ?>
 
-    // 2. VALIDACIÓN DE FORMATO DE CORREO (Mejora solicitada por QA)
-    if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        header("Location: ../frontend/registro_vista.php?error=correo_invalido");
-        exit();
-    }
+        <form action="../backend/procesar_registro.php" method="POST">
+            <div class="input-group">
+                <label>Nombre</label>
+                <input type="text" name="nombres" placeholder="Tu nombre" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Apellido Paterno</label>
+                <input type="text" name="paterno" placeholder="Apellido paterno" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Apellido Materno</label>
+                <input type="text" name="materno" placeholder="Apellido materno" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Correo Electrónico</label>
+                <input type="email" name="correo" placeholder="ejemplo@correo.com" required>
+            </div>
+            
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" name="contra" placeholder="Mínimo 8 caracteres" minlength="8" required>
+            </div>
+            
+            <button type="submit" class="btn-login">Crear Cuenta</button>
+        </form>
 
-    // 3. LONGITUD DE CONTRASEÑA
-    if (strlen($contra) < 8) {
-        header("Location: ../frontend/registro_vista.php?error=contra_corta");
-        exit();
-    }
-
-    // 4. VERIFICAR SI EL CORREO YA EXISTE
-    $stmt_check = $conexion->prepare("SELECT id_usuario FROM Usuario  WHERE correo = ?");
-    $stmt_check->bind_param("s", $correo);
-    $stmt_check->execute();
-    if ($stmt_check->get_result()->num_rows > 0) {
-        header("Location: ../frontend/registro_vista.php?error=correo_duplicado");
-        exit();
-    }
-
-    // 5. CIFRADO Y REGISTRO
-    $pass_cifrada = password_hash($contra, PASSWORD_BCRYPT);
-    $stmt_insert = $conexion->prepare("INSERT INTO Usuario (nombres, apellido_paterno, apellido_materno, correo, contrasena) VALUES (?, ?, ?, ?, ?)");
-    $stmt_insert->bind_param("sssss", $nombres, $paterno, $materno, $correo, $pass_cifrada);
-
-    if ($stmt_insert->execute()) {
-        header("Location: ../frontend/login.php?registro=exitoso");
-    } else {
-        header("Location: ../frontend/registro_vista.php?error=tecnico");
-    }
-
-    $stmt_insert->close();
-    $conexion->close();
-}
-?>
+        <div style="margin-top:20px; font-size:13px; color:#888;">
+            ¿Ya tienes cuenta? 
+            <a href="login.php" style="color:#2cc19c; text-decoration:none; font-weight:bold;">
+                Inicia sesión
+            </a>
+        </div>
+    </div>
+</body>
+</html>
