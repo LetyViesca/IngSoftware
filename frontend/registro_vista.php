@@ -8,15 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo  = trim($_POST['correo']);
     $contra  = $_POST['contra'];
 
-<<<<<<< HEAD
-    // 1. VALIDACIÓN DE TEXTO (Solo letras)
-    if (!preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/", $nombres) || 
-        !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/", $paterno) || 
-        !preg_match("/^[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+$/", $materno)) {
-        header("Location: ../frontend/registro_vista.php?error=formato_nombre");
-        exit();
-    }
-=======
         <?php
 if(isset($_GET['error'])){
 
@@ -51,7 +42,6 @@ if(isset($_GET['error'])){
     echo "<div class='error-msg'>$mensaje</div>";
 }
 ?>
->>>>>>> desarrollo
 
     // 2. VALIDACIÓN DE FORMATO DE CORREO (Mejora solicitada por QA)
     if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
