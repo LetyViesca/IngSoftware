@@ -36,23 +36,28 @@
 }
 
 
-/* ========== TARJETA DE PREGUNTA ========== */
+/* ========== TARJETA DE PREGUNTA (CON HOVER INTERACTIVO) ========== */
 .question-card {
     width: 100%;
-    background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.72));
+    background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.72)) !important;
     border-radius: 32px;
     padding: 28px;
     margin-bottom: 28px;
     border: 1px solid rgba(255,255,255,0.10);
     box-shadow: var(--shadow);
     backdrop-filter: blur(8px) saturate(115%);
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    /* Transición fluida para que se mueva y sombree de inmediato al entrar el cursor */
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important, 
+                box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important, 
+                border-color 0.25s ease !important;
+    will-change: transform, box-shadow;
 }
 
+/* EFECTO HOVER: Resalta, levanta y sombrea el cuadro completo de la pregunta */
 .question-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 34px 88px rgba(72, 58, 135, 0.14);
-    border-color: rgba(126, 75, 255, 0.18);
+    transform: translateY(-5px) !important;
+    box-shadow: 0 22px 40px rgba(72, 58, 135, 0.12) !important;
+    border-color: rgba(126, 75, 255, 0.25) !important;
 }
 
 /* ========== ENCABEZADO DE PREGUNTA ========== */
@@ -119,6 +124,25 @@
     font-weight: 600;
 }
 
+/* ========== CONTROL DE ALERTA FANTASMA SOBRANTE ========== */
+/* Si la alerta está vacía se oculta al 100% para no renderizar una barra morada vacía */
+#alerta:empty {
+    display: none !important;
+}
+
+/* Se activa únicamente cuando el JS inyecta un texto de error o aviso */
+#alerta:not(:empty) {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #8a4fff;
+    background: rgba(138, 79, 255, 0.08);
+    border: 1px solid rgba(138, 79, 255, 0.18);
+    border-radius: 20px;
+    padding: 18px 22px;
+}
+
 /* ========== GRID DE OPCIONES ========== */
 .options-grid {
     display: grid;
@@ -143,12 +167,6 @@
     background: rgba(126, 75, 255, 0.08);
     transform: translateY(-2px);
     border-color: rgba(126, 75, 255, 0.24);
-}
-
-.option-content {
-    display: flex;
-    align-items: center;
-    gap: 14px;
 }
 
 .option-content {
@@ -303,7 +321,6 @@
 }
 
 /* ========== BOTONES SUPERIORES EVALUACIÓN ========== */
-
 .top-buttons{
     display: flex;
     justify-content: space-between;
@@ -334,10 +351,8 @@
     transform: translateY(-3px);
 }
 
-/* Responsive */
-
+/* Responsive Botones */
 @media (max-width: 768px){
-
     .top-buttons{
         flex-direction: column;
         align-items: stretch;
