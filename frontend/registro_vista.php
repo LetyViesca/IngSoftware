@@ -9,7 +9,9 @@
 <body>
 
     <div class="login-card">
-        <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="logo-login">
+        <div class="login-logo-container">
+            <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="logo-login">
+        </div>
         <h2>Crea tu cuenta</h2>
 
         <?php
