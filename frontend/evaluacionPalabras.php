@@ -40,6 +40,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             <span class="user-name">
                 Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
             </span>
+            <a href="login.php" class="user-link" style="text-decoration:none; color:#666; font-size:13px; font-weight:bold; margin-left: 10px;">
+                Cerrar sesión
+            </a>
             <div class="user-icon">👤</div>
         </div>
     </nav>
@@ -80,7 +83,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         <div class="modal-contenido">
             <h2 id="tituloModal">🎉 ¡Evaluación completada!</h2>
             <p id="textoModal"></p>
-            <button class="btn-main" onclick="cerrarModal()">
+            <button class="btn-main" onclick="finalizarYRegresar()">
                 Continuar
             </button>
         </div>
@@ -89,6 +92,17 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 </div>
 
 <script src="js/evaluacionPalabras.js"></script>
+
+<script>
+function finalizarYRegresar() {
+    window.scrollTo(0, 0);
+    window.location.href = 'inicio.php';
+}
+
+if (window.history.replaceState) {
+    window.scrollTo(0, 0);
+}
+</script>
 
 </body>
 </html>

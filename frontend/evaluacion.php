@@ -91,25 +91,17 @@ include("../backend/auth.php");
     <div id="resultado" class="resultado"></div>
 
     <div id="modalResultado" class="modal-resultado">
-
-    <div class="modal-contenido">
-
-        <h2 id="tituloModal">
-            🎉 ¡Evaluación completada!
-        </h2>
-
-        <p id="textoModal"></p>
-
-        <button class="btn-main"
-                onclick="cerrarModal()">
-
-            Continuar
-
-        </button>
-
+        <div class="modal-contenido">
+            <h2 id="tituloModal">
+                🎉 ¡Evaluación completada!
+            </h2>
+            <p id="textoModal"></p>
+            
+            <button class="btn-main" onclick="finalizarYRegresar()">
+                Continuar y Finalizar ✨
+            </button>
+        </div>
     </div>
-
-</div>
 
     <div id="preguntas"></div>
 
@@ -125,7 +117,23 @@ include("../backend/auth.php");
 
 <script src="js/evaluacion.js"></script>
 
-<script src="js/evaluacion.js"></script>
+<script>
+// Función mejorada: Cuando el usuario da clic en "Continuar", limpia la pantalla 
+// y lo redirige al Inicio del sistema automáticamente sin dejarlo estancado abajo.
+function finalizarYRegresar() {
+    // 1. Forzamos a la pantalla a ir arriba por si tarda en cargar
+    window.scrollTo(0, 0);
+    
+    // 2. Redirección limpia a la raíz principal del proyecto
+    window.location.href = 'inicio.php';
+}
+
+// Por si acaso el script nativo "js/evaluacion.js" vuelve a abrir la vista abajo,
+// este disparador obliga al navegador a posicionarse arriba al cargar la página
+if (window.history.replaceState) {
+    window.scrollTo(0, 0);
+}
+</script>
 
 </body>
 </html>
