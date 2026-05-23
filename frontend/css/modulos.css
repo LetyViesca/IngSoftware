@@ -7,6 +7,18 @@
    - Módulo Frases
    ===================================================================== */
 
+/* NUEVO: Centrado del Logo en Login y Registro */
+.login-logo-container {
+    text-align: center;
+    margin-bottom: 24px;
+    width: 100%;
+}
+.login-logo-container img {
+    height: auto;
+    max-width: 140px;
+    display: inline-block;
+}
+
 /* ========== SECTION HERO ========== */
 .hero-section {
     padding: 44px 5% 30px;
@@ -92,7 +104,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: hidden; /* Mantiene el recorte del zoom en los bordes de la tarjeta */
 }
 
 .card-img,
@@ -102,6 +114,18 @@
     max-height: 190px;
     object-fit: contain;
     display: block;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform;
+}
+
+/* DISPARADOR ZOOM: Configurado para todas las tarjetas (Módulos de inicio y bloque de Frases) */
+.module-card:hover .card-img,
+.module-card:hover .img-container img,
+.frases-container .modulo-card:hover .card-img,
+.frases-container .modulo-card:hover .img-container img,
+.frases-container .card:hover .card-img,
+.frases-container .card:hover .img-container img {
+    transform: scale(1.08);
 }
 
 /* ========== BADGE ========== */
@@ -123,15 +147,7 @@
 }
 
 .badge-palabra {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    background: rgba(138, 79, 255, 0.12);
-    color: var(--purple);
-    font-size: 0.8rem;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-weight: 700;
+    display: none !important;
 }
 
 /* ========== INFORMACIÓN DE TARJETA ========== */
@@ -229,6 +245,14 @@
     transform: translateY(-1px);
 }
 
+.btn-turquesa-zigna {
+    background: #2cc19c !important;
+    box-shadow: 0 12px 32px rgba(44, 193, 156, 0.2) !important;
+}
+.btn-turquesa-zigna:hover {
+    box-shadow: 0 18px 42px rgba(44, 193, 156, 0.35) !important;
+}
+
 .btn-container {
     text-align: center;
 }
@@ -284,6 +308,31 @@
 }
 
 /* ========== MÓDULO FRASES ========== */
+.frases-container .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important; 
+    gap: 30px;
+    align-items: stretch; 
+}
+
+/* Estilo para las tarjetas individuales dentro del contenedor de frases */
+.frases-container .modulo-card, 
+.frases-container .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    justify-content: space-between;
+}
+
+.frases-container .info, 
+.frases-container .card-info {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Grid genérico como respaldo */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(240px, 1fr));
@@ -292,20 +341,20 @@
 
 /* ========== RESPONSIVE MÓDULOS ========== */
 @media (max-width: 1024px) {
-    .card-grid {
-        grid-template-columns: repeat(2, minmax(240px, 1fr));
-    }
+    .card-grid,
     .palabras-grid,
-    .grid {
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    .grid,
+    .frases-container .grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr)) !important;
     }
 }
 
 @media (max-width: 1024px) {
     .card-grid,
     .palabras-grid,
-    .grid {
-        grid-template-columns: repeat(2, minmax(220px, 1fr));
+    .grid,
+    .frases-container .grid {
+        grid-template-columns: repeat(2, minmax(220px, 1fr)) !important;
     }
 }
 
@@ -318,8 +367,9 @@
     }
     .card-grid,
     .palabras-grid,
-    .grid {
-        grid-template-columns: 1fr;
+    .grid,
+    .frases-container .grid {
+        grid-template-columns: 1fr !important;
     }
     .img-container,
     .img-palabra-container,
