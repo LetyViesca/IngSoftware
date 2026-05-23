@@ -5,7 +5,6 @@ include("../backend/db.php");
 $id_usuario = $_SESSION['id_usuario'];
 $nombre_usuario = $_SESSION['nombre_usuario'];
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
