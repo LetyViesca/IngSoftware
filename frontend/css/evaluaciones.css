@@ -96,6 +96,28 @@
     transform: scale(1.08);
 }
 
+/* =====================================================================
+   MEJORA DE DISEÑO SPRINT 5: MICROINTERACCIONES Y EFECTOS HOVER
+   ===================================================================== */
+.card-palabra img, 
+.palabras-img-container img, 
+.img-palabra-container img,
+.palabras-card img,
+.evaluacion-pregunta img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: pointer;
+}
+
+/* Al pasar el mouse, la imagen resalta y hace un ligero acercamiento */
+.card-palabra:hover img, 
+.palabras-card:hover img,
+.palabras-img-container img:hover, 
+.img-palabra-container img:hover,
+.evaluacion-pregunta img:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
 .question-header h3,
 .question-header h2,
 .question-card h3,
