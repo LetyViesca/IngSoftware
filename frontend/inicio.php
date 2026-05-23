@@ -1,4 +1,7 @@
-<?php include("../backend/auth.php"); ?>
+<?php 
+// 1. CENTRALIZACIÓN DE SEGURIDAD
+include("../backend/auth.php"); 
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,9 +15,8 @@
 <header>
     <nav>
         <a href="inicio.php">
-            <img src="imag/Logo_Zigna.png" class="main-logo" alt="ZIGNA Logo">
+            <img src="imag/Logo_Zigna.png" class="main-logo" alt="Logo Zigna">
         </a>
-
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
             <li class="dropdown">
@@ -27,14 +29,9 @@
             </li>
             <li><a href="progreso.php">Progreso</a></li>
         </ul>
-
         <div class="user-box">
-            <span class="user-name">Hola, <?php echo htmlspecialchars($nombre_usuario); ?></span>
-            
-            <a href="login.php" style="text-decoration:none; color:#666; font-size:14px; font-weight: 600;">
-                Cerrar sesión
-            </a>
-
+            <span class="user-name">Hola, <?php echo htmlspecialchars($_SESSION['nombre_usuario'] ?? 'Usuario'); ?></span>
+            <a href="login.php" style="text-decoration:none; color:#666; font-size:13px; font-weight: bold;">Cerrar sesión</a>
             <div class="user-icon">👤</div>
         </div>
     </nav>
@@ -42,20 +39,8 @@
 
 <div class="container" style="max-width: 1080px; margin: 0 auto; padding: 20px;">
     
-    <div class="introduccion-seccion" style="background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 40px; margin-top: 20px;">
-        <h1 style="color: #333; margin-bottom: 15px; font-size: 28px;">Bienvenido a ZIGNA 🌟</h1>
-        <p style="color: #666; line-height: 1.6; font-size: 16px; margin-bottom: 15px;">
-            Tu plataforma interactiva para el aprendizaje de la <strong>Lengua de Señas Mexicana (LSM)</strong>. Nuestro objetivo es derribar las barreras de comunicación mediante módulos dinámicos diseñados paso a paso para ti.
-        </p>
-        <h3 style="color: #7e4bff; margin-bottom: 10px;">¿Cómo empezar tu ruta de aprendizaje?</h3>
-        <ul style="color: #555; line-height: 1.8; padding-left: 20px; font-size: 15px;">
-            <li>📖 <strong>Módulo Abecedario:</strong> Domina la dactilología básica y la estructura de cada letra en LSM.</li>
-            <li>💬 <strong>Módulo Palabras:</strong> Explora categorías cotidianas como Saludos, Familia y Números.</li>
-            <li>🧠 <strong>Evaluaciones:</strong> Pon a prueba tus conocimientos al final de cada sección para medir tu progreso real.</li>
-        </ul>
-    </div>
-
-    <h2 style="color: #333; margin-bottom: 20px;">Tus Módulos de Aprendizaje</h2>
+    <h2 style="color: #333; margin-bottom: 20px; margin-top: 20px;">Tus Módulos de Aprendizaje</h2>
+    
     <div class="palabras-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
         
         <div class="card-palabra" onclick="window.location.href='M_abecedario.php'">

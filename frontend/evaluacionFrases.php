@@ -80,7 +80,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         <div class="modal-contenido">
             <h2 id="tituloModal">🎉 ¡Evaluación completada!</h2>
             <p id="textoModal"></p>
-            <button class="btn-main" onclick="finalizarYRegresar()">Continuar</button>
+            <button class="btn-main" onclick="cerrarModal(); window.scrollTo({top: 0, behavior: 'smooth'});">
+                Continuar
+            </button>
         </div>
     </div>
 
@@ -95,17 +97,6 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 </div>
 
 <script src="js/evaluacionFrase.js"></script>
-
-<script>
-function finalizarYRegresar() {
-    window.scrollTo(0, 0);
-    window.location.href = 'inicio.php';
-}
-
-if (window.history.replaceState) {
-    window.scrollTo(0, 0);
-}
-</script>
 
 </body>
 </html>

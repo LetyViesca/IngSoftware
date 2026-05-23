@@ -25,32 +25,13 @@ include("../backend/auth.php");
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
             <li class="dropdown">
-
-    <a href="#">Módulos ▾</a>
-
-    <ul class="dropdown-menu">
-
-        <li>
-            <a href="M_abecedario.php">
-                Abecedario
-            </a>
-        </li>
-
-        <li>
-            <a href="M_palabras.php">
-                Palabras
-            </a>
-        </li>
-
-        <li>
-            <a href="M_frases.php">
-                Frases
-            </a>
-        </li>
-
-    </ul>
-
-</li>
+                <a href="#">Módulos ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="M_abecedario.php">Abecedario</a></li>
+                    <li><a href="M_palabras.php">Palabras</a></li>
+                    <li><a href="M_frases.php">Frases</a></li>
+                </ul>
+            </li>
             <li><a href="progreso.php">Progreso</a></li>
         </ul>
 
@@ -69,36 +50,31 @@ include("../backend/auth.php");
 <div class="evaluacion-container">
 
     <div class="top-buttons">
-
-    <a href="m_abecedario.php" class="btn-volver">
-        ← Volver al módulo
-    </a>
-
-    <div id="btnProgreso"></div>
-
+        <a href="m_abecedario.php" class="btn-volver">
+            ← Volver al módulo
+        </a>
+        <div id="btnProgreso"></div>
     </div>
 
     <h2>Evaluación: Abecedario LSM</h2>
 
     <div class="barra-progreso">
-    <div id="progresoBarra" class="progreso-barra"></div>
-</div>
+        <div id="progresoBarra" class="progreso-barra"></div>
+    </div>
 
-<p id="textoProgreso" class="texto-progreso">
-    0 de 10 preguntas respondidas
-</p>    
+    <p id="textoProgreso" class="texto-previo">
+        0 de 10 preguntas respondidas
+    </p>    
 
     <div id="resultado" class="resultado"></div>
 
     <div id="modalResultado" class="modal-resultado">
         <div class="modal-contenido">
-            <h2 id="tituloModal">
-                🎉 ¡Evaluación completada!
-            </h2>
+            <h2 id="tituloModal">🎉 ¡Evaluación completada!</h2>
             <p id="textoModal"></p>
             
-            <button class="btn-main" onclick="finalizarYRegresar()">
-                Continuar y Finalizar ✨
+            <button class="btn-main" onclick="cerrarModal(); window.scrollTo({top: 0, behavior: 'smooth'});">
+                Continuar
             </button>
         </div>
     </div>
@@ -116,24 +92,6 @@ include("../backend/auth.php");
 </div>
 
 <script src="js/evaluacion.js"></script>
-
-<script>
-// Función mejorada: Cuando el usuario da clic en "Continuar", limpia la pantalla 
-// y lo redirige al Inicio del sistema automáticamente sin dejarlo estancado abajo.
-function finalizarYRegresar() {
-    // 1. Forzamos a la pantalla a ir arriba por si tarda en cargar
-    window.scrollTo(0, 0);
-    
-    // 2. Redirección limpia a la raíz principal del proyecto
-    window.location.href = 'inicio.php';
-}
-
-// Por si acaso el script nativo "js/evaluacion.js" vuelve a abrir la vista abajo,
-// este disparador obliga al navegador a posicionarse arriba al cargar la página
-if (window.history.replaceState) {
-    window.scrollTo(0, 0);
-}
-</script>
 
 </body>
 </html>
