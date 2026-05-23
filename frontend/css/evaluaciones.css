@@ -1,4 +1,4 @@
-/* =====================================================================
+﻿/* =====================================================================
    EVALUACIONES.CSS - ESTILOS DE EVALUACIONES
    - Evaluación Abecedario
    - Evaluación Palabras
@@ -80,6 +80,20 @@
     border-radius: 26px;
     padding: 16px;
     box-shadow: inset 0 4px 18px rgba(126, 75, 255, 0.08);
+    overflow: hidden; /* Evita que la imagen rompa las esquinas redondeadas al agrandarse */
+}
+
+/* NUEVO: Transición suave para la imagen de la seña */
+.question-img img,
+.question-card img {
+    transition: transform 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform;
+}
+
+/* NUEVO EFECTO ZOOM: Al hacer hover en la tarjeta, la imagen interna hace un ligero zoom */
+.question-card:hover .question-img img,
+.question-card:hover img {
+    transform: scale(1.08);
 }
 
 .question-header h3,
