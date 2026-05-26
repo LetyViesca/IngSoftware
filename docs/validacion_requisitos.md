@@ -28,7 +28,7 @@
 
 ## Resumen de Acciones Técnicas Realizadas
 *   **Seguridad:** Se migraron todas las consultas directas a **Consultas Preparadas** para mitigar ataques de Inyección SQL.
-*   **Integridad:** Resolución exitosa de conflictos de fusión (*merge conflicts*) en la rama `feature-diseno`, integrando cambios de `backend/db.php` y `backend/g_puntaje.php`.
+*   **Integridad:** Resolución exitosa de conflictos de fusión (*merge conflicts*) en la rama `feature-diseno`, integrando cambios de `backend/config/db.php` y `backend/g_puntaje.php`.
 *   **Mantenimiento:** Limpieza del historial de archivos y eliminación de archivos de bloqueo `.git/index.lock` para asegurar un flujo de trabajo fluido en el repositorio.
 
 > **Conclusión:** El sistema cumple satisfactoriamente con los criterios de seguridad, diseño y funcionalidad establecidos para el cierre del Sprint.

@@ -7,11 +7,13 @@ ZIGNA es una plataforma web educativa diseñada para facilitar el aprendizaje de
 El proyecto implementa una arquitectura de **separación de capas** para mejorar la mantenibilidad y seguridad:
 
 * **Directorio `backend/`**: Lógica de servidor y control de datos.
-    * `db.php`: Conexión centralizada a la BD.
-    * `procesar_registro.php` / `procesar_login.php`: Controladores de formularios con validaciones robustas.
+    * `config/db.php`: Conexión centralizada a la BD.
+    * `controllers/procesar_registro.php` / `controllers/procesar_login.php`: Controladores de formularios con validaciones robustas.
+    * `middleware/auth.php`: Control de sesión y acceso.
 * **Directorio `frontend/`**: Interfaz de usuario y recursos públicos.
-    * `registro_vista.php`, `login_vista.php`, `inicio.php`: Vistas principales.
-    * `css/` y `js/`: Estilos responsivos y validaciones dinámicas del lado del cliente.
+    * `views/`: Vistas principales del sistema.
+    * `components/`: Componentes reutilizables de UI.
+    * `assets/css/`, `assets/js/`, `assets/img/`: Estilos, scripts e imágenes organizados por módulos.
 
 ## Requisitos No Funcionales (RNF) Implementados
 * **RNF-01 (Seguridad)**: Cifrado de credenciales mediante `password_hash` (Bcrypt).
@@ -38,7 +40,8 @@ Colocar la carpeta raíz del proyecto (`IngSoftware`) dentro del directorio `C:\
 3.  **Nota técnica**: La columna `contra` en la tabla `usuarios` debe tener una longitud de **VARCHAR(255)** para soportar el hash de Bcrypt.
 
 ### 4. Configuración de conexión (Capa Backend)
-El archivo de configuración central se encuentra en: `IngSoftware/backend/db.php`  
+El archivo de configuración central se encuentra en: `IngSoftware/backend/config/db.php`  
+> Nota: `IngSoftware/backend/db.php` existe como stub de compatibilidad y redirige al archivo de configuración real.
 Asegúrese de que las credenciales coincidan con su servidor local (Usuario: `root`, Puerto: `3307`).
 
 ### 5. Acceso al sistema (Punto de Entrada Único)
