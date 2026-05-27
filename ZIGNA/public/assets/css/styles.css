@@ -1,0 +1,22 @@
+﻿/* =====================================================================
+   STYLES.CSS - ARCHIVO PRINCIPAL DE ESTILOS
+   
+   Este archivo organiza la importación de todos los estilos del proyecto.
+   Cada archivo CSS está separado por funcionalidad para mejorar la
+   mantenibilidad y permitir actualizaciones independientes.
+   
+   Estructura de archivos:
+   - global.css        → Configuración global y animaciones
+   - navbar.css        → Estilos de navegación y header
+   - auth.css          → Estilos de login y registro
+   - modulos.css       → Estilos de módulos de aprendizaje
+   - evaluaciones.css  → Estilos de evaluaciones
+   - progreso.css      → Estilos de seguimiento de progreso
+   ===================================================================== */
+
+@import url('./global.css');
+@import url('./navbar.css');
+@import url('./auth.css');
+@import url('./modulos.css');
+@import url('./evaluaciones.css');
+@import url('./progreso.css');
