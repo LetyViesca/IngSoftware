@@ -6,6 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Inicio</title>
     <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* Asegura que el círculo morado quede SIEMPRE al frente de la imagen en el zoom */
+        .badge {
+            position: absolute;
+            z-index: 10 !important;
+        }
+
+        /* Preparamos las imágenes dándoles una animación suave y fluida */
+        .card-img, 
+        .img-container img, 
+        .module-card img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Al pasar el cursor sobre la tarjeta, la imagen hace el zoom sin tapar la letra */
+        .module-card:hover .card-img,
+        .module-card:hover img {
+            transform: scale(1.06) !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,44 +40,27 @@
         </a>
 
         <ul class="nav-menu">
-
-    <li>
-        <a href="inicio.php">Inicio</a>
-    </li>
-
-    <li class="dropdown">
-
-        <a href="#">Módulos ▾</a>
-
-        <ul class="dropdown-menu">
-
             <li>
-                <a href="m_abecedario.php">
-                    Abecedario
-                </a>
+                <a href="inicio.php">Inicio</a>
             </li>
-
+            <li class="dropdown">
+                <a href="#">Módulos ▾</a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="m_abecedario.php">Abecedario</a>
+                    </li>
+                    <li>
+                        <a href="m_palabras.php">Palabras</a>
+                    </li>
+                    <li>
+                        <a href="m_frases.php">Frases</a>
+                    </li>
+                </ul>
+            </li>
             <li>
-                <a href="m_palabras.php">
-                    Palabras
-                </a>
+                <a href="progreso.php">Progreso</a>
             </li>
-
-            <li>
-                <a href="m_frases.php">
-                    Frases
-                </a>
-            </li>
-
         </ul>
-
-    </li>
-
-    <li>
-        <a href="progreso.php">Progreso</a>
-    </li>
-
-</ul>
 
         <div class="user-box">
             <span class="user-name">Hola, <?php echo htmlspecialchars($nombre_usuario); ?></span>
@@ -71,15 +78,23 @@
     <section class="hero-section">
         <div class="hero-card">
             <h1>Sigue el aprendizaje en <span class="zigna-text">ZIGNA</span></h1>
-            <p style="color:#666;">Aprende Lengua de Señas Mexicana de manera interactiva.</p>
+            <p style="color:#666; line-height: 1.6; margin-top: 10px;">
+                ¡Tu camino hacia la inclusión comienza aquí!<br>
+
+En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de dominar la Lengua de Señas Mexicana a través de módulos interactivos diseñados para que practiques a tu ritmo. Revisa tu progreso, supera desafíos y desbloquea una nueva forma de conectar con el mundo.
+<br>
+¿Listo para hacer que tus manos hablen?
+            </p>
         </div>
     </section>
 
     <section class="learning-guide">
+        <h2 style="color: #333; margin-bottom: 25px; font-size: 24px; font-weight: bold;">Tus Módulos de Aprendizaje</h2>
+        
         <div class="card-grid">
 
             <div class="module-card">
-                <div class="img-container">
+                <div class="img-container" style="position: relative;">
                     <span class="badge">A</span>
                     <img src="imag/abecedario/a.png" class="card-img" alt="Abecedario">
                 </div>
@@ -93,7 +108,7 @@
             </div>
 
             <div class="module-card">
-                <div class="img-container">
+                <div class="img-container" style="position: relative;">
                     <span class="badge">P</span>
                     <img src="imag/palabras/uno.png" class="card-img" alt="Palabras">
                 </div>
@@ -107,7 +122,7 @@
             </div>
 
             <div class="module-card">
-                <div class="img-container">
+                <div class="img-container" style="position: relative;">
                     <span class="badge">F</span>
                     <img src="imag/frases/sed.png" class="card-img" alt="Frases">
                 </div>

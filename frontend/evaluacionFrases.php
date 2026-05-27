@@ -80,7 +80,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         <div class="modal-contenido">
             <h2 id="tituloModal">🎉 ¡Evaluación completada!</h2>
             <p id="textoModal"></p>
-            <button class="btn-main" onclick="cerrarModal()">Continuar</button>
+            <button class="btn-main" onclick="cerrarModal(); window.scrollTo({top: 0, behavior: 'smooth'});">
+                Continuar
+            </button>
         </div>
     </div>
 

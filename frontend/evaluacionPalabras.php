@@ -5,7 +5,6 @@ include("../backend/db.php");
 $id_usuario = $_SESSION['id_usuario'];
 $nombre_usuario = $_SESSION['nombre_usuario'];
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,32 +26,13 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         <ul class="nav-menu">
             <li><a href="inicio.php">Inicio</a></li>
             <li class="dropdown">
-
-    <a href="#">Módulos ▾</a>
-
-    <ul class="dropdown-menu">
-
-        <li>
-            <a href="M_abecedario.php">
-                Abecedario
-            </a>
-        </li>
-
-        <li>
-            <a href="M_palabras.php">
-                Palabras
-            </a>
-        </li>
-
-        <li>
-            <a href="M_frases.php">
-                Frases
-            </a>
-        </li>
-
-    </ul>
-
-</li>
+                <a href="#">Módulos ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="M_abecedario.php">Abecedario</a></li>
+                    <li><a href="M_palabras.php">Palabras</a></li>
+                    <li><a href="M_frases.php">Frases</a></li>
+                </ul>
+            </li>
             <li><a href="progreso.php">Progreso</a></li>
         </ul>
 
@@ -60,6 +40,9 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             <span class="user-name">
                 Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
             </span>
+            <a href="login.php" class="user-link" style="text-decoration:none; color:#666; font-size:13px; font-weight:bold; margin-left: 10px;">
+                Cerrar sesión
+            </a>
             <div class="user-icon">👤</div>
         </div>
     </nav>
@@ -68,26 +51,23 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 <div class="evaluacion-container">
 
     <div class="top-buttons">
-
-    <a href="m_palabras.php" class="btn-volver">
-        ← Volver al módulo
-    </a>
-
-    <div id="btnProgreso"></div>
-
+        <a href="m_palabras.php" class="btn-volver">
+            ← Volver al módulo
+        </a>
+        <div id="btnProgreso"></div>
     </div>
 
     <h2>Evaluación: Palabras LSM</h2>
 
     <div class="barra-progreso">
-    <div id="progresoBarra" class="progreso-barra"></div>
-</div>
+        <div id="progresoBarra" class="progreso-barra"></div>
+    </div>
 
-<p id="textoProgreso" class="texto-progreso">
-    0 de 10 preguntas respondidas
-</p>
+    <p id="textoProgreso" class="texto-progreso">
+        0 de 10 preguntas respondidas
+    </p>
 
-    <div id="alerta" class="resultado"></div>
+    <div id="alerta"></div>
 
     <div id="resultado" class="resultado"></div>
 
@@ -100,22 +80,14 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     </div>
 
     <div id="modalResultado" class="modal-resultado">
-
-    <div class="modal-contenido">
-
-        <h2 id="tituloModal">
-            🎉 ¡Evaluación completada!
-        </h2>
-
-        <p id="textoModal"></p>
-
-        <button class="btn-main" onclick="cerrarModal()">
-            Continuar
-        </button>
-
+        <div class="modal-contenido">
+            <h2 id="tituloModal">🎉 ¡Evaluación completada!</h2>
+            <p id="textoModal"></p>
+            <button class="btn-main" onclick="cerrarModal(); window.scrollTo({top: 0, behavior: 'smooth'});">
+                Continuar
+            </button>
+        </div>
     </div>
-
-</div>
 
 </div>
 

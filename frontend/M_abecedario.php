@@ -65,13 +65,10 @@
         Abecedario en Lengua de Señas Mexicana
     </h1>
 
-    <div class="palabras-grid" id="grid">
-        </div>
+    <div class="palabras-grid" id="grid"></div>
 
-    <div class="btn-container" style="text-align: center; margin: 50px 0;">
-        <a href="evaluacion.php" class="btn-ready" style="padding: 15px 30px; background: #8a4fff; color: white; border-radius: 25px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(138, 79, 255, 0.3);">
-            Comenzar Evaluación ✨
-        </a>
+    <div class="palabras-btn-container">
+        <a href="evaluacion.php" class="palabras-btn">Comenzar Evaluación ✨</a>
     </div>
 </div>
 

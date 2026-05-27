@@ -9,16 +9,23 @@
 </head>
 <body>
     <div class="login-card">
-        <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="logo-login">
+        <div class="login-logo-container">
+            <img src="imag/Logo_Zigna.png" alt="ZIGNA" class="logo-login">
+        </div>
         <h2>Bienvenido de nuevo</h2>
         <p style="color: #777; font-size: 14px; margin-bottom: 20px;">Inicia sesión para continuar</p>
 
-        <?php
+<?php
 if(isset($_GET['error'])){
 
     $mensaje = "";
 
     switch($_GET['error']){
+
+        /* NUEVO CASO: Captura el error específico desde procesar_login.php */
+        case 'usuario_no_encontrado':
+            $mensaje = "El usuario no se encuentra registrado.";
+        break;
 
         case 'formato_nombre':
             $mensaje = "El nombre y los apellidos solo deben contener letras.";
