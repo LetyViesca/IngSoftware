@@ -1,14 +1,14 @@
 const datos = [
-    { id:'p1', correcta:'A', img:'imag/abecedario/a.png' },
-    { id:'p2', correcta:'B', img:'imag/abecedario/b.png' },
-    { id:'p3', correcta:'C', img:'imag/abecedario/c.png' },
-    { id:'p4', correcta:'D', img:'imag/abecedario/d.png' },
-    { id:'p5', correcta:'E', img:'imag/abecedario/e.png' },
-    { id:'p6', correcta:'F', img:'imag/abecedario/f.png' },
-    { id:'p7', correcta:'G', img:'imag/abecedario/g.png' },
-    { id:'p8', correcta:'H', img:'imag/abecedario/h.png' },
-    { id:'p9', correcta:'I', img:'imag/abecedario/i.png' },
-    { id:'p10', correcta:'J', img:'imag/abecedario/j.png' }
+    { id:'p1', correcta:'A', img:'assets/img/abecedario/a.png' },
+    { id:'p2', correcta:'B', img:'assets/img/abecedario/b.png' },
+    { id:'p3', correcta:'C', img:'assets/img/abecedario/c.png' },
+    { id:'p4', correcta:'D', img:'assets/img/abecedario/d.png' },
+    { id:'p5', correcta:'E', img:'assets/img/abecedario/e.png' },
+    { id:'p6', correcta:'F', img:'assets/img/abecedario/f.png' },
+    { id:'p7', correcta:'G', img:'assets/img/abecedario/g.png' },
+    { id:'p8', correcta:'H', img:'assets/img/abecedario/h.png' },
+    { id:'p9', correcta:'I', img:'assets/img/abecedario/i.png' },
+    { id:'p10', correcta:'J', img:'assets/img/abecedario/j.png' }
 ];
 
 const contenedor = document.getElementById("preguntas");
