@@ -3,61 +3,61 @@ const datos = [
     {
         id:'p1',
         correcta:'¿Cuál es tu nombre?',
-        img:'assets/img/frases/nombre.png'
+        img:'imag/frases/nombre.png'
     },
 
     {
         id:'p2',
         correcta:'De nada',
-        img:'assets/img/frases/de_nada.png'
+        img:'imag/frases/de_nada.png'
     },
 
     {
         id:'p3',
         correcta:'Ayuda',
-        img:'assets/img/frases/ayuda.png'
+        img:'imag/frases/ayuda.png'
     },
 
     {
         id:'p4',
         correcta:'Lo siento',
-        img:'assets/img/frases/lo_siento.png'
+        img:'imag/frases/lo_siento.png'
     },
 
     {
         id:'p5',
         correcta:'Tengo sed',
-        img:'assets/img/frases/sed.png'
+        img:'imag/frases/sed.png'
     },
 
     {
         id:'p6',
         correcta:'Con permiso',
-        img:'assets/img/frases/con_permiso.png'
+        img:'imag/frases/con_permiso.png'
     },
 
     {
         id:'p7',
         correcta:'¿De dónde eres?',
-        img:'assets/img/frases/de_donde.png'
+        img:'imag/frases/de_donde.png'
     },
 
     {
         id:'p8',
         correcta:'¿Cuánto cuesta?',
-        img:'assets/img/frases/cuanto_cuesta.png'
+        img:'imag/frases/cuanto_cuesta.png'
     },
 
     {
         id:'p9',
         correcta:'Estoy enfermo',
-        img:'assets/img/frases/enfermo.png'
+        img:'imag/frases/enfermo.png'
     },
 
     {
         id:'p10',
         correcta:'Me gusta',
-        img:'assets/img/frases/me_gusta.png'
+        img:'imag/frases/me_gusta.png'
     }
 ];
 

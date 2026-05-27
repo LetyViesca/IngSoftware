@@ -11,13 +11,13 @@
 
 ### Antes ❌
 ```
-frontend/assets/css/
+frontend/css/
 └── styles.css (781 líneas - monolítico)
 ```
 
 ### Después ✅
 ```
-frontend/assets/css/
+frontend/css/
 ├── styles.css (28 líneas - solo imports)
 ├── global.css (159 líneas)
 ├── navbar.css (73 líneas)
@@ -55,7 +55,7 @@ frontend/assets/css/
 
 ### ✅ Compatibilidad Total
 - [x] Todos los archivos PHP/HTML sin cambios
-- [x] Todas las referencias a `assets/css/styles.css` siguen funcionando
+- [x] Todas las referencias a `css/styles.css` siguen funcionando
 - [x] Diseño visual 100% idéntico
 - [x] Funcionalidades JavaScript intactas
 

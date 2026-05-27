@@ -1,24 +1,24 @@
 const datos = [
 
-    { id:'p1', correcta:'Hola', img:'assets/img/palabras/hola.png' },
+    { id:'p1', correcta:'Hola', img:'imag/palabras/hola.png' },
 
-    { id:'p2', correcta:'Adiós', img:'assets/img/palabras/adios.png' },
+    { id:'p2', correcta:'Adiós', img:'imag/palabras/adios.png' },
 
-    { id:'p3', correcta:'Buen día', img:'assets/img/palabras/buen_dia.png' },
+    { id:'p3', correcta:'Buen día', img:'imag/palabras/buen_dia.png' },
 
-    { id:'p4', correcta:'Buenas noches', img:'assets/img/palabras/buenas_noches.png' },
+    { id:'p4', correcta:'Buenas noches', img:'imag/palabras/buenas_noches.png' },
 
-    { id:'p5', correcta:'Mamá', img:'assets/img/palabras/mama.png' },
+    { id:'p5', correcta:'Mamá', img:'imag/palabras/mama.png' },
 
-    { id:'p6', correcta:'Papá', img:'assets/img/palabras/papa.png' },
+    { id:'p6', correcta:'Papá', img:'imag/palabras/papa.png' },
 
-    { id:'p7', correcta:'Uno', img:'assets/img/palabras/uno.png' },
+    { id:'p7', correcta:'Uno', img:'imag/palabras/uno.png' },
 
-    { id:'p8', correcta:'Dos', img:'assets/img/palabras/dos.png' },
+    { id:'p8', correcta:'Dos', img:'imag/palabras/dos.png' },
 
-    { id:'p9', correcta:'Cinco', img:'assets/img/palabras/cinco.png' },
+    { id:'p9', correcta:'Cinco', img:'imag/palabras/cinco.png' },
 
-    { id:'p10', correcta:'Diez', img:'assets/img/palabras/diez.png' }
+    { id:'p10', correcta:'Diez', img:'imag/palabras/diez.png' }
 ];
 
 const opcionesGenerales =
