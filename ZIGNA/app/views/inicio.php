@@ -65,7 +65,7 @@
         <div class="user-box">
             <span class="user-name">Hola, <?php echo htmlspecialchars($nombre_usuario); ?></span>
             
-            <a href="index.php?page=login" style="text-decoration:none; color:#666; font-size:14px; font-weight: 600;">
+            <a href="index.php?page=logout" style="text-decoration:none; color:#666; font-size:14px; font-weight: 600;">
                 Cerrar sesión
             </a>
 

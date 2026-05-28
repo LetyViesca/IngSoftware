@@ -59,7 +59,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
     </span>
 
-    <a href="index.php?page=login" class="user-link">
+    <a href="index.php?page=logout" class="user-link">
         Cerrar sesión
     </a>
 

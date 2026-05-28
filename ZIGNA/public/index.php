@@ -14,6 +14,8 @@ function renderView(string $page): string
         'evaluacion' => __DIR__ . '/../app/views/evaluacion.php',
         'evaluacionFrases' => __DIR__ . '/../app/views/evaluacionFrases.php',
         'evaluacionPalabras' => __DIR__ . '/../app/views/evaluacionPalabras.php',
+
+        'logout' => __DIR__ . '/../app/controllers/logout.php',
     ];
 
     return $map[$page] ?? $map['inicio'];
