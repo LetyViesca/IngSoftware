@@ -59,7 +59,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
         Hola, <?php echo htmlspecialchars($nombre_usuario); ?>
     </span>
 
-    <a href="/ZIGNA/public/index.php?page=logout" class="user-link">
+    <a href="?page=logout" class="user-link">
         Cerrar sesión
     </a>
 
