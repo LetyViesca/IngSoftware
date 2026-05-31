@@ -95,7 +95,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     </div>
 
     <div class="btn-container" style="margin-top:40px;">
-        <a href="index.php?page=evaluacionFrases" class="btn">Evaluación ✨</a>
+        <a href="index.php?page=evaluacionFrases" class="btn">Comenzar Evaluación ✨</a>
     </div>
 </div>
 
