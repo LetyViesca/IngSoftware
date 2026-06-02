@@ -78,6 +78,7 @@
 }
 
 .module-card {
+    position: relative;
     background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.72));
     border-radius: 32px;
     overflow: hidden;
@@ -155,6 +156,7 @@
 .info,
 .info-palabra,
 .palabras-info {
+    position: relative;
     padding: 24px 22px 28px;
     display: flex;
     flex-direction: column;
@@ -433,11 +435,25 @@
         position: absolute;
         top: 12px;
         right: 12px;
-        background: #ffffffcc;
-        padding: 8px 12px;
-        border-radius: 999px;
-        font-weight: 800;
-        color: #008000;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        z-index: 20;
+        background: #e6f4ea;
+        color: #1c7c3a;
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 8px 18px rgba(28, 124, 58, 0.08);
+    }
+
+    .module-locked-text {
+        color: #757575;
+        font-size: 0.95rem;
+        text-align: center;
+        margin-top: 8px;
+        line-height: 1.4;
+        font-weight: 600;
     }
 

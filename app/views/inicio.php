@@ -134,8 +134,10 @@ En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de domina
                             <div class="completed-badge">✅ Completado</div>
                         <?php endif; ?>
                     <?php else: ?>
-                        <div class="module-locked-overlay">🔒 Completa el módulo anterior</div>
+                        <p class="module-locked-text">Completa el módulo anterior</p>
                     <?php endif; ?>
+
+
                 </div>
             </div>
 
@@ -155,8 +157,10 @@ En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de domina
                             <div class="completed-badge">✅ Completado</div>
                         <?php endif; ?>
                     <?php else: ?>
-                        <div class="module-locked-overlay">🔒 Completa el módulo anterior</div>
+                        <p class="module-locked-text">Completa el módulo anterior</p>
                     <?php endif; ?>
+
+
                 </div>
             </div>
 
@@ -176,8 +180,10 @@ En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de domina
                             <div class="completed-badge">✅ Completado</div>
                         <?php endif; ?>
                     <?php else: ?>
-                        <div class="module-locked-overlay">🔒 Completa el módulo anterior</div>
+                        <p class="module-locked-text">Completa el módulo anterior</p>
                     <?php endif; ?>
+
+
                 </div>
             </div>
 
