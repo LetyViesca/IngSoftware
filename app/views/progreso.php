@@ -84,6 +84,10 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             $id_mod = $mod['id_Modulo'];
             $nombre_mostrar = $mod['nombre'] ?? $mod['nombre_modulo'] ?? "Módulo ".$id_mod;
 
+            // Asignar icono según módulo
+            $iconos = [1 => '✋', 2 => '💬', 3 => '🗣️'];
+            $icono = $iconos[$id_mod] ?? '📚';
+
             // Obtener último puntaje del usuario para el módulo (Resultado_evaluacion)
             $query_ult = "SELECT re.puntaje FROM Resultado_evaluacion re
                           JOIN Evaluacion e ON re.id_Evaluacion = e.id_Evaluacion
@@ -99,15 +103,18 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
 
             // Determinar estado real del módulo
             $estado_modulo = "No iniciado";
-            $clase_borde = 'sin-intento';
+            $clase_estado = 'no-iniciado';
+            $barra_porcentaje = 0;
             
             if ($ultimo_puntaje !== null) {
+                $barra_porcentaje = $ultimo_puntaje;
                 if ($ultimo_puntaje >= 80) {
-                    $estado_modulo = "Completado ✅";
-                    $clase_borde = 'verde';
+                    $estado_modulo = "Completado";
+                    $clase_estado = 'completado';
+                    $barra_porcentaje = 100;
                 } else {
                     $estado_modulo = "En progreso";
-                    $clase_borde = 'naranja';
+                    $clase_estado = 'en-progreso';
                 }
             }
 
@@ -116,10 +123,27 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             }
         ?>
 
-        <div class="modulo-card <?php echo $clase_borde; ?>">
-            <h3 style="color: #8a4fff; margin-bottom: 10px;"><?php echo htmlspecialchars($nombre_mostrar); ?></h3>
-            <p><strong>Estado:</strong> <?php echo $estado_modulo; ?></p>
-            <p><strong>Último puntaje:</strong> <?php echo $ultimo_puntaje !== null ? $ultimo_puntaje . '%' : '---'; ?></p>
+        <div class="modulo-card">
+            <!-- Encabezado con ícono -->
+            <div class="modulo-header">
+                <div class="modulo-icono"><?php echo $icono; ?></div>
+                <div class="modulo-titulo-wrapper">
+                    <h3 class="modulo-titulo"><?php echo htmlspecialchars($nombre_mostrar); ?></h3>
+                </div>
+            </div>
+
+            <!-- Badge de estado -->
+            <div class="estado-badge estado-<?php echo $clase_estado; ?>">
+                <?php echo $estado_modulo; ?>
+            </div>
+
+            <!-- Barra de progreso -->
+            <div class="barra-progreso-container">
+                <div class="barra-progreso-fondo">
+                    <div class="barra-progreso-llena" style="width: <?php echo $barra_porcentaje; ?>%"></div>
+                </div>
+                <span class="barra-progreso-texto"><?php echo $ultimo_puntaje !== null ? $ultimo_puntaje . '%' : '0%'; ?></span>
+            </div>
             
             <?php
             // Obtener últimos 5 intentos (historial)
@@ -132,31 +156,41 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             $hay_historial = ($res_hist && mysqli_num_rows($res_hist) > 0);
             ?>
             
-            <?php if ($hay_historial): ?>
-                <div class="historial-intentos">
-                    <p style="margin-bottom: 10px; font-weight: 700; font-size: 0.95rem;">Últimos intentos:</p>
-                    <div class="historial-lista">
+            <!-- Sección de historial -->
+            <div class="historial-intentos">
+                <?php if ($hay_historial): ?>
+                    <p class="historial-titulo">Historial de intentos</p>
+                    <div class="historial-tabla">
+                        <div class="historial-header">
+                            <div class="historial-col-fecha">Fecha</div>
+                            <div class="historial-col-puntaje">Puntaje</div>
+                            <div class="historial-col-resultado">Resultado</div>
+                        </div>
                         <?php 
-                        $idx = 1;
                         while ($intento = mysqli_fetch_assoc($res_hist)): 
-                            $fecha_formato = date('d/m/Y H:i', strtotime($intento['fecha']));
-                            $resultado = $intento['puntaje'] >= 80 ? '✅ Aprobado' : '❌ Reprobado';
-                            $color = $intento['puntaje'] >= 80 ? '#008000' : '#ff4757';
+                            $fecha_formato = date('d/m/Y', strtotime($intento['fecha']));
+                            $hora_formato = date('H:i', strtotime($intento['fecha']));
+                            $resultado_icon = $intento['puntaje'] >= 80 ? '✅' : '❌';
+                            $resultado_texto = $intento['puntaje'] >= 80 ? 'Aprobado' : 'Reprobado';
+                            $clase_resultado = $intento['puntaje'] >= 80 ? 'aprobado' : 'reprobado';
                         ?>
-                            <div class="historial-item">
-                                <span class="historial-fecha"><?php echo $fecha_formato; ?></span>
-                                <span class="historial-puntaje"><?php echo $intento['puntaje']; ?>%</span>
-                                <span class="historial-resultado" style="color: <?php echo $color; ?>;"><?php echo $resultado; ?></span>
+                            <div class="historial-fila">
+                                <div class="historial-col-fecha">
+                                    <span class="fecha-fecha"><?php echo $fecha_formato; ?></span>
+                                    <span class="fecha-hora"><?php echo $hora_formato; ?></span>
+                                </div>
+                                <div class="historial-col-puntaje"><?php echo $intento['puntaje']; ?>%</div>
+                                <div class="historial-col-resultado resultado-<?php echo $clase_resultado; ?>">
+                                    <span><?php echo $resultado_icon; ?></span>
+                                    <span><?php echo $resultado_texto; ?></span>
+                                </div>
                             </div>
-                        <?php 
-                            $idx++;
-                        endwhile; 
-                        ?>
+                        <?php endwhile; ?>
                     </div>
-                </div>
-            <?php else: ?>
-                <p style="margin-top: 10px; color: #999; font-size: 0.9rem;">Sin intentos registrados</p>
-            <?php endif; ?>
+                <?php else: ?>
+                    <p class="historial-vacio">Aún no has realizado esta evaluación</p>
+                <?php endif; ?>
+            </div>
         </div>
 
         <?php } ?>
