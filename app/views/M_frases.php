@@ -105,7 +105,7 @@ if (!$res_prev || mysqli_num_rows($res_prev) == 0) {
     </div>
 
     <div class="btn-container" style="margin-top:40px;">
-        <a href="index.php?page=evaluacionFrases" class="btn">Evaluación ✨</a>
+        <a href="index.php?page=evaluacionFrases" class="btn">Comenzar Evaluación ✨</a>
     </div>
 </div>
 
