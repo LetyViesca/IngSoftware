@@ -15,7 +15,9 @@ const contenedor = document.getElementById("preguntas");
 async function loadPreguntas(modId = 1) {
     try {
         const resp = await fetch('controllers/get_preguntas.php?id_Modulo=' + modId);
-        if (!resp.ok) throw new Error('Error al cargar preguntas');
+        if (!resp.ok) {
+            throw new Error('Error al cargar preguntas');
+        }
         const json = await resp.json();
 
         datos = json.map((q, idx) => ({

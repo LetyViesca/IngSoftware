@@ -23,7 +23,7 @@ $mod3_completado = modulo_completado($conexion, $id_usuario, 3);
 $mod1_desbloqueado = true;
 $mod2_desbloqueado = $mod1_completado;
 $mod3_desbloqueado = $mod2_completado;
-
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
