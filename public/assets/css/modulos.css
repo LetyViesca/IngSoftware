@@ -457,3 +457,27 @@
         font-weight: 600;
     }
 
+    .learning-guide h2 {
+        color: #333;
+        margin-bottom: 25px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 400px) {
+        .completed-badge {
+            font-size: 11px;
+            top: 12px;
+            right: 12px;
+            padding: 3px 10px;
+        }
+
+        .card-info {
+            padding-top: 38px;
+        }
+
+        .learning-guide h2 {
+            font-size: 1.5rem;
+        }
+    }
+
