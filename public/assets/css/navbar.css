@@ -1,0 +1,436 @@
+:root {
+    --purple: #8a4fff;
+    --purple-dark: #6b22d6;
+    --pink: #ff007a;
+    --gray-dark: #2f3140;
+    --gray-medium: #5e6278;
+    --gray-light: #eef1fb;
+    --surface: rgba(255,255,255,0.96);
+    --surface-strong: #ffffff;
+    --shadow: 0 32px 100px rgba(43, 49, 90, 0.08);
+    --border: rgba(138, 79, 255, 0.16);
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    /* Premium glass header */
+    background: linear-gradient(180deg, rgba(255,255,255,0.74), rgba(245,246,255,0.54));
+    backdrop-filter: blur(12px) saturate(120%);
+    -webkit-backdrop-filter: blur(12px) saturate(120%);
+
+    border-bottom: 1px solid rgba(126,75,255,0.08);
+    box-shadow: 0 14px 48px rgba(36,34,88,0.06), 0 8px 26px rgba(126,75,255,0.04);
+    z-index: 1100;
+    padding: 12px 5%;
+    transition: padding 0.22s ease, background 0.28s ease, box-shadow 0.28s ease, transform 0.2s ease;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    position: relative;
+    z-index: 1000;
+
+    flex-wrap: wrap;
+}
+
+nav > a {
+    display: inline-flex;
+    align-items: center;
+}
+
+.main-logo {
+    max-height: 48px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* =========================================================
+   MENÚ
+========================================================= */
+
+.nav-menu {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0 auto;
+    padding: 0 8px;
+    font-size: 0.95rem;
+    justify-content: center;
+}
+
+.nav-menu li {
+    position: relative;
+}
+
+.nav-menu a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 16px;
+
+    border-radius: 22px;
+
+    color: var(--gray-dark);
+
+    font-weight: 600;
+
+    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.86));
+    border: 1px solid rgba(255,255,255,0.06);
+
+    text-decoration: none;
+
+    transition: all 0.22s ease;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus {
+    background: linear-gradient(90deg, rgba(138,79,255,0.10), rgba(255,43,140,0.04));
+    color: var(--purple-dark);
+    border-color: rgba(138, 79, 255, 0.16);
+}
+
+/* Indicator for active module */
+.nav-menu a.active {
+    color: var(--purple-dark);
+    position: relative;
+}
+
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: -8px;
+    height: 4px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    box-shadow: 0 8px 30px rgba(126,75,255,0.14);
+}
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.dropdown {
+    position: relative;
+}
+
+/* Área invisible para evitar que se cierre */
+.dropdown::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 100%;
+
+    width: 100%;
+    height: 18px;
+}
+
+.dropdown > a {
+    gap: 6px;
+}
+
+/* MENÚ DESPLEGABLE */
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    min-width: 300px;
+    border-radius: 18px;
+    padding: 12px 6px;
+    list-style: none;
+    box-shadow: 0 28px 80px rgba(36,34,88,0.08), 0 8px 30px rgba(126,75,255,0.06);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(12px) scale(0.995);
+    transition: opacity 0.26s cubic-bezier(.2,.9,.2,1), transform 0.26s cubic-bezier(.2,.9,.2,1), visibility 0.26s ease;
+    background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.72));
+    backdrop-filter: blur(10px) saturate(115%);
+}
+
+.dropdown-menu li + li {
+    margin-top: 6px;
+}
+
+.dropdown-menu li a {
+    display: block;
+
+    padding: 12px 18px;
+
+    color: var(--gray-dark);
+
+    text-decoration: none;
+
+    border-radius: 14px;
+
+    transition: background 0.22s cubic-bezier(.2,.9,.2,1), color 0.18s ease, transform 0.22s ease;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus {
+    background: rgba(138, 79, 255, 0.08);
+
+    color: var(--purple-dark);
+}
+
+/* MOSTRAR MENÚ */
+
+.dropdown:hover .dropdown-menu,
+.dropdown.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+.dropdown:hover > a,
+.dropdown.open > a {
+    color: var(--purple-dark);
+}
+
+/* =========================================================
+   USUARIO
+========================================================= */
+
+.user-box {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.72));
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 8px 12px;
+    border-radius: 999px;
+    box-shadow: 0 8px 28px rgba(36,34,88,0.06), inset 0 1px 0 rgba(255,255,255,0.65);
+    transition: box-shadow 0.22s ease, transform 0.18s ease;
+}
+
+.user-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    color: var(--text);
+    white-space: nowrap;
+}
+
+/* Avatar modern */
+.user-box img, .user-box .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.8);
+    box-shadow: 0 8px 26px rgba(126,75,255,0.12);
+}
+
+.user-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 56px rgba(36,34,88,0.10), 0 6px 20px rgba(126,75,255,0.08);
+}
+
+.user-box a {
+    color: var(--gray-dark);
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.user-box a:hover,
+.user-box a:focus {
+    color: var(--purple-dark);
+}
+
+.user-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--purple),
+        var(--pink)
+    );
+
+    color: white;
+
+    font-size: 1rem;
+
+    box-shadow: 0 8px 24px rgba(138, 79, 255, 0.18);
+}
+
+/* =========================================================
+   BOTONES SUPERIORES
+========================================================= */
+
+.top-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 20px;
+}
+
+#btnProgreso {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        padding: 14px 4%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        gap: 16px;
+    }
+
+    nav > a {
+        align-self: flex-start;
+    }
+
+    .nav-menu {
+        width: 100%;
+
+        justify-content: space-between;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+
+        padding: 8px 0;
+    }
+
+    .nav-menu a {
+        padding: 10px 12px;
+    }
+
+    .dropdown::after {
+        display: none;
+    }
+
+    .dropdown > a {
+        width: 100%;
+        justify-content: space-between;
+        padding: 10px 14px;
+        cursor: pointer;
+    }
+
+    .dropdown-menu {
+        position: static;
+
+        width: 100%;
+
+        margin-top: 10px;
+
+        opacity: 1;
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform: none;
+
+        display: none;
+
+        box-shadow: none;
+
+        background: rgba(255,255,255,0.96);
+    }
+
+    .dropdown.open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu li a {
+        padding: 14px 16px;
+    }
+
+    .user-box {
+        width: 100%;
+
+        justify-content: space-between;
+
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 12px 16px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    .nav-menu {
+        justify-content: center;
+
+        gap: 8px;
+    }
+
+    .nav-menu a {
+        flex: 1 1 100%;
+
+        justify-content: center;
+    }
+
+    .dropdown-menu {
+        padding: 10px 0;
+    }
+
+    .user-box {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 10px;
+    }
+}

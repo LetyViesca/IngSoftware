@@ -1,0 +1,483 @@
+/* =====================================================================
+   PROGRESO.CSS - ESTILOS DE SEGUIMIENTO DE PROGRESO [Sprint 5 Mejorado]
+   - Grid de módulos con progreso visual
+   - Dashboard de progreso con iconos representativos
+   - Barra de progreso porcentual
+   - Tabla de historial de intentos
+   - Responsive design
+   ===================================================================== */
+
+/* ========== GRID DE PROGRESO ========== */
+.grid-progreso {
+    display: grid;
+    gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    margin-top: 18px;
+}
+
+/* ========== TARJETA DE MÓDULO MEJORADA ========== */
+.modulo-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.88));
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid rgba(138, 79, 255, 0.1);
+    box-shadow: 0 4px 24px rgba(138, 79, 255, 0.08);
+    backdrop-filter: blur(8px) saturate(115%);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.modulo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(138, 79, 255, 0.15);
+}
+
+/* ========== ENCABEZADO CON ICONO ========== */
+.modulo-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.modulo-icono {
+    font-size: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(138, 79, 255, 0.12);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.modulo-titulo-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+.modulo-titulo {
+    margin: 0;
+    color: #8a4fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    word-break: break-word;
+}
+
+/* ========== BADGE DE ESTADO ========== */
+.estado-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.estado-completado {
+    background: rgba(0, 200, 83, 0.15);
+    color: #00a65a;
+    border: 1px solid rgba(0, 200, 83, 0.3);
+}
+
+.estado-en-progreso {
+    background: rgba(255, 152, 0, 0.15);
+    color: #d47400;
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.estado-no-iniciado {
+    background: rgba(189, 189, 189, 0.15);
+    color: #757575;
+    border: 1px solid rgba(189, 189, 189, 0.3);
+}
+
+/* ========== BARRA DE PROGRESO ========== */
+.barra-progreso-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.barra-progreso-fondo {
+    flex: 1;
+    height: 12px;
+    background: rgba(138, 79, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.barra-progreso-llena {
+    height: 100%;
+    background: linear-gradient(90deg, #8a4fff, #c454ff);
+    border-radius: 999px;
+    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 0 12px rgba(138, 79, 255, 0.3);
+}
+
+.barra-progreso-texto {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #8a4fff;
+    min-width: 40px;
+    text-align: right;
+}
+
+/* ========== SECCIÓN DE HISTORIAL ========== */
+.historial-intentos {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(138, 79, 255, 0.12);
+}
+
+.historial-titulo {
+    margin: 0 0 12px 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #5d5d5d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.historial-vacio {
+    margin: 0;
+    padding: 12px;
+    color: #999;
+    font-size: 0.9rem;
+    text-align: center;
+    background: rgba(138, 79, 255, 0.05);
+    border-radius: 8px;
+}
+
+/* ========== TABLA DE HISTORIAL ========== */
+.historial-tabla {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.historial-header {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1.2fr;
+    gap: 12px;
+    padding: 8px 12px;
+    background: rgba(138, 79, 255, 0.08);
+    border-radius: 8px 8px 0 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #8a4fff;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 0;
+}
+
+.historial-fila {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr 1.2fr;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(138, 79, 255, 0.03);
+    border-bottom: 1px solid rgba(138, 79, 255, 0.06);
+    font-size: 0.9rem;
+    align-items: center;
+}
+
+.historial-fila:last-child {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+}
+
+.historial-col-fecha {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.fecha-fecha {
+    font-weight: 700;
+    color: #3d3d3d;
+}
+
+.fecha-hora {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.historial-col-puntaje {
+    font-weight: 700;
+    color: #8a4fff;
+    text-align: center;
+}
+
+.historial-col-resultado {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    text-align: right;
+    justify-content: flex-end;
+}
+
+.resultado-aprobado {
+    color: #00a65a;
+}
+
+.resultado-reprobado {
+    color: #ff4757;
+}
+
+/* ========== TEXTO ADICIONAL Y JERARQUÍA ========== */
+.titulo-progreso {
+    font-size: var(--h1-size);
+    color: var(--text);
+    margin: 40px 0 12px;
+    text-align: center;
+    font-weight: 800;
+    line-height: 1.02;
+}
+
+.banner-completado {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(90deg, #ffd54f, #ffb74d);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+    margin-top: 18px;
+}
+
+.banner-completado h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #3e2723;
+}
+
+/* ========== RESPONSIVE PROGRESO ========== */
+@media (max-width: 900px) {
+    .grid-progreso {
+        gap: 20px;
+    }
+    
+    .modulo-header {
+        gap: 12px;
+    }
+
+    .modulo-icono {
+        width: 45px;
+        height: 45px;
+        font-size: 2rem;
+    }
+
+    .modulo-titulo {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-progreso {
+        grid-template-columns: 1fr;
+    }
+    
+    .modulo-card {
+        padding: 18px;
+    }
+
+    .modulo-header {
+        gap: 10px;
+    }
+
+    .modulo-icono {
+        width: 42px;
+        height: 42px;
+        font-size: 1.8rem;
+    }
+
+    .modulo-titulo {
+        font-size: 1rem;
+    }
+
+    .historial-header,
+    .historial-fila {
+        grid-template-columns: 1fr 0.7fr 1fr;
+        gap: 10px;
+        padding: 10px;
+        font-size: 0.85rem;
+    }
+
+    .historial-col-resultado {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .modulo-card {
+        padding: 16px;
+    }
+
+    .modulo-header {
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .modulo-icono {
+        width: 38px;
+        height: 38px;
+        font-size: 1.6rem;
+    }
+
+    .modulo-titulo {
+        font-size: 0.95rem;
+    }
+
+    .estado-badge {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+        margin-bottom: 12px;
+    }
+
+    .barra-progreso-container {
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+
+    .barra-progreso-texto {
+        font-size: 0.85rem;
+        min-width: 35px;
+    }
+
+    .historial-titulo {
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+    }
+
+    .historial-header,
+    .historial-fila {
+        grid-template-columns: 1fr 0.6fr 0.8fr;
+        gap: 8px;
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+
+    .fecha-fecha {
+        font-size: 0.8rem;
+    }
+
+    .fecha-hora {
+        font-size: 0.7rem;
+    }
+
+    .historial-col-resultado {
+        gap: 4px;
+        font-size: 0.8rem;
+    }
+}
+        gap: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .evaluacion-container,
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .modulo-card {
+        padding: 20px 18px;
+    }
+    .modulo-card h3 {
+        font-size: 1.08rem;
+    }
+    .modulo-card::after {
+        top: 16px;
+        right: 16px;
+        padding: 7px 12px;
+        font-size: 0.78rem;
+    }
+}
+
+/* [Sprint 5 - RNF-04] Estilos para badges e insignias */
+.badge-puntaje {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.15rem;
+}
+
+.banner-completado h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #3e2723;
+}
+
+/* [Sprint 5 - Progreso Mejorado] Estilos para historial de intentos */
+.historial-intentos {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(138, 79, 255, 0.12);
+}
+
+.historial-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.historial-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(138, 79, 255, 0.06);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    border-left: 3px solid rgba(138, 79, 255, 0.2);
+}
+
+.historial-fecha {
+    color: #5d5d5d;
+    font-weight: 600;
+    flex: 1;
+}
+
+.historial-puntaje {
+    background: rgba(138, 79, 255, 0.12);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    color: #8a4fff;
+    margin: 0 8px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.historial-resultado {
+    font-weight: 700;
+    min-width: 110px;
+    text-align: right;
+}
+
+/* Responsive historial */
+@media (max-width: 768px) {
+    .historial-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .historial-fecha {
+        flex: 1 1 100%;
+        margin-bottom: 4px;
+    }
+
+    .historial-puntaje,
+    .historial-resultado {
+        flex: 1 1 calc(50% - 4px);
+    }
+}
+
+
