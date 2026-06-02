@@ -284,3 +284,5 @@ Para proteger la estructura interna del proyecto se implementaron medidas de seg
 La plataforma cuenta con módulos de aprendizaje funcionales, evaluaciones dinámicas, desbloqueo progresivo de contenido, seguimiento de progreso por usuario y medidas básicas de seguridad para la protección de recursos internos.
 
 El proyecto fue desarrollado bajo una metodología ágil basada en sprints incrementales, incorporando validaciones funcionales y retroalimentación continua durante su construcción.
+
+<!-- Evidencia académica de integración Sprint 5 -->
