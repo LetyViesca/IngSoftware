@@ -57,6 +57,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     /* ===== EJECUCIÓN FINAL ===== */
     if (mysqli_stmt_execute($stmt)) {
+        // [Sprint 5 - Progreso Mejorado] Guardar en Resultado_evaluacion
+        // Obtener id_Evaluacion del módulo
+        $sql_eval = "SELECT id_Evaluacion FROM Evaluacion WHERE id_Modulo = ?";
+        $stmt_eval = mysqli_prepare($conexion, $sql_eval);
+        mysqli_stmt_bind_param($stmt_eval, "i", $id_modulo);
+        mysqli_stmt_execute($stmt_eval);
+        $res_eval = mysqli_stmt_get_result($stmt_eval);
+        
+        if ($res_eval && mysqli_num_rows($res_eval) > 0) {
+            $row_eval = mysqli_fetch_assoc($res_eval);
+            $id_evaluacion = $row_eval['id_Evaluacion'];
+            
+            // Verificar si ya existe registro en Resultado_evaluacion (UNIQUE constraint)
+            $sql_check_res = "SELECT idResultado_evaluacion FROM Resultado_evaluacion WHERE id_Usuario = ? AND id_Evaluacion = ?";
+            $stmt_check_res = mysqli_prepare($conexion, $sql_check_res);
+            mysqli_stmt_bind_param($stmt_check_res, "ii", $id_usuario, $id_evaluacion);
+            mysqli_stmt_execute($stmt_check_res);
+            $res_check = mysqli_stmt_get_result($stmt_check_res);
+            
+            $fecha_ahora = date("Y-m-d H:i:s");
+            
+            if (mysqli_num_rows($res_check) > 0) {
+                // UPDATE Resultado_evaluacion (sobrescribir último intento)
+                $sql_update_res = "UPDATE Resultado_evaluacion SET puntaje = ?, fecha = ? WHERE id_Usuario = ? AND id_Evaluacion = ?";
+                $stmt_update_res = mysqli_prepare($conexion, $sql_update_res);
+                mysqli_stmt_bind_param($stmt_update_res, "isii", $puntaje, $fecha_ahora, $id_usuario, $id_evaluacion);
+                mysqli_stmt_execute($stmt_update_res);
+                mysqli_stmt_close($stmt_update_res);
+            } else {
+                // INSERT Resultado_evaluacion
+                $sql_insert_res = "INSERT INTO Resultado_evaluacion (fecha, puntaje, id_Usuario, id_Evaluacion) VALUES (?, ?, ?, ?)";
+                $stmt_insert_res = mysqli_prepare($conexion, $sql_insert_res);
+                mysqli_stmt_bind_param($stmt_insert_res, "siii", $fecha_ahora, $puntaje, $id_usuario, $id_evaluacion);
+                mysqli_stmt_execute($stmt_insert_res);
+                mysqli_stmt_close($stmt_insert_res);
+            }
+            
+            // INSERT Historial_evaluacion (siempre guardar para tener historial completo)
+            $sql_insert_hist = "INSERT INTO Historial_evaluacion (id_Usuario, id_Evaluacion, puntaje, fecha) VALUES (?, ?, ?, ?)";
+            $stmt_insert_hist = mysqli_prepare($conexion, $sql_insert_hist);
+            mysqli_stmt_bind_param($stmt_insert_hist, "iis", $id_usuario, $id_evaluacion, $puntaje, $fecha_ahora);
+            mysqli_stmt_execute($stmt_insert_hist);
+            mysqli_stmt_close($stmt_insert_hist);
+            
+            mysqli_stmt_close($stmt_check_res);
+        }
+        
+        mysqli_stmt_close($stmt_eval);
+        
         echo json_encode([
             "status" => "success",
             "estado" => $estado,
