@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // INSERT Historial_evaluacion (siempre guardar para tener historial completo)
             $sql_insert_hist = "INSERT INTO Historial_evaluacion (id_Usuario, id_Evaluacion, puntaje, fecha) VALUES (?, ?, ?, ?)";
             $stmt_insert_hist = mysqli_prepare($conexion, $sql_insert_hist);
-            mysqli_stmt_bind_param($stmt_insert_hist, "iis", $id_usuario, $id_evaluacion, $puntaje, $fecha_ahora);
+            mysqli_stmt_bind_param($stmt_insert_hist, "iiis", $id_usuario, $id_evaluacion, $puntaje, $fecha_ahora);
             mysqli_stmt_execute($stmt_insert_hist);
             mysqli_stmt_close($stmt_insert_hist);
             
