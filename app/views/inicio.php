@@ -1,4 +1,29 @@
 <?php require_once __DIR__ . '/../auth/auth.php';?>
+<?php // [Sprint 5 - RNF-01] Conexión DB para estado de módulos
+require_once __DIR__ . '/../config/db.php';
+
+// Identificador de usuario en sesión
+$id_usuario = $_SESSION['id_usuario'];
+
+// Función auxiliar: verifica si el módulo anterior está completado (>=80)
+function modulo_completado($conexion, $id_usuario, $id_modulo_check){
+    $query = "SELECT re.puntaje FROM Resultado_evaluacion re
+              JOIN Evaluacion e ON re.id_Evaluacion = e.id_Evaluacion
+              WHERE re.id_Usuario = '$id_usuario' AND e.id_Modulo = $id_modulo_check AND re.puntaje >= 80 LIMIT 1";
+    $res = mysqli_query($conexion, $query);
+    return ($res && mysqli_num_rows($res) > 0);
+}
+
+// Estados por módulo
+$mod1_completado = modulo_completado($conexion, $id_usuario, 1);
+$mod2_completado = modulo_completado($conexion, $id_usuario, 2);
+$mod3_completado = modulo_completado($conexion, $id_usuario, 3);
+
+// Desbloqueo progresivo
+$mod1_desbloqueado = true;
+$mod2_desbloqueado = $mod1_completado;
+$mod3_desbloqueado = $mod2_completado;
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -101,9 +126,16 @@ En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de domina
                 <div class="card-info">
                     <h3>El Abecedario</h3>
                     <p>Aprende cada letra para deletrear nombres y palabras comunes.</p>
-                    <a href="index.php?page=m_abecedario">
-                        <button class="btn-card" style="background:#8a4fff">▶ Seguir aprendiendo</button>
-                    </a>
+                    <?php if ($mod1_desbloqueado): ?>
+                        <a href="index.php?page=m_abecedario">
+                            <button class="btn-card" style="background:#8a4fff">▶ Seguir aprendiendo</button>
+                        </a>
+                        <?php if ($mod1_completado): ?>
+                            <div class="completed-badge">✅ Completado</div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="module-locked-overlay">🔒 Completa el módulo anterior</div>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -115,9 +147,16 @@ En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de domina
                 <div class="card-info">
                     <h3>Palabras Clave</h3>
                     <p>Aprende vocabulario esencial del día a día.</p>
-                    <a href="index.php?page=m_palabras">
-                        <button class="btn-card" style="background:#00c2a8">▶ Seguir aprendiendo</button>
-                    </a>
+                    <?php if ($mod2_desbloqueado): ?>
+                        <a href="index.php?page=m_palabras">
+                            <button class="btn-card" style="background:#00c2a8">▶ Seguir aprendiendo</button>
+                        </a>
+                        <?php if ($mod2_completado): ?>
+                            <div class="completed-badge">✅ Completado</div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="module-locked-overlay">🔒 Completa el módulo anterior</div>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -129,9 +168,16 @@ En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de domina
                 <div class="card-info">
                     <h3>Frases Cotidianas</h3>
                     <p>Comienza a comunicarte usando frases completas.</p>
-                    <a href="index.php?page=m_frases">
-                        <button class="btn-card" style="background:#ff007a">▶ Seguir aprendiendo</button>
-                    </a>
+                    <?php if ($mod3_desbloqueado): ?>
+                        <a href="index.php?page=m_frases">
+                            <button class="btn-card" style="background:#ff007a">▶ Seguir aprendiendo</button>
+                        </a>
+                        <?php if ($mod3_completado): ?>
+                            <div class="completed-badge">✅ Completado</div>
+                        <?php endif; ?>
+                    <?php else: ?>
+                        <div class="module-locked-overlay">🔒 Completa el módulo anterior</div>
+                    <?php endif; ?>
                 </div>
             </div>
 

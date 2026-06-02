@@ -1,67 +1,35 @@
-const datos = [
+// [Sprint 5 - RNF-03] Fisher-Yates shuffle
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
-    {
-        id:'p1',
-        correcta:'¿Cuál es tu nombre?',
-        img:'assets/img/frases/nombre.png'
-    },
-
-    {
-        id:'p2',
-        correcta:'De nada',
-        img:'assets/img/frases/de_nada.png'
-    },
-
-    {
-        id:'p3',
-        correcta:'Ayuda',
-        img:'assets/img/frases/ayuda.png'
-    },
-
-    {
-        id:'p4',
-        correcta:'Lo siento',
-        img:'assets/img/frases/lo_siento.png'
-    },
-
-    {
-        id:'p5',
-        correcta:'Tengo sed',
-        img:'assets/img/frases/sed.png'
-    },
-
-    {
-        id:'p6',
-        correcta:'Con permiso',
-        img:'assets/img/frases/con_permiso.png'
-    },
-
-    {
-        id:'p7',
-        correcta:'¿De dónde eres?',
-        img:'assets/img/frases/de_donde.png'
-    },
-
-    {
-        id:'p8',
-        correcta:'¿Cuánto cuesta?',
-        img:'assets/img/frases/cuanto_cuesta.png'
-    },
-
-    {
-        id:'p9',
-        correcta:'Estoy enfermo',
-        img:'assets/img/frases/enfermo.png'
-    },
-
-    {
-        id:'p10',
-        correcta:'Me gusta',
-        img:'assets/img/frases/me_gusta.png'
-    }
-];
-
+// [Sprint 5 - RNF-02] Cargar preguntas desde backend
+let datos = [];
 const contenedor = document.getElementById("preguntas");
+
+async function loadPreguntas(modId = 3) {
+    try {
+        const resp = await fetch('controllers/get_preguntas.php?id_Modulo=' + modId);
+        if (!resp.ok) throw new Error('Error al cargar preguntas');
+        const json = await resp.json();
+
+        datos = json.map((q, idx) => ({
+            id: 'p' + (idx+1),
+            correcta: q.respuesta_correcta,
+            img: q.imagen,
+            opciones: [q.respuesta_correcta, q.opcion1, q.opcion2, q.opcion3]
+        }));
+
+        renderPreguntas();
+    } catch (err) {
+        contenedor.innerHTML = '<p style="color:#ff4757; text-align:center;">No fue posible cargar las preguntas.</p>';
+        console.error(err);
+    }
+}
 
 document.addEventListener("change", e => {
 
@@ -103,109 +71,50 @@ function actualizarProgreso() {
         respondidas + " de " + datos.length + " preguntas respondidas";
 }
 
-datos.forEach((p, i) => {
+function renderPreguntas() {
+    contenedor.innerHTML = '';
 
-    contenedor.innerHTML += `
+    datos.forEach((p, i) => {
+        let opciones = shuffleArray([...p.opciones]);
 
-    <div class="question-card"
-         id="card-${p.id}">
+        contenedor.innerHTML += `
 
-        <div class="question-header">
+        <div class="question-card" id="card-${p.id}">
 
-            <img src="${p.img}"
-                 class="question-img">
+            <div class="question-header">
 
-            <div style="flex:1;">
+                <img src="${p.img}" class="question-img">
 
-                <p>
-                    <strong>
-                        Pregunta ${i+1}
-                    </strong>
-                </p>
+                <div style="flex:1;">
 
-                <p>
-                    ¿Qué frase representa esta seña?
-                </p>
+                    <p><strong>Pregunta ${i+1}</strong></p>
 
-                <div class="options-grid">
+                    <p>¿Qué frase representa esta seña?</p>
 
-                    <label class="option">
+                    <div class="options-grid">
 
-                        <div class="option-content">
+                        ${opciones.map(op => `
+                        <label class="option">
+                            <div class="option-content">
+                                <input type="radio" name="${p.id}" value="${op}" onclick="actualizarProgreso()">
+                                <span>${op}</span>
+                            </div>
+                        </label>
+                        `).join('')}
 
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="${p.correcta}"
-                                   onclick="actualizarProgreso()">
-
-                            <span>
-                                ${p.correcta}
-                            </span>
-
-                        </div>
-
-                    </label>
-
-                    <label class="option">
-
-                        <div class="option-content">
-
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="Otras señas"
-                                   onclick="actualizarProgreso()">
-
-                            <span>
-                                Otras señas
-                            </span>
-
-                        </div>
-
-                    </label>
-
-                    <label class="option">
-
-                        <div class="option-content">
-
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="No corresponde"
-                                   onclick="actualizarProgreso()"
-
-                            <span>
-                                No corresponde
-                            </span>
-
-                        </div>
-
-                    </label>
-
-                    <label class="option">
-
-                        <div class="option-content">
-
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="No sé"
-                                   onclick="actualizarProgreso()">
-
-                            <span>
-                                No sé
-                            </span>
-
-                        </div>
-
-                    </label>
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
+        `;
+    });
+}
 
-    </div>
-    `;
-});
+// Cargar preguntas del módulo Frases (id 3)
+loadPreguntas(3);
 
 function calificar() {
 

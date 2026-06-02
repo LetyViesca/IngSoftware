@@ -1,4 +1,16 @@
 <?php require_once __DIR__ . '/../auth/auth.php'; ?>
+<?php // [Sprint 5 - RNF-01] Verificar desbloqueo del módulo (Abecedario)
+require_once __DIR__ . '/../config/db.php';
+
+$id_usuario = $_SESSION['id_usuario'];
+
+// Módulo 1 siempre disponible
+$modulo_id = 1;
+
+// Si hubiera una regla futura de bloqueo, se implementaría aquí
+// Actualmente es siempre accesible
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

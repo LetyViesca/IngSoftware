@@ -4,6 +4,15 @@ require_once __DIR__ . '/../auth/auth.php';
 require_once __DIR__ . '/../config/db.php';
 
 $nombre_usuario = $_SESSION['nombre_usuario'];
+
+// [Sprint 5 - RNF-01] Verificar desbloqueo: Frases requiere haber completado Palabras
+$id_usuario = $_SESSION['id_usuario'];
+$query_prev = "SELECT re.puntaje FROM Resultado_evaluacion re JOIN Evaluacion e ON re.id_Evaluacion = e.id_Evaluacion WHERE re.id_Usuario = '$id_usuario' AND e.id_Modulo = 2 AND re.puntaje >= 80 LIMIT 1";
+$res_prev = mysqli_query($conexion, $query_prev);
+if (!$res_prev || mysqli_num_rows($res_prev) == 0) {
+    header('Location: index.php?page=inicio&msg=locked');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>

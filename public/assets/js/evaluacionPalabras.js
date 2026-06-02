@@ -1,36 +1,37 @@
-const datos = [
-
-    { id:'p1', correcta:'Hola', img:'assets/img/palabras/hola.png' },
-
-    { id:'p2', correcta:'Adiós', img:'assets/img/palabras/adios.png' },
-
-    { id:'p3', correcta:'Buen día', img:'assets/img/palabras/buen_dia.png' },
-
-    { id:'p4', correcta:'Buenas noches', img:'assets/img/palabras/buenas_noches.png' },
-
-    { id:'p5', correcta:'Mamá', img:'assets/img/palabras/mama.png' },
-
-    { id:'p6', correcta:'Papá', img:'assets/img/palabras/papa.png' },
-
-    { id:'p7', correcta:'Uno', img:'assets/img/palabras/uno.png' },
-
-    { id:'p8', correcta:'Dos', img:'assets/img/palabras/dos.png' },
-
-    { id:'p9', correcta:'Cinco', img:'assets/img/palabras/cinco.png' },
-
-    { id:'p10', correcta:'Diez', img:'assets/img/palabras/diez.png' }
-];
-
-const opcionesGenerales =
-datos.map(p => p.correcta);
-
-function mezclar(array) {
-
-    return array.sort(() =>
-        Math.random() - 0.5
-    );
+// [Sprint 5 - RNF-03] Fisher-Yates shuffle
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
+// [Sprint 5 - RNF-02] Datos cargados desde backend
+let datos = [];
+let opcionesGenerales = [];
+
+async function loadPreguntas(modId = 2) {
+    try {
+        const resp = await fetch('controllers/get_preguntas.php?id_Modulo=' + modId);
+        if (!resp.ok) throw new Error('Error al cargar preguntas');
+        const json = await resp.json();
+
+        datos = json.map((q, idx) => ({
+            id: 'p' + (idx+1),
+            correcta: q.respuesta_correcta,
+            img: q.imagen,
+            opciones: [q.respuesta_correcta, q.opcion1, q.opcion2, q.opcion3]
+        }));
+
+        opcionesGenerales = datos.map(p => p.correcta);
+
+        renderPreguntas();
+    } catch (err) {
+        document.getElementById('preguntas').innerHTML = '<p style="color:#ff4757; text-align:center;">No fue posible cargar las preguntas.</p>';
+        console.error(err);
+    }
+}
 const contenedor =
 document.getElementById("preguntas");
 
@@ -86,74 +87,52 @@ function actualizarProgreso() {
     " preguntas respondidas";
 }
 
-datos.forEach((p, i) => {
+function renderPreguntas() {
+    contenedor.innerHTML = '';
 
-    let incorrectas =
-    opcionesGenerales.filter(
-        op => op !== p.correcta
-    );
+    datos.forEach((p, i) => {
+        let incorrectas = opcionesGenerales.filter(op => op !== p.correcta);
+        incorrectas = shuffleArray(incorrectas).slice(0, 3);
 
-    incorrectas =
-    mezclar(incorrectas).slice(0, 3);
+        let opciones = [...incorrectas, p.correcta];
+        opciones = shuffleArray(opciones);
 
-    let opciones = [
-        ...incorrectas,
-        p.correcta
-    ];
+        contenedor.innerHTML += `
 
-    opciones = mezclar(opciones);
+        <div class="question-card" id="card-${p.id}">
 
-    contenedor.innerHTML += `
+            <div class="question-header">
 
-    <div class="question-card"
-         id="card-${p.id}">
+                <img src="${p.img}" class="question-img" alt="Seña">
 
-        <div class="question-header">
+                <div>
 
-            <img src="${p.img}"
-                 class="question-img"
-                 alt="Seña">
+                    <p><strong>Pregunta ${i+1}</strong></p>
 
-            <div>
+                    <p>¿Qué palabra representa esta seña?</p>
 
-                <p>
-                    <strong>
-                        Pregunta ${i+1}
-                    </strong>
-                </p>
+                    <div class="options-grid">
 
-                <p>
-                    ¿Qué palabra representa esta seña?
-                </p>
+                        ${opciones.map(op => `
+                            <label class="option">
+                                <div class="option-content">
+                                    <input type="radio" name="${p.id}" value="${op}" onclick="actualizarProgreso()">
+                                    <span>${op}</span>
+                                </div>
+                            </label>
+                        `).join('')}
 
-                <div class="options-grid">
-
-                    ${opciones.map(op => `
-
-                        <label class="option">
-
-                            <div class="option-content">
-
-                                <input type="radio"
-                                       name="${p.id}"
-                                       value="${op}"
-                                       onclick="actualizarProgreso()">
-
-                                <span>${op}</span>
-
-                            </div>
-
-                        </label>
-
-                    `).join('')}
+                    </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
-    `;
-});
+        `;
+    });
+}
+
+// Cargar preguntas del módulo Palabras (id 2)
+loadPreguntas(2);
 
 function calificar() {
 

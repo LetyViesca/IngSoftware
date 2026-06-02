@@ -222,3 +222,17 @@
     }
 }
 
+/* [Sprint 5 - RNF-04] Estilos para badges e insignias */
+.badge-puntaje {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.15rem;
+}
+
+.banner-completado h2 {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #3e2723;
+}
+
+

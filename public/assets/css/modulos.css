@@ -413,3 +413,31 @@
     }
 }
 
+    /* [Sprint 5 - RNF-01] Estilos para tarjetas bloqueadas y badge de completado */
+    .module-locked-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(255,255,255,0.82);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+        font-weight: 800;
+        font-size: 1.05rem;
+        text-align: center;
+        padding: 12px;
+        border-radius: 32px;
+    }
+
+    .completed-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: #ffffffcc;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 800;
+        color: #008000;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+

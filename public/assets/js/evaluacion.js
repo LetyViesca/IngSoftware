@@ -1,17 +1,36 @@
-const datos = [
-    { id:'p1', correcta:'A', img:'assets/img/abecedario/a.png' },
-    { id:'p2', correcta:'B', img:'assets/img/abecedario/b.png' },
-    { id:'p3', correcta:'C', img:'assets/img/abecedario/c.png' },
-    { id:'p4', correcta:'D', img:'assets/img/abecedario/d.png' },
-    { id:'p5', correcta:'E', img:'assets/img/abecedario/e.png' },
-    { id:'p6', correcta:'F', img:'assets/img/abecedario/f.png' },
-    { id:'p7', correcta:'G', img:'assets/img/abecedario/g.png' },
-    { id:'p8', correcta:'H', img:'assets/img/abecedario/h.png' },
-    { id:'p9', correcta:'I', img:'assets/img/abecedario/i.png' },
-    { id:'p10', correcta:'J', img:'assets/img/abecedario/j.png' }
-];
+// [Sprint 5 - RNF-03] Fisher-Yates shuffle
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+// [Sprint 5 - RNF-02] Datos cargados desde backend
+let datos = [];
 
 const contenedor = document.getElementById("preguntas");
+
+async function loadPreguntas(modId = 1) {
+    try {
+        const resp = await fetch('controllers/get_preguntas.php?id_Modulo=' + modId);
+        if (!resp.ok) throw new Error('Error al cargar preguntas');
+        const json = await resp.json();
+
+        datos = json.map((q, idx) => ({
+            id: 'p' + (idx+1),
+            correcta: q.respuesta_correcta,
+            img: q.imagen,
+            opciones: [q.respuesta_correcta, q.opcion1, q.opcion2, q.opcion3]
+        }));
+
+        renderPreguntas();
+    } catch (err) {
+        contenedor.innerHTML = '<p style="color:#ff4757; text-align:center;">No fue posible cargar las preguntas.</p>';
+        console.error(err);
+    }
+}
 
 document.addEventListener("change", e => {
 
@@ -65,90 +84,49 @@ function actualizarProgreso() {
     " preguntas respondidas";
 }
 
-datos.forEach((p, i) => {
+function renderPreguntas() {
+    contenedor.innerHTML = '';
 
-    contenedor.innerHTML += `
-    <div class="question-card" id="card-${p.id}">
+    datos.forEach((p, i) => {
+        let opciones = Array.isArray(p.opciones) ? [...p.opciones] : [p.correcta];
+        // shuffle opciones
+        opciones = shuffleArray(opciones);
 
-        <div class="question-header">
+        contenedor.innerHTML += `
+        <div class="question-card" id="card-${p.id}">
 
-            <img src="${p.img}" class="question-img">
+            <div class="question-header">
 
-            <div style="flex:1;">
+                <img src="${p.img}" class="question-img">
 
-                <p><strong>Pregunta ${i+1}</strong></p>
+                <div style="flex:1;">
 
-                <p>¿Qué letra es esta?</p>
+                    <p><strong>Pregunta ${i+1}</strong></p>
 
-                <div class="options-grid">
+                    <p>¿Qué letra es esta?</p>
 
-                    <label class="option">
+                    <div class="options-grid">
 
-                        <div class="option-content">
+                        ${opciones.map(op => `
+                        <label class="option">
+                            <div class="option-content">
+                                <input type="radio" name="${p.id}" value="${op}" onclick="actualizarProgreso()">
+                                <span>${op}</span>
+                            </div>
+                        </label>
+                        `).join('')}
 
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="${p.correcta}"
-                                   onclick="actualizarProgreso()">
-
-                            <span>${p.correcta}</span>
-
-                        </div>
-
-                    </label>
-
-                    <label class="option">
-
-                        <div class="option-content">
-
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="M"
-                                   onclick="actualizarProgreso()">
-
-                            <span>M</span>
-
-                        </div>
-
-                    </label>
-
-                    <label class="option">
-
-                        <div class="option-content">
-
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="R"
-                                   onclick="actualizarProgreso()">
-
-                            <span>R</span>
-
-                        </div>
-
-                    </label>
-
-                    <label class="option">
-
-                        <div class="option-content">
-
-                            <input type="radio"
-                                   name="${p.id}"
-                                   value="T"
-                                   onclick="actualizarProgreso()">
-
-                            <span>T</span>
-
-                        </div>
-
-                    </label>
+                    </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
-    `;
-});
+        `;
+    });
+}
+
+// Cargar preguntas del módulo Abecedario (id 1)
+loadPreguntas(1);
 
 function calificar() {
 
