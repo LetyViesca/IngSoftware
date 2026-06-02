@@ -135,3 +135,24 @@ VALUES
 ('Cuatro','Palabra','Cuatro dedos extendidos.','imag/palabras/cuatro.png',2),
 ('Cinco','Palabra','Mano completamente abierta.','imag/palabras/cinco.png',2),
 ('Diez','Palabra','Movimiento del puño cerrado.','imag/palabras/diez.png',2);
+
+CREATE TABLE IF NOT EXISTS Pregunta (
+  id_pregunta INT AUTO_INCREMENT PRIMARY KEY,
+  id_Modulo INT,
+  imagen VARCHAR(255),
+  respuesta_correcta VARCHAR(100),
+  opcion1 VARCHAR(100),
+  opcion2 VARCHAR(100),
+  opcion3 VARCHAR(100),
+  FOREIGN KEY (id_Modulo) REFERENCES Modulo(id_Modulo)
+);
+
+CREATE TABLE IF NOT EXISTS Historial_evaluacion (
+  id_historial INT AUTO_INCREMENT PRIMARY KEY,
+  id_Usuario INT,
+  id_Evaluacion INT,
+  puntaje INT,
+  fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_Usuario) REFERENCES Usuario(id_usuario),
+  FOREIGN KEY (id_Evaluacion) REFERENCES Evaluacion(id_Evaluacion)
+);
