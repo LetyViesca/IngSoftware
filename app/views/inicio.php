@@ -31,6 +31,7 @@ $mod3_desbloqueado = $mod2_completado;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Inicio</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/navbar-dropdown.js" defer></script>
     
     <style>
         /* Asegura que el círculo morado quede SIEMPRE al frente de la imagen en el zoom */
@@ -114,7 +115,7 @@ En ZIGNA, no solo aprendes señas construyes puentes. Estás a un paso de domina
     </section>
 
     <section class="learning-guide">
-        <h2 style="color: #333; margin-bottom: 25px; font-size: 24px; font-weight: bold;">Tus Módulos de Aprendizaje</h2>
+        <h2>Tus Módulos de Aprendizaje</h2>
         
         <div class="card-grid">
 

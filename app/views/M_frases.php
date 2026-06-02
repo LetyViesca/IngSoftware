@@ -22,6 +22,7 @@ if (!$res_prev || mysqli_num_rows($res_prev) == 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZIGNA - Frases LSM</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/navbar-dropdown.js" defer></script>
 </head>
 
 <body>

@@ -12,6 +12,7 @@ require_once __DIR__ . '/../auth/auth.php';
     <title>ZIGNA - Evaluación Abecedario</title>
     
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/navbar-dropdown.js" defer></script>
 </head>
 
 <body>

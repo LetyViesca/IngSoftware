@@ -13,6 +13,7 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
     <title>ZIGNA - Evaluación Palabras</title>
 
     <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/navbar-dropdown.js" defer></script>
 </head>
 
 <body>
