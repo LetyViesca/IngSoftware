@@ -146,11 +146,11 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
             </div>
             
             <?php
-            // Obtener últimos 5 intentos (historial)
+            // Obtener los últimos 3 intentos (historial)
             $query_hist = "SELECT he.fecha, he.puntaje FROM Historial_evaluacion he
                           JOIN Evaluacion e ON he.id_Evaluacion = e.id_Evaluacion
                           WHERE e.id_Modulo = $id_mod AND he.id_Usuario = '$id_usuario'
-                          ORDER BY he.fecha DESC LIMIT 5";
+                          ORDER BY he.fecha DESC LIMIT 3";
             
             $res_hist = mysqli_query($conexion, $query_hist);
             $hay_historial = ($res_hist && mysqli_num_rows($res_hist) > 0);
