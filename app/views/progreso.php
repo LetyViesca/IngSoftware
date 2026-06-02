@@ -1,4 +1,4 @@
-<?php 
+﻿<?php 
 require_once __DIR__ . '/../auth/auth.php';
 require_once __DIR__ . '/../config/db.php';
 $id_usuario = $_SESSION['id_usuario'];
@@ -186,9 +186,47 @@ $nombre_usuario = $_SESSION['nombre_usuario'];
                                 </div>
                             </div>
                         <?php endwhile; ?>
-                    </div>
-                <?php else: ?>
-                    <p class="historial-vacio">Aún no has realizado esta evaluación</p>
+                    </div>                <?php else: ?>
+                    <?php
+                    // [Sprint 5 - Fallback] Si Historial_evaluacion está vacía, mostrar último intento de Resultado_evaluacion
+                    $query_fallback = "SELECT re.fecha, re.puntaje FROM Resultado_evaluacion re
+                                      JOIN Evaluacion e ON re.id_Evaluacion = e.id_Evaluacion
+                                      WHERE e.id_Modulo = $id_mod AND re.id_Usuario = '$id_usuario'
+                                      ORDER BY re.fecha DESC LIMIT 1";
+                    
+                    $res_fallback = mysqli_query($conexion, $query_fallback);
+                    $hay_fallback = ($res_fallback && mysqli_num_rows($res_fallback) > 0);
+                    
+                    if ($hay_fallback):
+                        $intento_fallback = mysqli_fetch_assoc($res_fallback);
+                        $fecha_formato_fb = date('d/m/Y', strtotime($intento_fallback['fecha']));
+                        $hora_formato_fb = date('H:i', strtotime($intento_fallback['fecha']));
+                        $resultado_icon_fb = $intento_fallback['puntaje'] >= 80 ? '✅' : '❌';
+                        $resultado_texto_fb = $intento_fallback['puntaje'] >= 80 ? 'Aprobado' : 'Reprobado';
+                        $clase_resultado_fb = $intento_fallback['puntaje'] >= 80 ? 'aprobado' : 'reprobado';
+                    ?>
+                        <p class="historial-titulo">Historial de intentos</p>
+                        <div class="historial-tabla">
+                            <div class="historial-header">
+                                <div class="historial-col-fecha">Fecha</div>
+                                <div class="historial-col-puntaje">Puntaje</div>
+                                <div class="historial-col-resultado">Resultado</div>
+                            </div>
+                            <div class="historial-fila">
+                                <div class="historial-col-fecha">
+                                    <span class="fecha-fecha"><?php echo $fecha_formato_fb; ?></span>
+                                    <span class="fecha-hora"><?php echo $hora_formato_fb; ?></span>
+                                </div>
+                                <div class="historial-col-puntaje"><?php echo $intento_fallback['puntaje']; ?>%</div>
+                                <div class="historial-col-resultado resultado-<?php echo $clase_resultado_fb; ?>">
+                                    <span><?php echo $resultado_icon_fb; ?></span>
+                                    <span><?php echo $resultado_texto_fb; ?></span>
+                                </div>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <p class="historial-vacio">Aún no has realizado esta evaluación</p>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>
