@@ -214,3 +214,7 @@ INSERT INTO Pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, o
 INSERT INTO Pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES ('3', 'imag/frases/cuanto_cuesta.png', '¿Cuánto cuesta?', 'Estoy enfermo', 'Me gusta', '¿Cuál es tu nombre?');
 INSERT INTO Pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES ('3', 'imag/frases/enfermo.png', 'Estoy enfermo', 'Me gusta', '¿Cuál es tu nombre?', 'De nada');
 INSERT INTO Pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES ('3', 'imag/frases/me_gusta.png', 'Me gusta', '¿Cuál es tu nombre?', 'De nada', 'Ayuda');
+
+INSERT INTO Evaluacion (id_Evaluacion, id_Modulo) VALUES (1, 1);
+INSERT INTO Evaluacion (id_Evaluacion, id_Modulo) VALUES (2, 2);
+INSERT INTO Evaluacion (id_Evaluacion, id_Modulo) VALUES (3, 3);
