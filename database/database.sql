@@ -136,6 +136,7 @@ VALUES
 ('Cinco','Palabra','Mano completamente abierta.','imag/palabras/cinco.png',2),
 ('Diez','Palabra','Movimiento del puño cerrado.','imag/palabras/diez.png',2);
 
+-- Tabla para Banco de Preguntas
 CREATE TABLE IF NOT EXISTS Pregunta (
   id_pregunta INT AUTO_INCREMENT PRIMARY KEY,
   id_Modulo INT,
@@ -147,6 +148,7 @@ CREATE TABLE IF NOT EXISTS Pregunta (
   FOREIGN KEY (id_Modulo) REFERENCES Modulo(id_Modulo)
 );
 
+-- Tabla para Historial de Evaluaciones
 CREATE TABLE IF NOT EXISTS Historial_evaluacion (
   id_historial INT AUTO_INCREMENT PRIMARY KEY,
   id_Usuario INT,
@@ -157,6 +159,33 @@ CREATE TABLE IF NOT EXISTS Historial_evaluacion (
   FOREIGN KEY (id_Evaluacion) REFERENCES Evaluacion(id_Evaluacion)
 );
 
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/a.png', 'A', 'B', 'C', 'D');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/b.png', 'B', 'A', 'C', 'E');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/c.png', 'C', 'A', 'B', 'D');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/d.png', 'D', 'A', 'C', 'E');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/e.png', 'E', 'D', 'F', 'A');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/f.png', 'F', 'E', 'G', 'B');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/g.png', 'G', 'F', 'H', 'C');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/h.png', 'H', 'G', 'I', 'D');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/i.png', 'I', 'H', 'J', 'E');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/j.png', 'J', 'I', 'K', 'F');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/k.png', 'K', 'J', 'L', 'G');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/l.png', 'L', 'K', 'M', 'H');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/m.png', 'M', 'L', 'N', 'I');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/n.png', 'N', 'M', 'D', 'J');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/ñ.png', 'Ñ', 'K', 'M', 'Q');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/o.png', 'O', 'D', 'P', 'L');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/p.png', 'P', 'O', 'Q', 'M');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/q.png', 'Q', 'P', 'R', 'N');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/r.png', 'R', 'Q', 'S', 'O');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/s.png', 'S', 'R', 'T', 'P');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/t.png', 'T', 'S', 'U', 'Q');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/u.png', 'U', 'T', 'V', 'R');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/v.png', 'V', 'U', 'W', 'S');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/w.png', 'W', 'V', 'X', 'T');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/x.png', 'X', 'W', 'Y', 'U');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/y.png', 'Y', 'X', 'Z', 'V');
+INSERT INTO pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES (1, 'imag/abecedario/z.png', 'Z', 'Y', 'A', 'W');
 INSERT INTO Pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES ('2', 'imag/palabras/hola.png', 'Hola', 'Adiós', 'Buen día', 'Buenas noches');
 INSERT INTO Pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES ('2', 'imag/palabras/adios.png', 'Adiós', 'Buen día', 'Buenas noches', 'Gracias');
 INSERT INTO Pregunta (id_Modulo, imagen, respuesta_correcta, opcion1, opcion2, opcion3) VALUES ('2', 'imag/palabras/buen_dia.png', 'Buen día', 'Buenas noches', 'Gracias', 'Por favor');
