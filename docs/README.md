@@ -51,19 +51,31 @@ Antes de ejecutar el proyecto es necesario contar con:
 
 ## Instalación
 
-### 1. Clonar el repositorio
+### 1. Clonar el proyecto con GitHub Desktop
 
-```bash
-git clone https://github.com/LetyViesca/IngSoftware.git
-```
-
-### 2. Ubicar el proyecto en XAMPP
-
-Colocar la carpeta del proyecto dentro de:
+1. Abrir **GitHub Desktop**.
+2. Seleccionar:
 
 ```text
-C:/xampp/htdocs/ZIGNA
+File > Clone Repository
 ```
+
+3. Abrir la pestaña **URL**.
+4. En **Repository URL** ingresar:
+
+```text
+https://github.com/LetyViesca/IngSoftware
+```
+
+5. En **Local Path** seleccionar:
+
+```text
+C:\xampp\htdocs\ZIGNA
+```
+
+Si la carpeta **ZIGNA** no existe, deberá crearse previamente dentro de `htdocs`.
+
+6. Presionar **Clone** para descargar el proyecto.
 
 La estructura principal deberá quedar de la siguiente manera:
 
@@ -79,10 +91,10 @@ ZIGNA/
 
 ---
 
-### 3. Crear la base de datos
+### 2. Crear la base de datos
 
 1. Abrir MySQL Workbench.
-2. Crear una conexión local.
+2. Crear o seleccionar una conexión local.
 3. Seleccionar:
 
 ```text
@@ -99,7 +111,7 @@ database/database.sql
 
 ---
 
-### 4. Configurar la conexión
+### 3. Configurar la conexión
 
 Verificar los parámetros del archivo:
 
@@ -119,69 +131,18 @@ $db   = "zigna";
 
 ---
 
-### 5. Ejecutar el sistema
+### 4. Ejecutar el sistema
 
-1. Iniciar Apache.
-2. Iniciar MySQL.
+1. Iniciar Apache desde XAMPP.
+2. Iniciar MySQL desde XAMPP.
 3. Abrir en el navegador:
 
 ```text
 http://localhost/ZIGNA
 ```
 
----
+Si la instalación fue realizada correctamente, se mostrará la pantalla de login de la plataforma.
 
-## Estructura del proyecto
-
-```text
-ZIGNA/
-├── app/
-│   ├── auth/
-│   │   └── logout.php
-│   │
-│   ├── config/
-│   │   └── db.php
-│   │
-│   ├── controllers/
-│   │   ├── g_puntaje.php
-│   │   ├── get_preguntas.php
-│   │   ├── procesar_login.php
-│   │   └── procesar_registro.php
-│   │
-│   └── views/
-│       ├── inicio.php
-│       ├── login.php
-│       ├── registro_vista.php
-│       ├── progreso.php
-│       ├── M_abecedario.php
-│       ├── M_palabras.php
-│       ├── M_frases.php
-│       ├── evaluacion.php
-│       ├── evaluacionPalabras.php
-│       └── evaluacionFrases.php
-│
-├── database/
-│   └── database.sql
-│
-├── docs/
-│   └── Documentación del proyecto
-│
-├── public/
-│   ├── assets/
-│   │   ├── css/
-│   │   ├── img/
-│   │   └── js/
-│   │
-│   ├── controllers/
-│   │   └── get_preguntas.php
-│   │
-│   └── index.php
-│
-├── .htaccess
-└── index.php
-```
-
----
 
 ## Funcionalidades principales
 
