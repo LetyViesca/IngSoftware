@@ -45,6 +45,7 @@ Antes de ejecutar el proyecto es necesario contar con:
 * XAMPP (Apache y MySQL)
 * MySQL Workbench
 * Git
+* GitHub Desktop
 * Navegador web moderno (Google Chrome, Microsoft Edge o Mozilla Firefox)
 
 ---
@@ -74,6 +75,7 @@ C:\xampp\htdocs\ZIGNA
 ```
 
 Si la carpeta **ZIGNA** no existe, deberá crearse previamente dentro de `htdocs`.
+Se seleccionara automaticamente la carpeta "ZIGNA/IngSoftware", se debera borrar "/IngSoftware".
 
 6. Presionar **Clone** para descargar el proyecto.
 
@@ -93,9 +95,11 @@ ZIGNA/
 
 ### 2. Crear la base de datos
 
-1. Abrir MySQL Workbench.
-2. Crear o seleccionar una conexión local.
-3. Seleccionar:
+1. Iniciar MySQL en XAMPP (Asegurate de estar en el puerto 3307).
+2. Iniciar Apache en XAMPP.
+3. Abrir MySQL Workbench.
+4. Crear o seleccionar una conexión local con puerto 3307.
+5. Seleccionar:
 
 ```text
 File > Open SQL Script
@@ -104,7 +108,7 @@ File > Open SQL Script
 4. Abrir:
 
 ```text
-database/database.sql
+c:\xampp\htdocs\ZIGNA\database\database.sql
 ```
 
 5. Ejecutar el script completo.
@@ -128,14 +132,15 @@ $user = "root";
 $pass = "";
 $db   = "zigna";
 ```
+Nota: Si la conexion fue creada con otro usuario y contraseña modificar los parametros y guardar.
 
 ---
 
 ### 4. Ejecutar el sistema
 
-1. Iniciar Apache desde XAMPP.
-2. Iniciar MySQL desde XAMPP.
-3. Abrir en el navegador:
+1. Asegurar que este iniciado Apache desde XAMPP.
+2. Asegurar que este iniciado MySQL desde XAMPP(puerto 3307).
+1. Abrir en el navegador:
 
 ```text
 http://localhost/ZIGNA
