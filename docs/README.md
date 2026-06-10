@@ -117,13 +117,14 @@ c:\xampp\htdocs\ZIGNA\database\database.sql
 
 ### 3. Configurar la conexión
 
-Verificar los parámetros del archivo:
+Ir a GitHub Desktop, rama desarrollo y abrir visual
+
+Verificar los parámetros del archivo: 
 
 ```text
 app/config/db.php
 ```
-
-Ejemplo:
+Parametros establecidos
 
 ```php
 $host = "localhost";
@@ -132,7 +133,7 @@ $user = "root";
 $pass = "";
 $db   = "zigna";
 ```
-Nota: Si la conexion fue creada con otro usuario y contraseña modificar los parametros y guardar.
+Nota: Asegurate de tener los mismos parametros anteriores en la conexion.
 
 ---
 
